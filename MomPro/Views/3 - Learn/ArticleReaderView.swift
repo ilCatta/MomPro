@@ -4,13 +4,12 @@
 //
 //  Created by Andrea Cataldo on 18/01/26.
 //
-
 import SwiftUI
 import RevenueCatUI // Per il paywall se l'utente clicca su un articolo bloccato
 
-struct GuideView: View {
+struct ArticleReaderView: View {
     let article: Article
-    var viewModel: GuidesViewModel // Passiamo il VM per segnare come letto
+    var viewModel: LearnViewModel // Passiamo il VM per segnare come letto
     
     @Environment(\.dismiss) private var dismiss
     @State private var showPaywall = false
@@ -50,7 +49,7 @@ struct GuideView: View {
                     }
                 
                 VStack(alignment: .leading, spacing: 16) {
-                    Text(article.title)
+                    Text(article.title.localized)
                         .font(.title)
                         .fontWeight(.bold)
                     
