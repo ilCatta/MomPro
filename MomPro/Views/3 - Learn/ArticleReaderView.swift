@@ -16,79 +16,149 @@ struct ArticleReaderView: View {
     @State private var isRead: Bool = false
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
+        
+        GeometryReader { geo in
+            
+            ZStack {
                 
-                // Immagine Header
-                Image(article.imageName) // Assicurati di avere un placeholder se manca
-                    .resizable()
-                    .scaledToFill()
-                    .frame(height: 250)
-                    .clipped()
-                    .overlay(alignment: .bottomLeading) {
-                        // Badge Pro o Categoria
-                        HStack {
-                            if article.isPro {
-                                Text("PRO")
-                                    .font(.caption)
-                                    .fontWeight(.bold)
-                                    .padding(6)
-                                    .background(Color.black)
-                                    .foregroundStyle(.yellow)
-                                    .cornerRadius(4)
-                            }
+                // --- SFONDO ---
+                Color(uiColor: .systemGroupedBackground).ignoresSafeArea()
+                
+                
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 20) {
+                        
+                        
+                        // --- IMMAGINE HEADER (STRETCHY HEADER) ---
+                         let headerHeight = geo.size.height * 0.34 // Altezza di base
+                         GeometryReader { scrollGeo in
+                            let minY = scrollGeo.frame(in: .global).minY 
                             
-                            Text(article.category.rawValue)
-                                .font(.caption)
-                                .fontWeight(.bold)
-                                .padding(6)
-                                .background(Color.white.opacity(0.8))
-                                .cornerRadius(4)
+                            Image(article.imageName)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: geo.size.width,
+                                       height: headerHeight + (minY > 0 ? minY : 0))
+                                .clipped()
+                                .overlay(alignment: .bottomLeading) {
+                                    // Badge Pro o Categoria
+                                    HStack {
+                                        if article.isPro {
+                                            Text("PRO")
+                                                .font(.system(.caption ,design: .rounded))
+                                                .fontWeight(.bold)
+                                                .foregroundColor(.white)
+                                                .padding(.horizontal,8)
+                                                .padding(.vertical,6)
+                                                .background(.pink)
+                                                .cornerRadius(10)
+                                        }
+                                        Text(article.category.rawValue.localized)
+                                            .font(.system(.caption ,design: .rounded))
+                                            .fontWeight(.semibold)
+                                            .foregroundColor(.primary)
+                                            .textCase(.uppercase)
+                                            .padding(.horizontal,8)
+                                            .padding(.vertical,6)
+                                            .background(Color(.secondarySystemGroupedBackground))
+                                            .cornerRadius(10)
+                                        
+                                        Spacer()
+                                        
+                                        HStack(spacing: 4) {
+                                                Image(systemName: "clock")
+                                            
+                                                Text("\(article.readTimeMinutes) \("learn_view_min".localized)")
+                                                .textCase(.uppercase)
+                                            }
+                                            .font(.system(.caption ,design: .rounded))
+                                            .fontWeight(.semibold)
+                                            .foregroundColor(.primary)
+                                            .padding(.horizontal,8)
+                                            .padding(.vertical,6)
+                                            .background(Color(.secondarySystemGroupedBackground))
+                                            .cornerRadius(10)
+                                        
+                                        
+                                        HStack{
+                                            Text(difficultyString)
+                                            difficultyIcon
+                                        }
+                                        .font(.system(.caption ,design: .rounded))
+                                            .fontWeight(.semibold)
+                                            .foregroundColor(.primary)
+                                            .textCase(.uppercase)
+                                            .padding(.horizontal,8)
+                                            .padding(.vertical,6)
+                                            .background(Color(.secondarySystemGroupedBackground))
+                                            .cornerRadius(10)
+                                        
+                                        
+                                    }
+                                    .padding()
+                                }
+                                .offset(y: minY > 0 ? -minY : 0)
                         }
-                        .padding()
-                    }
-                
-                VStack(alignment: .leading, spacing: 16) {
-                    Text(article.title.localized)
-                        .font(.title)
-                        .fontWeight(.bold)
-                    
-                    HStack {
-                        Label("\(article.readTimeMinutes) min lettura", systemImage: "clock")
-                        Spacer()
-                        Label(difficultyString, systemImage: "chart.bar")
-                    }
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    
-                    Divider()
-                    
-                    // CONTENUTO (Markdown supportato nativamente da Text in SwiftUI)
-                    if viewModel.isLocked(article) {
-                        lockedView
-                    } else {
-                        // Carica il contenuto dal file .md
-                        Text(LocalizedStringKey(article.loadMarkdownContent()))
-                            .font(.body)
-                            .lineSpacing(6)
+                         .frame(height: headerHeight)
+                         .padding(.bottom, 2)
+                        // --- FINE IMMAGINE HEADER (STRETCHY HEADER) ---
+                        
+                        
+                        VStack(alignment: .leading, spacing: 0) {
+                            Text(article.title.localized)
+                                .font(.system(.title ,design: .rounded))
+                                .fontWeight(.bold)
+                                .foregroundColor(.primary)
+                                .padding(.bottom)
+                            
+                            // Divider
+                            Rectangle()
+                                .fill(Color(uiColor: .separator))
+                                .frame(height: 1)
+                                .padding(.bottom)
+
+                            
+                            // CONTENUTO (Markdown supportato nativamente da Text in SwiftUI)
+                            if viewModel.isLocked(article) {
+                                lockedView
+                            } else {
+                                // Carica il contenuto dal file .md
+                                Text(LocalizedStringKey(article.loadMarkdownContent()))
+                                    .font(.body)
+                                    .lineSpacing(6)
+                            }
+                        }
+                        .padding(.horizontal)
+                        
+                        Spacer(minLength: 50)
                     }
                 }
-                .padding()
-                
-                Spacer(minLength: 50)
             }
         }
+                //
         .ignoresSafeArea(edges: .top)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 if !viewModel.isLocked(article) {
                     Button(action: {
+                        let impact = UIImpactFeedbackGenerator(style: .light)
+                        impact.impactOccurred()
                         markRead()
                     }) {
                         if viewModel.isRead(article) || isRead {
-                            Image(systemName: "checkmark.circle.fill").foregroundStyle(.green)
+                            HStack(spacing: 4){
+                                Image(systemName: "checkmark.circle.fill")
+                                    .font(.subheadline)
+                                    .foregroundStyle(.green)
+                                
+                                Text("learn_view_read".localized)
+                                    .font(.system(.subheadline ,design: .rounded))
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(.green)}
                         } else {
-                            Text("Segna Letto")
+                            Text("learn_view_markasread".localized)
+                                .font(.subheadline)
+                                .fontWeight(.medium)
                         }
                     }
                     .disabled(viewModel.isRead(article) || isRead)
@@ -106,37 +176,72 @@ struct ArticleReaderView: View {
             Image(systemName: "lock.circle.fill")
                 .font(.system(size: 60))
                 .foregroundStyle(.secondary)
+                
+            Text("learn_view_locked_title".localized) // Contenuto Esclusivo/riservato
+                .font(.system(.title3 ,design: .rounded))
+                .fontWeight(.semibold)
             
-            Text("Contenuto riservato a MumPro")
-                .font(.headline)
-            
-            Text("Sblocca tutti gli articoli e impara a gestire i tuoi soldi come una pro.")
+            Text("learn_view_locked_body".localized)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)
+                .fontWeight(.medium)
+
             
             Button(action: {
                 showPaywall = true
             }) {
-                Text("Sblocca Ora")
-                    .font(.headline)
+                Text("learn_view_unlock_button".localized)
+                    .font(.system(.title3 ,design: .rounded))
+                    .fontWeight(.semibold)
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
-                    .padding()
+                    .padding(.vertical, 18)
+                    .padding(.horizontal)
                     .background(Color.pink)
-                    .cornerRadius(12)
+                    .cornerRadius(16)
             }
+            .buttonStyle(PremiumGlassPressStyle())
         }
         .padding(.vertical, 40)
         .padding(.horizontal)
-        .background(Color(uiColor: .systemGray6))
-        .cornerRadius(16)
+        .background(Color(uiColor: .secondarySystemGroupedBackground))
+        .cornerRadius(18)
     }
+    
+    private struct PremiumGlassPressStyle: ButtonStyle {
+        func makeBody(configuration: Configuration) -> some View {
+            configuration.label
+                .scaleEffect(
+                    x: configuration.isPressed ? 1.045 : 1,
+                    y: configuration.isPressed ? 1.035 : 1,
+                    anchor: .center
+                )
+                .animation(
+                    configuration.isPressed
+                    ? .timingCurve(0.18, 0.9, 0.25, 1, duration: 0.16)
+                    : .timingCurve(0.3, 0.1, 0.25, 1, duration: 0.34),
+                    value: configuration.isPressed
+                )
+        }
+    }
+
     
     var difficultyString: String {
         switch article.difficulty {
-        case .beginner: return "Facile"
-        case .intermediate: return "Medio"
-        case .advanced: return "Avanzato"
+        case .beginner: return "learn_view_beginner".localized
+        case .intermediate: return "learn_view_intermediate".localized
+        case .advanced: return "learn_view_advanced".localized
+        }
+    }
+    
+    // Icona difficoltà (adattata per sfondo scuro)
+    var difficultyIcon: some View {
+        HStack(spacing: 3) {
+            ForEach(0..<3) { i in
+                Circle()
+                    .fill(i < article.difficulty.rawValue ? Color.pink : Color(.systemGroupedBackground))
+                    .frame(width: 5, height: 5)
+            }
         }
     }
     

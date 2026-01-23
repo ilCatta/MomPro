@@ -7,16 +7,12 @@
 
 import SwiftUI
 
-struct GuidesView: View {
+struct LearnView: View {
     @State private var viewModel = LearnViewModel()
         
     var body: some View {
         
-        ZStack {
-            
-            // --- SFONDO ---
-            Color(uiColor: .systemGroupedBackground).ignoresSafeArea()
-            
+
             NavigationStack {
                 
                 ScrollView {
@@ -52,14 +48,22 @@ struct GuidesView: View {
                                             Text(viewModel.progressText(for: category))
                                                 .font(.footnote)
                                                 .fontWeight(.medium)
-                                                .padding(6)
-                                                .background(Color.gray.opacity(0.1))
+                                                .padding(.horizontal,8)
+                                                .padding(.vertical,6)
+                                                .background(Color(.secondarySystemGroupedBackground))
                                                 .clipShape(Capsule())
-                                                .foregroundColor(.primary)
+                                                .foregroundColor(.secondary)
+
                                         }
                                     }
                                     .padding(.horizontal)
                                 }
+                                // --- TAP FEEDBACK ---
+                                .simultaneousGesture(TapGesture().onEnded {
+                                    let generator = UIImpactFeedbackGenerator(style: .light)
+                                    generator.impactOccurred()
+                                })
+                                // ----------------------------------------
                                 .padding(.bottom, 10)
                                 
                                 Text( categoryDescription(for: category))
@@ -78,6 +82,12 @@ struct GuidesView: View {
                                                 ArticleCard(article: article, viewModel: viewModel)
                                                     .frame(width: 160) // Forza larghezza fissa nella home
                                             }
+                                            // --- TAP FEEDBACK ---
+                                            .simultaneousGesture(TapGesture().onEnded {
+                                                let generator = UIImpactFeedbackGenerator(style: .light)
+                                                generator.impactOccurred()
+                                            })
+                                            // ----------------------------------------
                                         }
                                     }
                                     .padding(.horizontal)
@@ -96,18 +106,19 @@ struct GuidesView: View {
                         }
                        
                     }
+                    .padding(.top)
                     
                 }
+                .background(Color(uiColor: .systemGroupedBackground))
                 //
                 //
                 // --- TOOLBAR ---
-                //.navigationBarTitleDisplayMode(.inline)
-                //.navigationTitle("Guide")
+                .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     
                     ToolbarItem(placement: .principal) {
                         HStack(spacing: 0) {
-                            Text("Guide".localized)
+                            Text("tab_learn".localized)
                                 .font(.system(.title ,design: .rounded))
                                 .fontWeight(.bold)
                                 .foregroundColor(.primary)
@@ -115,12 +126,18 @@ struct GuidesView: View {
                     }
                     
                     ToolbarItem(placement: .topBarTrailing) {
-                        Button(action: { viewModel.pickSuggestedArticle() }) {
+                        Button(action: {
+                            let impact = UIImpactFeedbackGenerator(style: .light)
+                            impact.impactOccurred()
+                            viewModel.pickSuggestedArticle()
+                        }) {
                             HStack {
-                                Text("Consigliami".localized)
+                                Text("learn_view_pickforme".localized)
+                                    .font(.subheadline)
+                                    .fontWeight(.medium)
                             }
-                            .font(.subheadline)
-                            .fontWeight(.medium)
+                            //.font(.subheadline)
+                            //.fontWeight(.medium)
                         }
                     }
                 }
@@ -140,7 +157,7 @@ struct GuidesView: View {
                     ArticleReaderView(article: article, viewModel: viewModel)
                 }
             }
-        }
+        
     }
     
     func isCategoryLocked(_ category: ArticleCategory) -> Bool {
@@ -217,12 +234,13 @@ struct ArticleCard: View {
                     
                 
                 HStack {
-                    Text("\(article.readTimeMinutes) min")
+                    Text("\(article.readTimeMinutes) \("learn_view_min".localized)")
+                        .textCase(.lowercase)
                         .foregroundStyle(.white.opacity(0.9))
                     Spacer()
                     difficultyIcon
                 }
-                .font(.caption2)
+                .font(.system(.caption2 ,design: .rounded))
                 .padding(.top, 4)
             }
             .padding(12) // Spazio dal bordo
@@ -247,12 +265,13 @@ struct ArticleCard: View {
                             .padding(8)
                     } else if article.isPro {
                         Text("PRO")
-                            .font(.system(size: 10, weight: .bold))
+                            .font(.system(.caption2 ,design: .rounded))
+                            .fontWeight(.semibold)
                             .padding(.horizontal, 6)
                             .padding(.vertical, 4)
-                            .background(Color.yellow)
-                            .foregroundStyle(.black)
-                            .cornerRadius(4)
+                            .background(.pink)
+                            .foregroundColor(.white)
+                            .cornerRadius(6)
                             .padding(8)
                     }
                 }
@@ -263,7 +282,7 @@ struct ArticleCard: View {
         .frame(height: 240) // Forza l'altezza del contenitore
         .background(Color.gray.opacity(0.3)) // Colore mentre carica
         .cornerRadius(16) // Angoli arrotondati
-        .shadow(color: .black.opacity(0.2), radius: 6, x: 0, y: 3) // Ombra esterna
+        //.shadow(color: .black.opacity(0.2), radius: 6, x: 0, y: 3) // Ombra esterna
         .opacity(viewModel.isRead(article) ? 0.8 : 1.0)
     }
     

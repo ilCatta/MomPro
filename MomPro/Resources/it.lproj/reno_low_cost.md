@@ -1,1 +1,0 @@
-reno_low_cost.md

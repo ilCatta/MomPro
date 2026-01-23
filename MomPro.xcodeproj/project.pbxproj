@@ -6,6 +6,22 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		BB5704242F1D5C7A00A61F30 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = BB5704232F1D5C7A00A61F30 /* RevenueCat */; };
+		BB5704262F1D5C7A00A61F30 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = BB5704252F1D5C7A00A61F30 /* RevenueCatUI */; };
+		BB5704292F1D5CB500A61F30 /* HugeiconsAll in Frameworks */ = {isa = PBXBuildFile; productRef = BB5704282F1D5CB500A61F30 /* HugeiconsAll */; };
+		BB57042B2F1D5CB500A61F30 /* HugeiconsBulkRounded in Frameworks */ = {isa = PBXBuildFile; productRef = BB57042A2F1D5CB500A61F30 /* HugeiconsBulkRounded */; };
+		BB57042D2F1D5CB500A61F30 /* HugeiconsCore in Frameworks */ = {isa = PBXBuildFile; productRef = BB57042C2F1D5CB500A61F30 /* HugeiconsCore */; };
+		BB57042F2F1D5CB500A61F30 /* HugeiconsDuotoneRounded in Frameworks */ = {isa = PBXBuildFile; productRef = BB57042E2F1D5CB500A61F30 /* HugeiconsDuotoneRounded */; };
+		BB5704312F1D5CB500A61F30 /* HugeiconsSolidRounded in Frameworks */ = {isa = PBXBuildFile; productRef = BB5704302F1D5CB500A61F30 /* HugeiconsSolidRounded */; };
+		BB5704332F1D5CB500A61F30 /* HugeiconsSolidSharp in Frameworks */ = {isa = PBXBuildFile; productRef = BB5704322F1D5CB500A61F30 /* HugeiconsSolidSharp */; };
+		BB5704352F1D5CB500A61F30 /* HugeiconsSolidStandard in Frameworks */ = {isa = PBXBuildFile; productRef = BB5704342F1D5CB500A61F30 /* HugeiconsSolidStandard */; };
+		BB5704372F1D5CB500A61F30 /* HugeiconsStrokeRounded in Frameworks */ = {isa = PBXBuildFile; productRef = BB5704362F1D5CB500A61F30 /* HugeiconsStrokeRounded */; };
+		BB5704392F1D5CB500A61F30 /* HugeiconsStrokeSharp in Frameworks */ = {isa = PBXBuildFile; productRef = BB5704382F1D5CB500A61F30 /* HugeiconsStrokeSharp */; };
+		BB57043B2F1D5CB500A61F30 /* HugeiconsStrokeStandard in Frameworks */ = {isa = PBXBuildFile; productRef = BB57043A2F1D5CB500A61F30 /* HugeiconsStrokeStandard */; };
+		BB57043D2F1D5CB500A61F30 /* HugeiconsTwotoneRounded in Frameworks */ = {isa = PBXBuildFile; productRef = BB57043C2F1D5CB500A61F30 /* HugeiconsTwotoneRounded */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		BB5703CC2F1D57F000A61F30 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +68,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB57043D2F1D5CB500A61F30 /* HugeiconsTwotoneRounded in Frameworks */,
+				BB57042B2F1D5CB500A61F30 /* HugeiconsBulkRounded in Frameworks */,
+				BB57043B2F1D5CB500A61F30 /* HugeiconsStrokeStandard in Frameworks */,
+				BB5704332F1D5CB500A61F30 /* HugeiconsSolidSharp in Frameworks */,
+				BB5704372F1D5CB500A61F30 /* HugeiconsStrokeRounded in Frameworks */,
+				BB5704292F1D5CB500A61F30 /* HugeiconsAll in Frameworks */,
+				BB5704262F1D5C7A00A61F30 /* RevenueCatUI in Frameworks */,
+				BB5704352F1D5CB500A61F30 /* HugeiconsSolidStandard in Frameworks */,
+				BB5704392F1D5CB500A61F30 /* HugeiconsStrokeSharp in Frameworks */,
+				BB5704242F1D5C7A00A61F30 /* RevenueCat in Frameworks */,
+				BB5704312F1D5CB500A61F30 /* HugeiconsSolidRounded in Frameworks */,
+				BB57042D2F1D5CB500A61F30 /* HugeiconsCore in Frameworks */,
+				BB57042F2F1D5CB500A61F30 /* HugeiconsDuotoneRounded in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +141,19 @@
 			);
 			name = MomPro;
 			packageProductDependencies = (
+				BB5704232F1D5C7A00A61F30 /* RevenueCat */,
+				BB5704252F1D5C7A00A61F30 /* RevenueCatUI */,
+				BB5704282F1D5CB500A61F30 /* HugeiconsAll */,
+				BB57042A2F1D5CB500A61F30 /* HugeiconsBulkRounded */,
+				BB57042C2F1D5CB500A61F30 /* HugeiconsCore */,
+				BB57042E2F1D5CB500A61F30 /* HugeiconsDuotoneRounded */,
+				BB5704302F1D5CB500A61F30 /* HugeiconsSolidRounded */,
+				BB5704322F1D5CB500A61F30 /* HugeiconsSolidSharp */,
+				BB5704342F1D5CB500A61F30 /* HugeiconsSolidStandard */,
+				BB5704362F1D5CB500A61F30 /* HugeiconsStrokeRounded */,
+				BB5704382F1D5CB500A61F30 /* HugeiconsStrokeSharp */,
+				BB57043A2F1D5CB500A61F30 /* HugeiconsStrokeStandard */,
+				BB57043C2F1D5CB500A61F30 /* HugeiconsTwotoneRounded */,
 			);
 			productName = MomPro;
 			productReference = BB5703BC2F1D57EE00A61F30 /* MomPro.app */;
@@ -192,9 +234,14 @@
 			knownRegions = (
 				en,
 				Base,
+				it,
 			);
 			mainGroup = BB5703B32F1D57EE00A61F30;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				BB5704222F1D5C7A00A61F30 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */,
+				BB5704272F1D5CB500A61F30 /* XCLocalSwiftPackageReference "../FocusPro/hugeicons-swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = BB5703BD2F1D57EE00A61F30 /* Products */;
 			projectDirPath = "";
@@ -329,6 +376,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -386,6 +434,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -400,11 +449,12 @@
 				DEVELOPMENT_TEAM = MQGR67UV33;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MomPro;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -432,11 +482,12 @@
 				DEVELOPMENT_TEAM = MQGR67UV33;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MomPro;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -578,6 +629,81 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		BB5704272F1D5CB500A61F30 /* XCLocalSwiftPackageReference "../FocusPro/hugeicons-swift" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../FocusPro/hugeicons-swift";
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BB5704222F1D5C7A00A61F30 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.55.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BB5704232F1D5C7A00A61F30 /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BB5704222F1D5C7A00A61F30 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCat;
+		};
+		BB5704252F1D5C7A00A61F30 /* RevenueCatUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BB5704222F1D5C7A00A61F30 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCatUI;
+		};
+		BB5704282F1D5CB500A61F30 /* HugeiconsAll */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HugeiconsAll;
+		};
+		BB57042A2F1D5CB500A61F30 /* HugeiconsBulkRounded */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HugeiconsBulkRounded;
+		};
+		BB57042C2F1D5CB500A61F30 /* HugeiconsCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HugeiconsCore;
+		};
+		BB57042E2F1D5CB500A61F30 /* HugeiconsDuotoneRounded */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HugeiconsDuotoneRounded;
+		};
+		BB5704302F1D5CB500A61F30 /* HugeiconsSolidRounded */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HugeiconsSolidRounded;
+		};
+		BB5704322F1D5CB500A61F30 /* HugeiconsSolidSharp */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HugeiconsSolidSharp;
+		};
+		BB5704342F1D5CB500A61F30 /* HugeiconsSolidStandard */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HugeiconsSolidStandard;
+		};
+		BB5704362F1D5CB500A61F30 /* HugeiconsStrokeRounded */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HugeiconsStrokeRounded;
+		};
+		BB5704382F1D5CB500A61F30 /* HugeiconsStrokeSharp */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HugeiconsStrokeSharp;
+		};
+		BB57043A2F1D5CB500A61F30 /* HugeiconsStrokeStandard */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HugeiconsStrokeStandard;
+		};
+		BB57043C2F1D5CB500A61F30 /* HugeiconsTwotoneRounded */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = HugeiconsTwotoneRounded;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BB5703B42F1D57EE00A61F30 /* Project object */;
 }

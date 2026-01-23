@@ -14,7 +14,7 @@ struct MomProAppRootView: View {
     
     var body: some View {
         if hasCompletedOnboarding {
-            MainTabView()
+            MomProAppTabView()
         } else {
             OnboardingView()
         }

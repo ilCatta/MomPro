@@ -8,28 +8,52 @@
 import SwiftUI
 
 struct MomProAppTabView: View {
+    
+    enum Tab {
+            case home
+            case stats
+            case learn
+            case settings
+        }
+    
+    @State private var selectedTab: Tab = .home
+    
     var body: some View {
-        TabView {
+        
+        TabView(selection: $selectedTab) {
+            
             HomeView()
                 .tabItem {
-                    Label("Oggi", systemImage: "house.fill")
-                }
+                Image(selectedTab == .home ? "calendar-03-duotone-rounded" : "calendar-03-stroke-rounded")
+                Text("tab_today".localized)
+            }
+            .tag(Tab.home)
             
             StatsView()
-            .tabItem {
-                Label("Progressi", systemImage: "chart.bar.fill")
-            }
+                .tabItem {
+                    Image(selectedTab == .stats ? "chart-01-duotone-rounded" : "chart-01-stroke-rounded")
+                    Text("tab_progress".localized)
+                }
+                .tag(Tab.stats)
             
-            GuidesView()
-            .tabItem {
-                Label("Guide", systemImage: "book.fill")
-            }
+            LearnView()
+                .tabItem {
+                        Image(selectedTab == .learn ? "book-open-01-bulk-rounded" : "book-open-01-stroke-rounded")
+                        Text("tab_learn".localized)
+                    }
+                    .tag(Tab.learn)
             
             SettingsView() 
-                            .tabItem {
-                                Label("Opzioni", systemImage: "gearshape.fill")
-                            }
+                .tabItem {
+                    Image(selectedTab == .settings ? "settings-03-duotone-rounded" : "settings-03-stroke-rounded")
+                    Text("tab_options".localized)
+                }
+                .tag(Tab.settings)
         }
         .tint(.pink) // Colore principale dell'app
+        .onChange(of: selectedTab) {
+            let generator = UIImpactFeedbackGenerator(style: .light)
+            generator.impactOccurred()
+        }
     }
 }
