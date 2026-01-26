@@ -48,39 +48,39 @@ class ContentService {
     let allArticles: [Article] = [
             
             // MARK: - RISPARMIO (Savings) - Hook (Tutti aperti)
-            Article(title: "sav_001_title", fileName: "sav_001", imageName: "mascotte_home_start", category: .savings, difficulty: .beginner, readTimeMinutes: 3),
-            Article(title: "sav_002_title", fileName: "sav_002", imageName: "mascotte_home_start", category: .savings, difficulty: .beginner, readTimeMinutes: 4),
-            Article(title: "sav_003_title", fileName: "sav_003", imageName: "mascotte_home_start", category: .savings, difficulty: .intermediate, readTimeMinutes: 5),
-            Article(title: "sav_004_title", fileName: "sav_004", imageName: "mascotte_home_start", category: .savings, difficulty: .intermediate, readTimeMinutes: 6),
-            Article(title: "sav_005_title", fileName: "sav_005", imageName: "mascotte_home_start", category: .savings, difficulty: .advanced, readTimeMinutes: 8),
+            Article(title: "sav_001_title", fileName: "sav_001", imageName: "sav_001", category: .savings, difficulty: .beginner, readTimeMinutes: 3),
+            Article(title: "sav_002_title", fileName: "sav_002", imageName: "sav_002", category: .savings, difficulty: .beginner, readTimeMinutes: 2),
+            Article(title: "sav_003_title", fileName: "sav_003", imageName: "sav_003", category: .savings, difficulty: .intermediate, readTimeMinutes: 2),
+            Article(title: "sav_004_title", fileName: "sav_004", imageName: "sav_004", category: .savings, difficulty: .intermediate, readTimeMinutes: 3),
+            Article(title: "sav_005_title", fileName: "sav_005", imageName: "sav_005", category: .savings, difficulty: .advanced, readTimeMinutes: 2),
 
             // MARK: - ECO-RISPARMIO (Eco) - Hook (Tutti aperti)
-            Article(title: "eco_001_title", fileName: "eco_001", imageName: "mascotte_home_start", category: .eco, difficulty: .beginner, readTimeMinutes: 3),
-            Article(title: "eco_002_title", fileName: "eco_002", imageName: "mascotte_home_start", category: .eco, difficulty: .beginner, readTimeMinutes: 4),
-            Article(title: "eco_003_title", fileName: "eco_003", imageName: "mascotte_home_start", category: .eco, difficulty: .intermediate, readTimeMinutes: 5),
-            Article(title: "eco_004_title", fileName: "eco_004", imageName: "mascotte_home_start", category: .eco, difficulty: .intermediate, readTimeMinutes: 5),
-            Article(title: "eco_005_title", fileName: "eco_005", imageName: "mascotte_home_start", category: .eco, difficulty: .advanced, readTimeMinutes: 7),
+            Article(title: "eco_001_title", fileName: "eco_001", imageName: "eco_001", category: .eco, difficulty: .beginner, readTimeMinutes: 3),
+            Article(title: "eco_002_title", fileName: "eco_002", imageName: "eco_002", category: .eco, difficulty: .beginner, readTimeMinutes: 2),
+            Article(title: "eco_003_title", fileName: "eco_003", imageName: "eco_003", category: .eco, difficulty: .intermediate, readTimeMinutes: 3),
+            Article(title: "eco_004_title", fileName: "eco_004", imageName: "eco_004", category: .eco, difficulty: .intermediate, readTimeMinutes: 3),
+            Article(title: "eco_005_title", fileName: "eco_005", imageName: "eco_005", category: .eco, difficulty: .advanced, readTimeMinutes: 4),
 
             // MARK: - FAMILY & CASA (Family) - Misto (Avanzati PRO)
-            Article(title: "fam_001_title", fileName: "fam_001", imageName: "mascotte_home_start", category: .family, difficulty: .beginner, readTimeMinutes: 4),
-            Article(title: "fam_002_title", fileName: "fam_002", imageName: "mascotte_home_start", category: .family, difficulty: .beginner, readTimeMinutes: 5),
-            Article(title: "fam_003_title", fileName: "fam_003", imageName: "mascotte_home_start", category: .family, difficulty: .intermediate, readTimeMinutes: 6),
-            Article(title: "fam_004_title", fileName: "fam_004", imageName: "mascotte_home_start", category: .family, difficulty: .intermediate, readTimeMinutes: 8, isPro: true), // PRO
-            Article(title: "fam_005_title", fileName: "fam_005", imageName: "mascotte_home_start", category: .family, difficulty: .advanced, readTimeMinutes: 10, isPro: true), // PRO
+            Article(title: "fam_001_title", fileName: "fam_001", imageName: "fam_001", category: .family, difficulty: .beginner, readTimeMinutes: 2),
+            Article(title: "fam_002_title", fileName: "fam_002", imageName: "fam_002", category: .family, difficulty: .beginner, readTimeMinutes: 2),
+            Article(title: "fam_003_title", fileName: "fam_003", imageName: "fam_003", category: .family, difficulty: .intermediate, readTimeMinutes: 3),
+            Article(title: "fam_004_title", fileName: "fam_004", imageName: "fam_004", category: .family, difficulty: .intermediate, readTimeMinutes: 3, isPro: true), // PRO
+            Article(title: "fam_005_title", fileName: "fam_005", imageName: "fam_005", category: .family, difficulty: .advanced, readTimeMinutes: 4, isPro: true), // PRO
 
             // MARK: - BUDGETING (Budgeting) - Locked (Value)
-            Article(title: "bud_001_title", fileName: "bud_001", imageName: "mascotte_home_start", category: .budgeting, difficulty: .beginner, readTimeMinutes: 5, isPro: true),
-            Article(title: "bud_002_title", fileName: "bud_002", imageName: "mascotte_home_start", category: .budgeting, difficulty: .beginner, readTimeMinutes: 6, isPro: true),
-            Article(title: "bud_003_title", fileName: "bud_003", imageName: "mascotte_home_start", category: .budgeting, difficulty: .intermediate, readTimeMinutes: 7, isPro: true),
-            Article(title: "bud_004_title", fileName: "bud_004", imageName: "mascotte_home_start", category: .budgeting, difficulty: .intermediate, readTimeMinutes: 8, isPro: true),
-            Article(title: "bud_005_title", fileName: "bud_005", imageName: "mascotte_home_start", category: .budgeting, difficulty: .advanced, readTimeMinutes: 10, isPro: true),
+            Article(title: "bud_001_title", fileName: "bud_001", imageName: "bud_001", category: .budgeting, difficulty: .beginner, readTimeMinutes: 5, isPro: true),
+            Article(title: "bud_002_title", fileName: "bud_002", imageName: "bud_002", category: .budgeting, difficulty: .beginner, readTimeMinutes: 4, isPro: true),
+            Article(title: "bud_003_title", fileName: "bud_003", imageName: "bud_003", category: .budgeting, difficulty: .intermediate, readTimeMinutes: 3, isPro: true),
+            Article(title: "bud_004_title", fileName: "bud_004", imageName: "bud_004", category: .budgeting, difficulty: .intermediate, readTimeMinutes: 4, isPro: true),
+            Article(title: "bud_005_title", fileName: "bud_005", imageName: "bud_005", category: .budgeting, difficulty: .advanced, readTimeMinutes: 5, isPro: true),
 
             // MARK: - INVESTIMENTI (Investing) - Locked (Value)
-            Article(title: "inv_001_title", fileName: "inv_001", imageName: "mascotte_home_start", category: .investing, difficulty: .beginner, readTimeMinutes: 5, isPro: false),
-            Article(title: "inv_002_title", fileName: "inv_002", imageName: "mascotte_home_start", category: .investing, difficulty: .beginner, readTimeMinutes: 7, isPro: true),
-            Article(title: "inv_003_title", fileName: "inv_003", imageName: "mascotte_home_start", category: .investing, difficulty: .intermediate, readTimeMinutes: 8, isPro: true),
-            Article(title: "inv_004_title", fileName: "inv_004", imageName: "mascotte_home_start", category: .investing, difficulty: .intermediate, readTimeMinutes: 10, isPro: true),
-            Article(title: "inv_005_title", fileName: "inv_005", imageName: "mascotte_home_start", category: .investing, difficulty: .advanced, readTimeMinutes: 12, isPro: true)
+            Article(title: "inv_001_title", fileName: "inv_001", imageName: "inv_001", category: .investing, difficulty: .beginner, readTimeMinutes: 2, isPro: false),
+            Article(title: "inv_002_title", fileName: "inv_002", imageName: "inv_002", category: .investing, difficulty: .beginner, readTimeMinutes: 2, isPro: true),
+            Article(title: "inv_003_title", fileName: "inv_003", imageName: "inv_003", category: .investing, difficulty: .intermediate, readTimeMinutes: 3, isPro: true),
+            Article(title: "inv_004_title", fileName: "inv_004", imageName: "inv_004", category: .investing, difficulty: .intermediate, readTimeMinutes: 3, isPro: true),
+            Article(title: "inv_005_title", fileName: "inv_005", imageName: "inv_005", category: .investing, difficulty: .advanced, readTimeMinutes: 3, isPro: true)
         ]
     
     

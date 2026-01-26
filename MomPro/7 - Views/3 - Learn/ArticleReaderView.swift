@@ -30,16 +30,28 @@ struct ArticleReaderView: View {
                         
                         
                         // --- IMMAGINE HEADER (STRETCHY HEADER) ---
-                         let headerHeight = geo.size.height * 0.34 // Altezza di base
+                         let headerHeight = geo.size.height * 0.37 // Altezza di base
                          GeometryReader { scrollGeo in
                             let minY = scrollGeo.frame(in: .global).minY 
                             
                             Image(article.imageName)
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width: geo.size.width,
-                                       height: headerHeight + (minY > 0 ? minY : 0))
+                                .frame(
+                                    width: geo.size.width,
+                                       height: headerHeight + (minY > 0 ? minY : 0), alignment: .top)
                                 .clipped()
+                                // Effetto bloccato
+                                // 1. Rende l'immagine in bianco e nero se bloccata
+                                 .saturation(viewModel.isLocked(article) ? 0 : 1)
+                                 
+                                 // 2. Aggiunge una patina scura se bloccata
+                                 .overlay {
+                                     if viewModel.isLocked(article) {
+                                         Color.black.opacity(0.5)
+                                     }
+                                 }
+                                //
                                 .overlay(alignment: .bottomLeading) {
                                     // Badge Pro o Categoria
                                     HStack {
@@ -122,8 +134,19 @@ struct ArticleReaderView: View {
                             if viewModel.isLocked(article) {
                                 lockedView
                             } else {
-                                // Carica il contenuto dal file .md
-                                Text(LocalizedStringKey(article.loadMarkdownContent()))
+                                
+                                // 1. Carica il testo grezzo
+                                let rawContent = article.loadMarkdownContent()
+                                
+                                // 2. Ottieni il simbolo della valuta locale dell'utente
+                                // Se non lo trova, usa "$" come fallback di sicurezza
+                                let userCurrencySymbol = Locale.current.currencySymbol ?? "$"
+                                
+                                // 3. Sostituisci il placeholder {{CURRENCY}} con il simbolo vero
+                                let localizedContent = rawContent.replacingOccurrences(of: "{{CURRENCY}}", with: userCurrencySymbol)
+                                
+                                // 4. Mostra il testo
+                                Text(LocalizedStringKey(localizedContent))
                                     .font(.body)
                                     .lineSpacing(6)
                             }
