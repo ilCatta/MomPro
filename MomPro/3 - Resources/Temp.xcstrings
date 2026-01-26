@@ -1,0 +1,6810 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "family_01_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prepare 3 jars for your child: 'Spend', 'Save', 'Give'. Explain the difference."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prepara 3 barattoli per tuo figlio: 'Spendere', 'Risparmiare', 'Donare'. Spiegagli la differenza."
+          }
+        }
+      }
+    },
+    "family_01_title" : {
+      "comment" : "FAMILY TASKS - ENGLISH BASE",
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Three Jars"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I tre barattoli"
+          }
+        }
+      }
+    },
+    "family_02_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "While out, play 'Need or Want?'. Ask your child to classify 3 items."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mentre siete fuori, fai il gioco 'Bisogno o Desiderio?'. Chiedi di classificare 3 oggetti."
+          }
+        }
+      }
+    },
+    "family_02_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Need vs Want"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Need vs Want"
+          }
+        }
+      }
+    },
+    "family_03_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you give allowance, set a rule: 20% must go into savings."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se dai la paghetta, stabilisci una regola: il 20% deve andare obbligatoriamente nel salvadanaio."
+          }
+        }
+      }
+    },
+    "family_03_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smart Allowance"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La Paghetta Smart"
+          }
+        }
+      }
+    },
+    "family_04_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Child wants a toy? Explain how many work hours it costs (e.g., 'That's 2 hours of mommy's work')."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vuole un giocattolo? Spiegagli quante ore di lavoro costa (es. 'Sono 2 ore di ufficio di mamma')."
+          }
+        }
+      }
+    },
+    "family_04_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cost of Work"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il costo del lavoro"
+          }
+        }
+      }
+    },
+    "family_05_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Give your child a banknote (real or fake) and ask them to pick a snack within budget."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dai al bambino una banconota e chiedigli di scegliere la merenda restando nel budget."
+          }
+        }
+      }
+    },
+    "family_05_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supermarket Game"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gioco del Supermercato"
+          }
+        }
+      }
+    },
+    "family_06_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take kids to the library instead of the bookstore. Teach the value of sharing."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Porta i bambini in biblioteca invece che in libreria. Insegna il valore della condivisione."
+          }
+        }
+      }
+    },
+    "family_06_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Library Trip"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Libro in Prestito"
+          }
+        }
+      }
+    },
+    "family_07_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use a transparent jar. Seeing money grow visually motivates children."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa un barattolo trasparente. Vedere i soldi crescere motiva i bambini visivamente."
+          }
+        }
+      }
+    },
+    "family_07_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear Piggy Bank"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salvadanaio Trasparente"
+          }
+        }
+      }
+    },
+    "family_08_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impulse want? Say 'Let's put it on the Santa/Birthday list'. Teach patience."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vuole qualcosa subito? Dì 'Scriviamolo nella lista di Babbo Natale'. Insegna la pazienza."
+          }
+        }
+      }
+    },
+    "family_08_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waiting Pays"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'attesa paga"
+          }
+        }
+      }
+    },
+    "family_09_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Involve kids in choosing 2 old toys to sell or donate. Teach the cycle of objects."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coinvolgi i figli nel scegliere 2 giochi vecchi da vendere. Insegna il ciclo degli oggetti."
+          }
+        }
+      }
+    },
+    "family_09_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toy Sale"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vendita Giochi"
+          }
+        }
+      }
+    },
+    "family_10_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Explain that TV/YouTube ads are designed to make us want things we don't need."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spiega che la pubblicità serve a farci venire voglia di cose che non ci servono."
+          }
+        }
+      }
+    },
+    "family_10_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Ads"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niente Pubblicità"
+          }
+        }
+      }
+    },
+    "family_11_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set a goal (e.g., 'Park Trip'). Put a jar in the kitchen for everyone's spare change."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create un obiettivo famigliare (es. Gita). Mettete un barattolo in cucina per gli spiccioli."
+          }
+        }
+      }
+    },
+    "family_11_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Family Goal"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obiettivo Comune"
+          }
+        }
+      }
+    },
+    "family_12_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Explain a stock simply: 'We buy a tiny piece of the factory that makes your cookies'."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spiega l'azione: 'Compriamo un pezzetto della fabbrica che fa i tuoi biscotti preferiti'."
+          }
+        }
+      }
+    },
+    "family_12_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Little Investor"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il piccolo investitore"
+          }
+        }
+      }
+    },
+    "family_13_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No theater tonight. Pot popcorn, lights off, movie on the couch. Save ~40€."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niente multisala. Popcorn in pentola, luci spente e film sul divano. Risparmio: ~40€."
+          }
+        }
+      }
+    },
+    "family_13_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home Cinema"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cinema a Casa"
+          }
+        }
+      }
+    },
+    "family_14_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organize a hunt in the park or garden instead of paid rides."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organizza una caccia al tesoro al parco invece di portarli alle giostre a pagamento."
+          }
+        }
+      }
+    },
+    "family_14_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Treasure Hunt"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caccia al Tesoro"
+          }
+        }
+      }
+    },
+    "family_15_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Raining? Lay a blanket in the living room and have a floor picnic. Kids love it."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Piove? Stendi una coperta in salotto e fate un picnic per cena. I bambini lo adoreranno."
+          }
+        }
+      }
+    },
+    "family_15_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indoor Picnic"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Picnic Indoor"
+          }
+        }
+      }
+    },
+    "family_16_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check if your city has free museum entry on the first Sunday of the month."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controlla se c'è un museo gratuito la prima domenica del mese."
+          }
+        }
+      }
+    },
+    "family_16_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free Museums"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Musei Gratuiti"
+          }
+        }
+      }
+    },
+    "family_17_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don't order pizza (expensive). Buy flour and yeast and make it together."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non ordinare pizza. Comprate farina e lievito e impastatela tutti insieme."
+          }
+        }
+      }
+    },
+    "family_17_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pizza Masterchef"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pizza Masterchef"
+          }
+        }
+      }
+    },
+    "family_18_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On the weekend, choose a trail or forest nearby. Zero cost, max health."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nel weekend, optate per un sentiero o bosco vicino casa. Costo zero, salute massima."
+          }
+        }
+      }
+    },
+    "family_18_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nature Walk"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passeggiata Natura"
+          }
+        }
+      }
+    },
+    "family_19_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dust off an old board game tonight. Zero tech, zero spending."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rispolvera un vecchio gioco in scatola. Zero tecnologia, zero spesa."
+          }
+        }
+      }
+    },
+    "family_19_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Board Game"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gioco da Tavolo"
+          }
+        }
+      }
+    },
+    "family_20_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use toilet rolls and boxes to build a castle or robot. Free creativity."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa rotoli di carta e scatole per costruire un castello. Creatività gratis."
+          }
+        }
+      }
+    },
+    "family_20_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recycle Crafts"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lavoretti di Riciclo"
+          }
+        }
+      }
+    },
+    "family_21_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swap a box of toys with a mom friend for 2 weeks. 'New' toys for free."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scambia una scatola di giochi con un'altra mamma per 2 settimane. Giochi 'nuovi' a costo zero."
+          }
+        }
+      }
+    },
+    "family_21_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toy Swap Party"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swap Party Giocattoli"
+          }
+        }
+      }
+    },
+    "family_22_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blend frozen bananas and cocoa/fruit. Healthy, cheap, ready in 2 mins."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frulla banane congelate e cacao. Gelato sano, economico e pronto in 2 minuti."
+          }
+        }
+      }
+    },
+    "family_22_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Homemade Ice Cream"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gelato Casalingo"
+          }
+        }
+      }
+    },
+    "family_23_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Build a fort with pillows. Sleep there in sleeping bags. Adventure guaranteed."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Costruite un forte con cuscini. Dormite lì coi sacchi a pelo. Avventura garantita."
+          }
+        }
+      }
+    },
+    "family_23_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Living Room Camping"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Campeggio in Sala"
+          }
+        }
+      }
+    },
+    "family_24_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Google 'Free things to see in [YourCity]'. Visit a spot you've never seen."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerca 'Cose gratis da vedere'. Visita un posto nuovo mai visto prima."
+          }
+        }
+      }
+    },
+    "family_24_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "City Tourist"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turista nella tua città"
+          }
+        }
+      }
+    },
+    "family_25_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bring a ball or rackets to the park. Save on pool or playroom entry."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Porta un pallone al parco. Risparmia sull'ingresso in piscina o ludoteca."
+          }
+        }
+      }
+    },
+    "family_25_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Park Sports"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sport al Parco"
+          }
+        }
+      }
+    },
+    "family_26_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take 10 mins with your partner (and wine) to discuss financial goals without stress."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prenditi 10 minuti col partner (e vino) per parlare di obiettivi finanziari senza stress."
+          }
+        }
+      }
+    },
+    "family_26_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Money Date"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Money Date"
+          }
+        }
+      }
+    },
+    "family_27_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assign a simple chore to a child or partner. Your time is money."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assegna un compito semplice a un figlio o partner. Il tuo tempo vale denaro."
+          }
+        }
+      }
+    },
+    "family_27_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delegate Task"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delega un Task"
+          }
+        }
+      }
+    },
+    "family_28_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Christmas far away? Write gift ideas now. Buy when on sale."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scrivi ora le idee regalo sul telefono. Comprerai quando ci sono sconti."
+          }
+        }
+      }
+    },
+    "family_28_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Early Gift List"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lista Regali Anticipata"
+          }
+        }
+      }
+    },
+    "family_29_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agree with relatives: 'Only 1 gift per child' or 'Useful gifts'. Avoid waste."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Concordate con i parenti: 'Solo 1 regalo a testa' o 'Regali utili'. Evita sprechi."
+          }
+        }
+      }
+    },
+    "family_29_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gift Rule"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regola del Regalo"
+          }
+        }
+      }
+    },
+    "family_30_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spotify, Netflix: check if you can switch to a 'Family' plan and split cost."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spotify, Netflix: controlla se puoi passare a un piano 'Family' e dividere la spesa."
+          }
+        }
+      }
+    },
+    "family_30_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Family Subs"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbonamenti Famiglia"
+          }
+        }
+      }
+    },
+    "family_31_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask family: 'What do you want to eat this week?'. Avoid cooking rejected food."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiedi 'Cosa volete mangiare?'. Eviterai di cucinare cose che avanzano."
+          }
+        }
+      }
+    },
+    "family_31_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shared Menu"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menu Condiviso"
+          }
+        }
+      }
+    },
+    "family_32_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Challenge: play a 3-minute song. Finish showering before it ends."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sfida: metti una canzone di 3 minuti. Chi finisce la doccia prima vince."
+          }
+        }
+      }
+    },
+    "family_32_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timed Shower"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doccia a Tempo"
+          }
+        }
+      }
+    },
+    "family_33_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appoint your child 'Energy Manager' today. They must check lights are off."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nomina tuo figlio 'Responsabile Energia'. Deve controllare che le luci siano spente."
+          }
+        }
+      }
+    },
+    "family_33_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light Manager"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spegni-Luci Manager"
+          }
+        }
+      }
+    },
+    "family_34_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn off Wi-Fi for 2 hours. Minimal energy saving, max relationship gain."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spegnete il Wi-Fi per 2 ore. Risparmio energetico minimo, guadagno relazionale massimo."
+          }
+        }
+      }
+    },
+    "family_34_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weekend Off"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Week-end Off"
+          }
+        }
+      }
+    },
+    "family_35_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instead of expensive collections, propose a handmade gift or plant."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invece della colletta costosa, proponi un regalo fatto a mano dai bambini."
+          }
+        }
+      }
+    },
+    "family_35_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DIY Teacher Gifts"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DIY Regali Maestre"
+          }
+        }
+      }
+    },
+    "family_36_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "For boys or bangs, try doing it at home (follow a YouTube tutorial)."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per i maschietti o una spuntatina, prova a farlo in casa (segui un tutorial)."
+          }
+        }
+      }
+    },
+    "family_36_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home Haircut"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taglio Capelli Home"
+          }
+        }
+      }
+    },
+    "family_37_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask a friend with older kids for clothes. It's eco-friendly and free."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiedi a un'amica con figli più grandi se hanno vestiti smessi. Ecologico e gratis."
+          }
+        }
+      }
+    },
+    "family_37_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hand-Me-Downs"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vestiti Ereditati"
+          }
+        }
+      }
+    },
+    "family_38_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check online or boards immediately for next year's used books."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controlla subito online o nelle bacheche se trovi i libri dell'anno prossimo."
+          }
+        }
+      }
+    },
+    "family_38_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Used School Books"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Libri Scolastici Usati"
+          }
+        }
+      }
+    },
+    "family_39_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Label jackets and bottles. Recovering lost items is cheaper than rebuying."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metti il nome su giacche e astucci. Recuperare oggetti persi costa meno che ricomprarli."
+          }
+        }
+      }
+    },
+    "family_39_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Label Everything"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Etichetta Tutto"
+          }
+        }
+      }
+    },
+    "family_40_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prep 5 school snacks on Sunday night. Avoid buying expensive bar snacks."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prepara 5 merende per la scuola la domenica sera. Evita il bar ogni mattina."
+          }
+        }
+      }
+    },
+    "family_40_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "School Snacks Prep"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Merenda School-Made"
+          }
+        }
+      }
+    },
+    "family_41_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empty backpack on Friday. Find 'lost' pens and uneaten food before mold."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Svuota lo zaino venerdì. Troverai penne perse prima che ammuffiscano."
+          }
+        }
+      }
+    },
+    "family_41_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Backpack Check"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check-up Zaino"
+          }
+        }
+      }
+    },
+    "family_42_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Look into a savings plan for minors. Even 20€/month is huge in 18 years."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informati su un piano accumulo per minori. 20€ al mese fanno la differenza."
+          }
+        }
+      }
+    },
+    "family_42_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "College Fund"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fondo Università"
+          }
+        }
+      }
+    },
+    "family_43_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buy uniforms one size bigger and hem them. They'll last 2 years instead of 1."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compra grembiuli una taglia più grande e fai un orlo. Dureranno 2 anni."
+          }
+        }
+      }
+    },
+    "family_43_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uniform/Smock"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uniforme/Grembiule"
+          }
+        }
+      }
+    },
+    "family_44_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organize rides with another parent. Save half the gas and time."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organizzati con un altro genitore per i passaggi. Risparmi metà benzina e tempo."
+          }
+        }
+      }
+    },
+    "family_44_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sports Carpool"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carpooling Sport"
+          }
+        }
+      }
+    },
+    "family_45_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mute parent groups for sanity, but use them to ask 'Anyone have an unused X?'."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silenzia il gruppo genitori, ma usalo per chiedere 'Qualcuno ha un X che non usa?'."
+          }
+        }
+      }
+    },
+    "family_45_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WhatsApp Group"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gruppo WhatsApp"
+          }
+        }
+      }
+    },
+    "family_46_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buy notebooks when on super sale, not urgently the night before needed."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compra quaderni quando sono in super offerta, non la sera prima."
+          }
+        }
+      }
+    },
+    "family_46_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stationery Stock"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelleria Stock"
+          }
+        }
+      }
+    },
+    "family_47_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start saving 10€ a week now for back-to-school expenses."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inizia a mettere via 10€ a settimana da ora per il rientro a scuola."
+          }
+        }
+      }
+    },
+    "family_47_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "September Budget"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Budget Settembre"
+          }
+        }
+      }
+    },
+    "family_48_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take ID photos at home against a white wall, print at kiosk (0.50€ vs 5€)."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fai le fototessere a casa con una parete bianca e stampale al chiosco (0,50€)."
+          }
+        }
+      }
+    },
+    "family_48_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DIY ID Photos"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Foto Tessera DIY"
+          }
+        }
+      }
+    },
+    "family_49_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If season allows, host the party at a public park. Save 100-200€ on venue."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se possibile, fai la festa al parco pubblico. Risparmio affitto: 100-200€."
+          }
+        }
+      }
+    },
+    "family_49_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Park Birthday"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Festa Compleanno Park"
+          }
+        }
+      }
+    },
+    "family_50_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instead of printing thousands of photos, create a shared digital album."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invece di stampare migliaia di foto, crea un album digitale condiviso."
+          }
+        }
+      }
+    },
+    "family_50_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digital Memories"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ricordi Digitali"
+          }
+        }
+      }
+    },
+    "finance_01_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open your banking app. Check balance and last 3 transactions."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apri la tua app bancaria. Guarda il saldo e gli ultimi 3 movimenti."
+          }
+        }
+      }
+    },
+    "finance_01_title" : {
+      "comment" : "FINANCE TASKS - ENGLISH BASE",
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flash Balance Check"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check Saldo Flash"
+          }
+        }
+      }
+    },
+    "finance_02_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find 1 subscription you don't use and cancel it."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trova 1 abbonamento che non usi e cancellalo."
+          }
+        }
+      }
+    },
+    "finance_02_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vampire Hunt"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caccia al Vampiro"
+          }
+        }
+      }
+    },
+    "finance_03_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calculate how much you spend in a year for a small habit (e.g. coffee)."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calcola quanto spendi in un anno per una piccola abitudine (es. caffè)."
+          }
+        }
+      }
+    },
+    "finance_03_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vice Cost"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il costo del vizio"
+          }
+        }
+      }
+    },
+    "finance_04_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mark the due dates of the next 3 bills on the calendar."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segna sul calendario le date di scadenza delle prossime 3 bollette."
+          }
+        }
+      }
+    },
+    "finance_04_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bill Dates"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data delle Bollette"
+          }
+        }
+      }
+    },
+    "finance_05_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take a screenshot of your net worth today. Compare in a year."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fai uno screenshot del tuo saldo oggi. Tra un anno confronteremo."
+          }
+        }
+      }
+    },
+    "finance_05_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wealth Screenshot"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Screenshot della Ricchezza"
+          }
+        }
+      }
+    },
+    "finance_06_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write down all your income sources on a paper."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scrivi su un foglio tutte le tue fonti di entrata."
+          }
+        }
+      }
+    },
+    "finance_06_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Income Organizer"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organizza le Entrate"
+          }
+        }
+      }
+    },
+    "finance_07_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check if you pay more for 'female' products. Look for unisex alternatives."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controlla se paghi di più per prodotti 'da donna'. Cerca l'alternativa unisex."
+          }
+        }
+      }
+    },
+    "finance_07_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pink Tax"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tassa Rosa"
+          }
+        }
+      }
+    },
+    "finance_08_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable push notifications for every transaction over 10€."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attiva le notifiche push per ogni transazione sopra i 10€."
+          }
+        }
+      }
+    },
+    "finance_08_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bank Alert"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alert Banca"
+          }
+        }
+      }
+    },
+    "finance_09_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove old receipts and loyalty cards you never use."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Togli scontrini vecchi e carte fedeltà che non usi mai."
+          }
+        }
+      }
+    },
+    "finance_09_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wallet Clean-up"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulizia Portafoglio"
+          }
+        }
+      }
+    },
+    "finance_10_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check your last statement: how much did you pay in bank fees?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controlla l'estratto conto: quanto hai pagato di commissioni bancarie?"
+          }
+        }
+      }
+    },
+    "finance_10_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fee Check"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check Commissioni"
+          }
+        }
+      }
+    },
+    "finance_11_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Define what amount would make you sleep soundly (e.g. 1000€)."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definisci quale cifra ti farebbe dormire tranquilla (es. 1000€)."
+          }
+        }
+      }
+    },
+    "finance_11_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emergency Fund"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fondo Emergenza"
+          }
+        }
+      }
+    },
+    "finance_12_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Call a service provider and ask if a cheaper plan exists."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiama un fornitore (es. internet) e chiedi se esiste un piano più economico."
+          }
+        }
+      }
+    },
+    "finance_12_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Renegotiate"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rinegoziazione"
+          }
+        }
+      }
+    },
+    "finance_13_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Read: 'Why 100€ under the mattress will be worth 90€ soon'."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leggi: 'Perché 100€ sotto il materasso varranno 90€ tra pochi anni'."
+          }
+        }
+      }
+    },
+    "finance_13_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Micro-Lesson: Inflation"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Micro-Lezione: Inflazione"
+          }
+        }
+      }
+    },
+    "finance_14_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Learn the difference: a stock is a piece of a company."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impara la differenza: un'azione è un pezzetto di un'azienda."
+          }
+        }
+      }
+    },
+    "finance_14_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Micro-Lesson: Stocks"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Micro-Lezione: Azioni"
+          }
+        }
+      }
+    },
+    "finance_15_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Understanding Bonds: you lend money, they pay interest."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Capire i Bond: tu presti soldi, loro ti ridanno gli interessi."
+          }
+        }
+      }
+    },
+    "finance_15_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Micro-Lesson: Bonds"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Micro-Lezione: Obbligazioni"
+          }
+        }
+      }
+    },
+    "finance_16_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Read how time multiplies money. Starting early beats starting big."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leggi come il tempo moltiplica i soldi. Iniziare presto batte investire tanto."
+          }
+        }
+      }
+    },
+    "finance_16_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Magic of Compound Interest"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Magia dell'Interesse Composto"
+          }
+        }
+      }
+    },
+    "finance_17_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try to split your budget: 50% needs, 30% wants, 20% savings."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prova a dividere il budget: 50% necessità, 30% svago, 20% risparmio."
+          }
+        }
+      }
+    },
+    "finance_17_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "50/30/20 Rule"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regola del 50/30/20"
+          }
+        }
+      }
+    },
+    "finance_18_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ask yourself: if investments dropped 10% tomorrow, would I panic?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiediti: se gli investimenti scendessero del 10% domani, andrei nel panico?"
+          }
+        }
+      }
+    },
+    "finance_18_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Define Risk"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definisci il Rischio"
+          }
+        }
+      }
+    },
+    "finance_19_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The concept 'Don't put all eggs in one basket'. Learn why."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il concetto 'Non mettere tutte le uova nello stesso paniere'. Capisci perché."
+          }
+        }
+      }
+    },
+    "finance_19_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diversification 101"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diversificazione 101"
+          }
+        }
+      }
+    },
+    "finance_20_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discover ETFs: a basket of stocks to invest globally with one click."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scopri gli ETF: un cesto di tante azioni per investire nel mondo con un click."
+          }
+        }
+      }
+    },
+    "finance_20_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ETF Made Easy"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ETF Spiegato Facile"
+          }
+        }
+      }
+    },
+    "finance_21_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you investing for college (10y) or retirement (20y)?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stai investendo per l'università (10 anni) o la pensione (20 anni)?"
+          }
+        }
+      }
+    },
+    "finance_21_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time Horizon"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orizzonte Temporale"
+          }
+        }
+      }
+    },
+    "finance_22_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discover Dollar Cost Averaging: invest a small fixed amount monthly."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scopri cos'è un PAC: investire una piccola cifra fissa ogni mese."
+          }
+        }
+      }
+    },
+    "finance_22_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PAC Strategy"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PAC: Piano Accumulo"
+          }
+        }
+      }
+    },
+    "finance_23_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Briefly check capital gains tax rates in your country."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informati brevemente sulle tasse sui guadagni finanziari nel tuo paese."
+          }
+        }
+      }
+    },
+    "finance_23_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taxes & Investing"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tasse e Investimenti"
+          }
+        }
+      }
+    },
+    "finance_24_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simulate an imaginary 100€ investment on a company you know."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simula un investimento immaginario di 100€ su un'azienda che conosci."
+          }
+        }
+      }
+    },
+    "finance_24_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paper Trading"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paper Trading"
+          }
+        }
+      }
+    },
+    "finance_25_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Google 'Best personal finance books' and save one to your wishlist."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerca su Google 'Migliori libri finanza personale' e salvane uno."
+          }
+        }
+      }
+    },
+    "finance_25_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finance Books"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Libri Finanziari"
+          }
+        }
+      }
+    },
+    "finance_26_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Round up yesterday's expenses and move cents to savings."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrotonda le spese di ieri e sposta i centesimi nel salvadanaio."
+          }
+        }
+      }
+    },
+    "finance_26_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Round Up"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arrotonda per Eccesso"
+          }
+        }
+      }
+    },
+    "finance_27_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Extreme challenge: spend 0€ extra today. Use only what you have."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sfida estrema: oggi spendi 0€ extra. Usa solo ciò che hai già."
+          }
+        }
+      }
+    },
+    "finance_27_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No-Spend Day Finance"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No-Spend Day Finance"
+          }
+        }
+      }
+    },
+    "finance_28_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip a coffee today. Put that 2€ in your 'Freedom Fund'."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rinuncia a un caffè oggi. Metti quei 2€ nel tuo 'Fondo Libertà'."
+          }
+        }
+      }
+    },
+    "finance_28_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Future Coffee"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il caffè del futuro"
+          }
+        }
+      }
+    },
+    "finance_29_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do a beauty treatment at home instead of paying for a service."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fai in casa un trattamento estetico invece di pagare un servizio."
+          }
+        }
+      }
+    },
+    "finance_29_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DIY Beauty"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fai da te"
+          }
+        }
+      }
+    },
+    "finance_30_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unsubscribe from 3 e-commerce newsletters today."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancellati da 3 newsletter di e-commerce che ti tentano."
+          }
+        }
+      }
+    },
+    "finance_30_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marketing Unsub"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disiscrizione Marketing"
+          }
+        }
+      }
+    },
+    "finance_31_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Want to buy something > 50€? Wait 48 hours. Then decide."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vuoi comprare qualcosa > 50€? Aspetta 48 ore. Poi decidi."
+          }
+        }
+      }
+    },
+    "finance_31_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "48h Rule"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regola delle 48 ore"
+          }
+        }
+      }
+    },
+    "finance_32_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bring lunch from home instead of going to the restaurant."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Porta il pranzo da casa invece di andare al ristorante."
+          }
+        }
+      }
+    },
+    "finance_32_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Packed Lunch"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pranzo al Sacco"
+          }
+        }
+      }
+    },
+    "finance_33_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check if your card offers cashback on purchases you must make."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controlla se la tua carta offre cashback sugli acquisti obbligatori."
+          }
+        }
+      }
+    },
+    "finance_33_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cashback Check"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cashback Check"
+          }
+        }
+      }
+    },
+    "finance_34_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "List 1 item you don't use anymore on a local marketplace."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metti in vendita 1 oggetto che non usi più su un marketplace."
+          }
+        }
+      }
+    },
+    "finance_34_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick Sell"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vendita Veloce"
+          }
+        }
+      }
+    },
+    "finance_35_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If your bank has a 'Vault' feature, activate it."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se la tua banca ha la funzione 'Salvadanaio' o 'Box', attivala."
+          }
+        }
+      }
+    },
+    "finance_35_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digital Piggy Bank"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salvadanaio Digitale"
+          }
+        }
+      }
+    },
+    "finance_36_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Before buying online, Google 'Discount code [StoreName]'."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prima di un acquisto online, cerca su Google 'Codice sconto [Negozio]'."
+          }
+        }
+      }
+    },
+    "finance_36_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coupon Hunter"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coupon Hunter"
+          }
+        }
+      }
+    },
+    "finance_37_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collect all loose coins around the house. Put them together."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Raccogli tutte le monete sparse per casa. Mettile tutte insieme."
+          }
+        }
+      }
+    },
+    "finance_37_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pocket Change"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Svuota Tasche"
+          }
+        }
+      }
+    },
+    "finance_38_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carry a water bottle all day. Save on buying bottles."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Porta la borraccia con te tutto il giorno. Risparmia sulle bottigliette."
+          }
+        }
+      }
+    },
+    "finance_38_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free Water"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acqua Gratis"
+          }
+        }
+      }
+    },
+    "finance_39_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close eyes for 1 min: imagine how you feel when you reach your goal."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiudi gli occhi per 1 min: immagina come ti sentirai raggiunto l'obiettivo."
+          }
+        }
+      }
+    },
+    "finance_39_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visualize Goal"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visualizza l'Obiettivo"
+          }
+        }
+      }
+    },
+    "finance_40_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use a quick online simulator to estimate your future pension."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa un simulatore online per stimare la tua pensione futura."
+          }
+        }
+      }
+    },
+    "finance_40_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pension Calc"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calcolatore Pensione"
+          }
+        }
+      }
+    },
+    "finance_41_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Talk about a positive financial goal with your partner/friend."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parla di un obiettivo finanziario positivo con il partner o un'amica."
+          }
+        }
+      }
+    },
+    "finance_41_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Talk Money"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Talk Money"
+          }
+        }
+      }
+    },
+    "finance_42_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spend 10 mins learning a skill that could increase your income."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dedica 10 min a imparare una skill che potrebbe aumentare il tuo reddito."
+          }
+        }
+      }
+    },
+    "finance_42_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invest in Yourself"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Investimento su Te Stessa"
+          }
+        }
+      }
+    },
+    "finance_43_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write 3 expensive things you want in the future. Estimate costs."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scrivi 3 cose costose che vorresti in futuro. Stima i costi."
+          }
+        }
+      }
+    },
+    "finance_43_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smart Wishlist"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lista Desideri Smart"
+          }
+        }
+      }
+    },
+    "finance_44_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set up an auto-transfer (even 10€) to savings on payday."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imposta un bonifico automatico (anche 10€) verso i risparmi."
+          }
+        }
+      }
+    },
+    "finance_44_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automation"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automazione"
+          }
+        }
+      }
+    },
+    "finance_45_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you know what your home/car policy covers? Check it."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sai cosa copre la tua polizza casa/auto? Controllalo."
+          }
+        }
+      }
+    },
+    "finance_45_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Insurance Check"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assicurazioni Check"
+          }
+        }
+      }
+    },
+    "finance_46_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ensure someone trusted knows where to find account passwords."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assicurati che qualcuno di fiducia sappia dove trovare le password."
+          }
+        }
+      }
+    },
+    "finance_46_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digital Legacy"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eredità Digitale"
+          }
+        }
+      }
+    },
+    "finance_47_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write what being rich means to you. Is it time? Travel? Safety?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scrivi cosa significa per te essere ricca. Tempo? Viaggi? Sicurezza?"
+          }
+        }
+      }
+    },
+    "finance_47_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Define Wealth"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Define Wealth"
+          }
+        }
+      }
+    },
+    "finance_48_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you have kids, look up savings plans for minors today."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se hai figli, informati oggi sui piani di risparmio per minori."
+          }
+        }
+      }
+    },
+    "finance_48_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Study Fund"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fondo Studi"
+          }
+        }
+      }
+    },
+    "finance_49_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mark a date in 6 months on the calendar to review finances."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segna una data tra 6 mesi sul calendario per rifare il punto."
+          }
+        }
+      }
+    },
+    "finance_49_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annual Review"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Review Annuale"
+          }
+        }
+      }
+    },
+    "finance_50_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write 3 things money allowed you to do this month."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scrivi 3 cose che i soldi ti hanno permesso di fare questo mese."
+          }
+        }
+      }
+    },
+    "finance_50_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Financial Gratitude"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gratitudine Finanziaria"
+          }
+        }
+      }
+    },
+    "home_01_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unplug 3 appliances in standby mode (red light on) that you aren't using."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stacca la spina a 3 elettrodomestici in standby (luce rossa accesa) che non usi."
+          }
+        }
+      }
+    },
+    "home_01_title" : {
+      "comment" : "HOME TASKS - ENGLISH BASE",
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Energy Vampires"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vampiri Energetici"
+          }
+        }
+      }
+    },
+    "home_02_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lower the thermostat by just 1 degree. You won't feel cold, but you'll save ~7%."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbassa il termostato di 1 solo grado. Non sentirai freddo, ma risparmierai circa il 7%."
+          }
+        }
+      }
+    },
+    "home_02_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Golden Degree"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grado d'Oro"
+          }
+        }
+      }
+    },
+    "home_03_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Run a wet hand along window edges. If you feel air, mark to buy a draft stopper."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passa una mano bagnata lungo i bordi delle finestre. Se senti aria, segna di comprare un paraspifferi."
+          }
+        }
+      }
+    },
+    "home_03_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Window Test"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test Finestre"
+          }
+        }
+      }
+    },
+    "home_04_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set washing machine or dishwasher to 'Eco' mode today. Longer, but cheaper."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imposta lavatrice o lavastoviglie su 'Eco'. Dura di più, ma consuma molto meno."
+          }
+        }
+      }
+    },
+    "home_04_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eco Wash"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lavaggio Eco"
+          }
+        }
+      }
+    },
+    "home_05_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Walk around the house and turn off lights in empty rooms. Teach kids too."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fai un giro della casa e spegni tutte le luci nelle stanze vuote. Insegna ai bimbi a farlo."
+          }
+        }
+      }
+    },
+    "home_05_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ghost Lights"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Luci Fantasma"
+          }
+        }
+      }
+    },
+    "home_06_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move curtains or furniture covering radiators. Let heat circulate freely."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sposta tende o mobili che coprono i termosifoni. Lascia che il calore circoli."
+          }
+        }
+      }
+    },
+    "home_06_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free Heat"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calore Libero"
+          }
+        }
+      }
+    },
+    "home_07_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If the freezer has too much ice, it consumes more. Schedule a defrost."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se il freezer ha troppo ghiaccio, consuma di più. Programma lo sbrinamento."
+          }
+        }
+      }
+    },
+    "home_07_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Express Defrost"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sbrinamento Express"
+          }
+        }
+      }
+    },
+    "home_08_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wash clothes at 30°C or 40°C instead of 60°C. Modern detergents work fine."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lava a 30°C o 40°C invece di 60°C. I detersivi moderni funzionano benissimo."
+          }
+        }
+      }
+    },
+    "home_08_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cold Water"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acqua Fredda"
+          }
+        }
+      }
+    },
+    "home_09_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wait to start the appliance until it is completely full."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aspetta a far partire l'elettrodomestico finché non è completamente pieno."
+          }
+        }
+      }
+    },
+    "home_09_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full Load"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carico Pieno"
+          }
+        }
+      }
+    },
+    "home_10_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Making tea or pasta? Boil only the water you actually need."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devi fare il tè o la pasta? Bolli solo l'acqua che ti serve davvero."
+          }
+        }
+      }
+    },
+    "home_10_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smart Kettle"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bollitore Smart"
+          }
+        }
+      }
+    },
+    "home_11_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick shower (max 5 min) for everyone today instead of a bath."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oggi tutti doccia veloce (max 5 min) invece del bagno. Risparmio enorme."
+          }
+        }
+      }
+    },
+    "home_11_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shower vs Bath"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doccia vs Vasca"
+          }
+        }
+      }
+    },
+    "home_12_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compare the last electricity bill with last year's. Did you use more? Why?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confronta l'ultima bolletta luce con quella dell'anno scorso. Hai consumato di più?"
+          }
+        }
+      }
+    },
+    "home_12_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bill Check"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check Bolletta"
+          }
+        }
+      }
+    },
+    "home_13_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean AC or kitchen hood filters. Improves efficiency and air quality."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulisci i filtri del condizionatore o della cappa. Migliora l'efficienza."
+          }
+        }
+      }
+    },
+    "home_13_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean Lungs"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Polmoni Puliti"
+          }
+        }
+      }
+    },
+    "home_14_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean the washing machine filter (bottom). Remove coins or debris."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulisci il filtro della lavatrice (in basso). Togli monete o residui."
+          }
+        }
+      }
+    },
+    "home_14_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Washer Saver"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salva-Lavatrice"
+          }
+        }
+      }
+    },
+    "home_15_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Run an empty cycle with vinegar to descale dishwasher or washer."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fai un ciclo a vuoto della lavastoviglie o lavatrice con aceto per togliere il calcare."
+          }
+        }
+      }
+    },
+    "home_15_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Magic Vinegar"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aceto Magico"
+          }
+        }
+      }
+    },
+    "home_16_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check under kitchen and bathroom sinks. If damp, tighten pipes now."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controlla sotto il lavello. Se c'è umidità, stringi i tubi subito."
+          }
+        }
+      }
+    },
+    "home_16_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leak Check"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check Perdite"
+          }
+        }
+      }
+    },
+    "home_17_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rotate or flip the mattress to make it last longer and sleep better."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ruota o gira il materasso testa-piedi per farlo durare di più."
+          }
+        }
+      }
+    },
+    "home_17_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mattress Life"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vita del Materasso"
+          }
+        }
+      }
+    },
+    "home_18_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shower head spraying badly? Soak it in water and vinegar to remove limescale."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il soffione della doccia spruzza male? Immergilo in acqua e aceto."
+          }
+        }
+      }
+    },
+    "home_18_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free Flow"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soffione Libero"
+          }
+        }
+      }
+    },
+    "home_19_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean coils behind or under the fridge. Dust there increases consumption."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulisci la serpentina dietro il frigorifero. La polvere lì fa consumare più elettricità."
+          }
+        }
+      }
+    },
+    "home_19_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hidden Dust"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Polvere Nascosta"
+          }
+        }
+      }
+    },
+    "home_20_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A dull knife is dangerous. Sharpen your 2 main kitchen knives."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un coltello che non taglia è pericoloso. Affila i tuoi 2 coltelli principali."
+          }
+        }
+      }
+    },
+    "home_20_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sharpen Blades"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Affila Lame"
+          }
+        }
+      }
+    },
+    "home_21_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Put a drop of oil or WD40 on noisy door or cupboard hinges."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metti una goccia d'olio o WD40 sulle cerniere che fanno rumore."
+          }
+        }
+      }
+    },
+    "home_21_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Squeaky Hinges"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerniere Cigolanti"
+          }
+        }
+      }
+    },
+    "home_22_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check shower grout. If you see black spots, clean with bleach immediately."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controlla le fughe della doccia. Se vedi puntini neri, pulisci con candeggina."
+          }
+        }
+      }
+    },
+    "home_22_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mold Escape"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fuga Muffa"
+          }
+        }
+      }
+    },
+    "home_23_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empty and clean the ice bin in the freezer. Remove old odors."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Svuota e pulisci il contenitore del ghiaccio in freezer. Elimina vecchi odori."
+          }
+        }
+      }
+    },
+    "home_23_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean Ice"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ghiaccio Pulito"
+          }
+        }
+      }
+    },
+    "home_24_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test the circuit breaker by pressing 'T'. Electrical safety saves money."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Testa il salvavita premendo il tasto 'T'. La sicurezza è il primo risparmio."
+          }
+        }
+      }
+    },
+    "home_24_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safety First"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sicurezza Base"
+          }
+        }
+      }
+    },
+    "home_25_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move a decor item (lamp, art, plant) to another room for a fresh look."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sposta un oggetto d'arredo da una stanza all'altra per un look nuovo a costo zero."
+          }
+        }
+      }
+    },
+    "home_25_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shop Your Home"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shop Your Home"
+          }
+        }
+      }
+    },
+    "home_26_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The entryway is the first thing you see. Remove 3 items that don't belong."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'ingresso è la prima cosa che vedi. Togli 3 oggetti che non dovrebbero stare lì."
+          }
+        }
+      }
+    },
+    "home_26_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entrance Declutter"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Decluttering Ingresso"
+          }
+        }
+      }
+    },
+    "home_27_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dust lamps or bulbs. The room will look brighter and newer immediately."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulisci lampadari o lampadine. La stanza sembrerà più luminosa e nuova."
+          }
+        }
+      }
+    },
+    "home_27_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Light"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Luce Nuova"
+          }
+        }
+      }
+    },
+    "home_28_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove cushions, fluff them vigorously, and arrange them. Instant 'Hotel' effect."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sbattili forte i cuscini e rimettili in ordine. Effetto 'Hotel' immediato."
+          }
+        }
+      }
+    },
+    "home_28_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sofa Styling"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Styling Divano"
+          }
+        }
+      }
+    },
+    "home_29_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wipe plant leaves with a damp cloth. Shinier, prettier, cleaner air."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulisci le foglie delle piante con un panno umido. Più lucide, aria più pulita."
+          }
+        }
+      }
+    },
+    "home_29_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Green Touch"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tocco Verde"
+          }
+        }
+      }
+    },
+    "home_30_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organize a bookshelf (by color or height). Reduces visual noise."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riordina una mensola di libri per colore o altezza. Riduce il 'rumore visivo'."
+          }
+        }
+      }
+    },
+    "home_30_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Book Order"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Libri in Ordine"
+          }
+        }
+      }
+    },
+    "home_31_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Black marks on walls? Use a magic eraser or damp cloth to spot clean."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hai segni sui muri? Usa una gomma magica per togliere le macchie."
+          }
+        }
+      }
+    },
+    "home_31_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean Wall"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muro Pulito"
+          }
+        }
+      }
+    },
+    "home_32_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fold or roll towels neatly. A small touch of daily luxury."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Piega o arrotola gli asciugamani in modo ordinato. Piccolo tocco di lusso."
+          }
+        }
+      }
+    },
+    "home_32_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bath Spa"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spa in Bagno"
+          }
+        }
+      }
+    },
+    "home_33_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean and polish door handles and light switches. Details matter."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulisci e lucida le maniglie delle porte e interruttori. Dettagli che contano."
+          }
+        }
+      }
+    },
+    "home_33_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shiny Handles"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maniglie Brillanti"
+          }
+        }
+      }
+    },
+    "home_34_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean the main bathroom mirror or a key window. The house will look bigger."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulisci lo specchio del bagno o una finestra. La casa sembrerà più grande."
+          }
+        }
+      }
+    },
+    "home_34_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crystal Glass"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vetri Cristallini"
+          }
+        }
+      }
+    },
+    "home_35_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Have an old blanket? Consider dyeing it or using it as a sofa throw."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hai una vecchia coperta? Valuta se tingerla o usarla come copridivano."
+          }
+        }
+      }
+    },
+    "home_35_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Renew Textiles"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rinnova Tessili"
+          }
+        }
+      }
+    },
+    "home_36_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boil orange peels and cinnamon for 10 min. Natural scent, no chemicals."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fai bollire bucce di arancia e cannella. Profuma la casa senza chimica."
+          }
+        }
+      }
+    },
+    "home_36_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home Scent"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profumo di Casa"
+          }
+        }
+      }
+    },
+    "home_37_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tackle 'That' junk drawer. Throw away unreadable receipts and dead pens."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Affronta quel cassetto. Butta scontrini illeggibili e penne che non scrivono."
+          }
+        }
+      }
+    },
+    "home_37_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chaos Drawer"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cassetto del Caos"
+          }
+        }
+      }
+    },
+    "home_38_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find 2 items you haven't worn in a year. Sell or donate them."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trova 2 capi che non metti da 1 anno. Vendili o donali."
+          }
+        }
+      }
+    },
+    "home_38_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Closet Check"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Armadio Check"
+          }
+        }
+      }
+    },
+    "home_39_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check the medicine cabinet. Dispose of expired items safely."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controlla l'armadietto farmaci. Butta tutto ciò che è scaduto."
+          }
+        }
+      }
+    },
+    "home_39_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expired Meds"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Medicinali Scaduti"
+          }
+        }
+      }
+    },
+    "home_40_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Group similar foods together (pasta with pasta). Avoid rebuying duplicates."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Raggruppa cibi simili in dispensa. Eviterai di ricomprarli."
+          }
+        }
+      }
+    },
+    "home_40_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pantry Detox"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dispensa Detx"
+          }
+        }
+      }
+    },
+    "home_41_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check containers. If one has no lid (or vice versa), recycle it."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se un contenitore non ha il coperchio (o viceversa), buttalo."
+          }
+        }
+      }
+    },
+    "home_41_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tupperware Match"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tupperware Match"
+          }
+        }
+      }
+    },
+    "home_42_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completely clear one surface (table or counter). Just empty space."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Libera completamente una superficie (tavolo o bancone). Solo spazio vuoto."
+          }
+        }
+      }
+    },
+    "home_42_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear Surface"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Piano Libero"
+          }
+        }
+      }
+    },
+    "home_43_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean the desk or document area. File away paid bills."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulisci la scrivania. Archivia le bollette pagate."
+          }
+        }
+      }
+    },
+    "home_43_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digital Home"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digitale Home"
+          }
+        }
+      }
+    },
+    "home_44_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hide some toys in a closet. In a month, they'll seem new again."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nascondi alcuni giocattoli. Tra un mese sembreranno nuovi."
+          }
+        }
+      }
+    },
+    "home_44_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toy Rotation"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rotazione Giochi"
+          }
+        }
+      }
+    },
+    "home_45_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use ties to bind cables behind the TV. Less dust, less visual stress."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lega i cavi dietro la TV. Meno polvere, meno stress."
+          }
+        }
+      }
+    },
+    "home_45_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cable Order"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cavi in Ordine"
+          }
+        }
+      }
+    },
+    "home_46_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean your purse. Remove receipts, old tissues, crumbs. Feel lighter."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pulisci la borsa. Togli scontrini e fazzoletti. Ti sentirai più leggera."
+          }
+        }
+      }
+    },
+    "home_46_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ready Bag"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Borsa Pronta"
+          }
+        }
+      }
+    },
+    "home_47_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assemble a box: needle, thread, spare buttons, superglue. The 'Save-All' kit."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prepara una scatola: ago, filo, colla, nastro. Il kit 'Salva-Tutto'."
+          }
+        }
+      }
+    },
+    "home_47_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repair Kit"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kit Riparazioni"
+          }
+        }
+      }
+    },
+    "home_48_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prepare a box in a corner. Put unused items in it immediately."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prepara una scatola in un angolo. Mettici subito ciò che non usi."
+          }
+        }
+      }
+    },
+    "home_48_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Donation Box"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scatola Donazioni"
+          }
+        }
+      }
+    },
+    "home_49_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check makeup. Mascara open >6 months is an eye risk. Purge it."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controlla i trucchi. Il mascara vecchio è un rischio. Buttalo."
+          }
+        }
+      }
+    },
+    "home_49_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Make-up Check"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Make-up Check"
+          }
+        }
+      }
+    },
+    "home_50_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cut a green branch or flower from the garden. Free decoration."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taglia un rametto verde o un fiore dal giardino. Decorazione gratis."
+          }
+        }
+      }
+    },
+    "home_50_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fresh Flowers"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fiori Freschi"
+          }
+        }
+      }
+    },
+    "shopping_01_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swap 2 famous brand products with store-brand alternatives."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sostituisci 2 prodotti di marca famosa con l'alternativa del supermercato."
+          }
+        }
+      }
+    },
+    "shopping_01_title" : {
+      "comment" : "SHOPPING TASKS - ENGLISH BASE",
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brand Challenge"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sfida del Marchio"
+          }
+        }
+      }
+    },
+    "shopping_02_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don't look at the final price, check the price per kg/liter of 3 items."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non guardare il prezzo finale, controlla il prezzo al kg/litro di 3 prodotti prima di metterli nel carrello."
+          }
+        }
+      }
+    },
+    "shopping_02_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Price Detective"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detective del Prezzo"
+          }
+        }
+      }
+    },
+    "shopping_03_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cheaper products are often on the bottom shelves. Pick 1 item from there."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I prodotti più economici sono spesso negli scaffali più bassi. Prendi 1 prodotto dallo scaffale inferiore."
+          }
+        }
+      }
+    },
+    "shopping_03_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Look Down"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abbasso gli occhi"
+          }
+        }
+      }
+    },
+    "shopping_04_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buy only seasonal fruit and vegetables today. Avoid early harvest items."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compra solo frutta e verdura di stagione oggi (costa meno ed è più buona). Evita le primizie."
+          }
+        }
+      }
+    },
+    "shopping_04_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seasonality King"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stagionalità King"
+          }
+        }
+      }
+    },
+    "shopping_05_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compare fresh vs frozen veggie prices. If frozen is cheaper, grab it."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per le verdure da cuocere, confronta il prezzo del fresco vs surgelato. Se il surgelato conviene, prendilo."
+          }
+        }
+      }
+    },
+    "shopping_05_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fresh vs Frozen"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fresco vs Surgelato"
+          }
+        }
+      }
+    },
+    "shopping_06_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Replace meat in one dinner with legumes or eggs."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sostituisci la carne in una cena con legumi o uova (costano una frazione e nutrono uguale)."
+          }
+        }
+      }
+    },
+    "shopping_06_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Protein Swap"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swap Proteico"
+          }
+        }
+      }
+    },
+    "shopping_07_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avoid pre-cut/washed fruit or salad. Pay for the product, not the service."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Evita frutta o verdura già tagliata/lavata in busta. Paga il prodotto, non il servizio."
+          }
+        }
+      }
+    },
+    "shopping_07_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Pre-Cut"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Pre-Tagliato"
+          }
+        }
+      }
+    },
+    "shopping_08_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buy the max format of a non-perishable item to lower unit cost."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compra il formato maxi di un prodotto non deperibile (es. pasta, riso, detersivo) per abbattere il costo unitario."
+          }
+        }
+      }
+    },
+    "shopping_08_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Family Size"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grandezza Famiglia"
+          }
+        }
+      }
+    },
+    "shopping_09_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don't buy bottled water today. Use a reusable bottle or filter jug."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oggi non comprare casse d'acqua. Valuta l'uso della borraccia o della caraffa filtrante."
+          }
+        }
+      }
+    },
+    "shopping_09_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap Water"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acqua del Sindaco"
+          }
+        }
+      }
+    },
+    "shopping_10_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find 3 items on your list that are on special offer."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trova 3 prodotti della tua lista che sono in offerta speciale (volantino o etichetta gialla)."
+          }
+        }
+      }
+    },
+    "shopping_10_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deal Hunter"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caccia all'Offerta"
+          }
+        }
+      }
+    },
+    "shopping_11_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buy the big tub of yogurt instead of 6 small ones and portion it yourself."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invece di 6 yogurt piccoli o snack singoli, compra il barattolo grande e porzionalo tu a casa."
+          }
+        }
+      }
+    },
+    "shopping_11_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Single Portions"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Monoporzioni"
+          }
+        }
+      }
+    },
+    "shopping_12_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check the 'near expiration' section. If you cook it tonight, you save 50%."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controlla l'angolo delle 'scadenze ravvicinate' del super. Se lo cucini stasera, risparmi il 50%."
+          }
+        }
+      }
+    },
+    "shopping_12_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expiration Corner"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reparto Scadenza"
+          }
+        }
+      }
+    },
+    "shopping_13_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write a grocery list and commit to buying ONLY what is written on it."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scrivi la lista della spesa e impegnati a comprare SOLO ciò che c'è scritto, senza eccezioni."
+          }
+        }
+      }
+    },
+    "shopping_13_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Iron List"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lista di Ferro"
+          }
+        }
+      }
+    },
+    "shopping_14_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eat a snack before entering the supermarket to avoid impulse buys."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regola d'oro: mangia uno snack (o un pasto) prima di entrare al supermercato per evitare acquisti di pancia."
+          }
+        }
+      }
+    },
+    "shopping_14_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Never Hungry"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mai a stomaco vuoto"
+          }
+        }
+      }
+    },
+    "shopping_15_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Withdraw the exact cash for groceries. Leave cards at home."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preleva i contanti esatti per la spesa settimanale. Lascia le carte a casa. Se finiscono, finiscono."
+          }
+        }
+      }
+    },
+    "shopping_15_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cash Budget"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Budget Cash"
+          }
+        }
+      }
+    },
+    "shopping_16_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan exactly what to eat for the next 3 dinners. Buy only for these."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pianifica esattamente cosa mangerete a cena per i prossimi 3 giorni. Compra solo per questi pasti."
+          }
+        }
+      }
+    },
+    "shopping_16_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3-Day Planner"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menu Planner 3 Giorni"
+          }
+        }
+      }
+    },
+    "shopping_17_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spend 5 minutes browsing digital flyers of nearby stores."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dedica 5 minuti a sfogliare i volantini digitali dei due supermercati più vicini. Vai dove conviene."
+          }
+        }
+      }
+    },
+    "shopping_17_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flyer Check"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check Volantini"
+          }
+        }
+      }
+    },
+    "shopping_18_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fill an online cart to see the total. Remove 2 non-essentials before confirming."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riempi un carrello online per vedere il totale. Poi togli 2 cose non essenziali prima di confermare (o andare in negozio)."
+          }
+        }
+      }
+    },
+    "shopping_18_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Online Simulation"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spesa Online Simulada"
+          }
+        }
+      }
+    },
+    "shopping_19_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Postpone grocery shopping by 1 day. Create a dinner with what's left."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Posticipa la spesa di 1 giorno. Sfida te stessa a creare una cena con quello che è rimasto in casa."
+          }
+        }
+      }
+    },
+    "shopping_19_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lean Day"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giorno di Magra"
+          }
+        }
+      }
+    },
+    "shopping_20_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take a photo of the inside of your fridge before leaving."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fai una foto all'interno del frigo prima di uscire. Eviterai di comprare doppioni."
+          }
+        }
+      }
+    },
+    "shopping_20_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fridge Inventory"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inventario Frigo"
+          }
+        }
+      }
+    },
+    "shopping_21_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause ingredient boxes or recurring deliveries for a week."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se usi box di ingredienti o delivery ricorrenti, mettili in pausa per una settimana e fai la spesa tu."
+          }
+        }
+      }
+    },
+    "shopping_21_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop Food Subs"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop Abbonamenti Cibo"
+          }
+        }
+      }
+    },
+    "shopping_22_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If possible, shop alone without kids to avoid extra requests."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se possibile, fai la spesa da sola senza bambini. Si spende mediamente il 20% in meno senza richieste extra."
+          }
+        }
+      }
+    },
+    "shopping_22_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shopping Solo"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shopping Solo"
+          }
+        }
+      }
+    },
+    "shopping_23_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cook double the sauce you need tonight. Freeze half."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prepara il doppio del sugo/condimento che ti serve stasera. Congela la metà per una cena veloce futura."
+          }
+        }
+      }
+    },
+    "shopping_23_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batch Cooking: Sauce"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batch Cooking: Sugo"
+          }
+        }
+      }
+    },
+    "shopping_24_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you turn on the oven, cook 2 different dishes at once."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se accendi il forno, cuoci 2 pietanze diverse contemporaneamente (es. lasagne e verdure arrosto)."
+          }
+        }
+      }
+    },
+    "shopping_24_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oven King"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Re del Forno"
+          }
+        }
+      }
+    },
+    "shopping_25_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wash and cut vegetables for 3 days as soon as you get home."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appena torni dalla spesa, lava e taglia subito le verdure per 3 giorni. Se sono pronte, non le sprecherai."
+          }
+        }
+      }
+    },
+    "shopping_25_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veggie Prep"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verdure Ready-to-Eat"
+          }
+        }
+      }
+    },
+    "shopping_26_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prep 4 portions of snacks (nuts, cheese) instead of buying packaged ones."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prepara 4 porzioni di snack (es. frutta secca, cubetti di formaggio) invece di comprare merendine confezionate."
+          }
+        }
+      }
+    },
+    "shopping_26_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Homemade Snacks"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snack Fatti in Casa"
+          }
+        }
+      }
+    },
+    "shopping_27_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chop celery, carrots, and onions and freeze them in bags."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taglia a cubetti sedano, carota e cipolla e congelali in sacchetti. Il soffritto pronto costa molto meno fatto in casa."
+          }
+        }
+      }
+    },
+    "shopping_27_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soup Base"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Base per Zuppe"
+          }
+        }
+      }
+    },
+    "shopping_28_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cook a whole pack of dry legumes. Portion and freeze."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cuoci un pacco intero di legumi secchi (costano meno di quelli in scatola). Porziona e congela."
+          }
+        }
+      }
+    },
+    "shopping_28_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Legume Party"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Legumi Party"
+          }
+        }
+      }
+    },
+    "shopping_29_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prepare breakfast for the whole family the night before."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prepara la sera prima la colazione per tutta la famiglia (es. Overnight Oats o Torta fatta in casa)."
+          }
+        }
+      }
+    },
+    "shopping_29_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breakfast Prep"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colazione Prep"
+          }
+        }
+      }
+    },
+    "shopping_30_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don't throw away veggie scraps or bones. Use them for homemade broth."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non buttare scarti di verdure o ossa. Usali per fare un brodo casalingo da congelare."
+          }
+        }
+      }
+    },
+    "shopping_30_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Golden Broth"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brodo d'Oro"
+          }
+        }
+      }
+    },
+    "shopping_31_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use leftover meat or bread to make meatballs. Freeze them!"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa avanzi di carne, verdure o pane per fare delle polpette. Ne escono sempre tante: congelale!"
+          }
+        }
+      }
+    },
+    "shopping_31_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tactical Meatballs"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Polpette Tattiche"
+          }
+        }
+      }
+    },
+    "shopping_32_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Is bread getting hard? Cube it and freeze for croutons."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il pane sta diventando duro? Taglialo a cubetti e congelalo per fare crostini, o grattugialo."
+          }
+        }
+      }
+    },
+    "shopping_32_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saved Bread"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pane Salvato"
+          }
+        }
+      }
+    },
+    "shopping_33_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Make two trays of lasagna: one to eat, one straight to the freezer."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Montare una lasagna richiede tempo. Fanne due teglie: una si mangia, una va diretta in freezer."
+          }
+        }
+      }
+    },
+    "shopping_33_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Double Lasagna"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doppia Lasagna"
+          }
+        }
+      }
+    },
+    "shopping_34_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Make a jar of vinaigrette instead of using expensive ready-made sauces."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prepara un barattolo di vinaigrette (olio, limone, sale) per tutta la settimana invece di usare salse pronte costose."
+          }
+        }
+      }
+    },
+    "shopping_34_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salad Dressing"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Condimento Insalata"
+          }
+        }
+      }
+    },
+    "shopping_35_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "First In, First Out. Move old products to the front."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Applica la regola FIFO (First In, First Out) in dispensa. Sposta i prodotti vecchi davanti e i nuovi dietro."
+          }
+        }
+      }
+    },
+    "shopping_35_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FIFO Rule"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prima chi entra"
+          }
+        }
+      }
+    },
+    "shopping_36_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan 2 meals using ONLY food you already have in the freezer."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pianifica 2 pasti usando ESCLUSIVAMENTE cibo che hai già nel congelatore da tempo."
+          }
+        }
+      }
+    },
+    "shopping_36_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Freezer Clear-out"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Svuota Freezer"
+          }
+        }
+      }
+    },
+    "shopping_37_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organize a fridge shelf dedicated to 'Eat Me First' items."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organizza un ripiano del frigo dedicato alle cose 'Da mangiare subito'. Salva il cibo dalla spazzatura."
+          }
+        }
+      }
+    },
+    "shopping_37_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fridge Tetris"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frigo Tetris"
+          }
+        }
+      }
+    },
+    "shopping_38_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set up a 'Buffet' dinner with all the week's leftovers."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Istituisci la serata 'Buffet'. Metti in tavola tutti i contenitori con gli avanzi della settimana."
+          }
+        }
+      }
+    },
+    "shopping_38_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leftover Night"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cena degli Avanzi"
+          }
+        }
+      }
+    },
+    "shopping_39_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fruit too ripe? Blend it for a smoothie or bake it."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hai frutta troppo matura? Non buttarla. Frullala per un smoothie o cuocila."
+          }
+        }
+      }
+    },
+    "shopping_39_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ugly Fruit"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frutta Brutta"
+          }
+        }
+      }
+    },
+    "shopping_40_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cut open toothpaste or cream tubes. There's product for 3 more days."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taglia a metà i tubetti di dentifricio o creme quasi finiti. Scoprirai che c'è prodotto per altri 3 giorni."
+          }
+        }
+      }
+    },
+    "shopping_40_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tube Squeeze"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tubetto Spremitura"
+          }
+        }
+      }
+    },
+    "shopping_41_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don't go shopping until you literally see the bottom of the pantry."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non andare a fare la spesa finché non vedi letteralmente il fondo della dispensa."
+          }
+        }
+      }
+    },
+    "shopping_41_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empty Pantry"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riempi-Dispensa Inverso"
+          }
+        }
+      }
+    },
+    "shopping_42_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Learn the difference between 'Use by' (safety) and 'Best before' (quality)."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impara la differenza tra 'Consumare entro' (sicurezza) e 'Preferibilmente entro' (qualità). Non buttare cibo buono."
+          }
+        }
+      }
+    },
+    "shopping_42_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date Truth"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La data non mente (quasi)"
+          }
+        }
+      }
+    },
+    "shopping_43_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use an app to rescue unsold food from a bakery."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa un'app come 'Too Good To Go' o chiedi la box invenduto al panificio a fine giornata."
+          }
+        }
+      }
+    },
+    "shopping_43_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anti-Waste Bag"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sacchetto Antispreco"
+          }
+        }
+      }
+    },
+    "shopping_44_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Put an item in the cart but DON'T pay. Come back in 24h."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hai visto un vestito o gadget che ti piace? Mettilo nel carrello ma NON pagare. Torna tra 24h. Lo vuoi ancora?"
+          }
+        }
+      }
+    },
+    "shopping_44_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "24h Rule"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regola delle 24 Ore"
+          }
+        }
+      }
+    },
+    "shopping_45_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unsubscribe from 2 newsletters that tempt you with 'Sales'."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancellati da 2 newsletter di negozi online che ti tentano sempre con 'Sconti imperdibili'."
+          }
+        }
+      }
+    },
+    "shopping_45_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unsubscribe"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disiscrizione Newsletter"
+          }
+        }
+      }
+    },
+    "shopping_46_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calculate how many hours you must work to pay for that extra item."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prima di un acquisto extra (es. scarpe), calcola quante ore devi lavorare per pagarlo. Ne vale la pena?"
+          }
+        }
+      }
+    },
+    "shopping_46_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hours/Work Calc"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calcolo Ore/Lavoro"
+          }
+        }
+      }
+    },
+    "shopping_47_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unfollow an influencer who makes you want to buy useless things."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smetti di seguire su social un influencer che ti fa venire voglia di comprare cose che non ti servono."
+          }
+        }
+      }
+    },
+    "shopping_47_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tactical Unfollow"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un-Follow Tattico"
+          }
+        }
+      }
+    },
+    "shopping_48_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep a reusable bag in your purse/car. Avoid paying for bags."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tieni sempre in borsa/auto una busta riutilizzabile. Pagare i sacchetti alla cassa è uno spreco evitabile."
+          }
+        }
+      }
+    },
+    "shopping_48_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Survival Kit"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kit Sopravvivenza"
+          }
+        }
+      }
+    },
+    "shopping_49_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do not enter any shop today, physical or online. Zero spent."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oggi non si entra in nessun negozio, né fisico né online. Zero euro spesi in shopping."
+          }
+        }
+      }
+    },
+    "shopping_49_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No-Spend Shopping"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No-Spend Day Shopping"
+          }
+        }
+      }
+    },
+    "shopping_50_desc" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Read 1-star reviews before buying an expensive item, not 5-star ones."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prima di comprare un oggetto costoso per la casa, leggi le recensioni a 1 stella, non quelle a 5."
+          }
+        }
+      }
+    },
+    "shopping_50_title" : {
+      "extractionState" : "migrated",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Honest Review"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recensione Onesta"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}

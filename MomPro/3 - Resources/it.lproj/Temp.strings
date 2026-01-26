@@ -1,0 +1,640 @@
+/* 
+  Localizable.strings
+  MomPro
+
+  Created by Andrea Cataldo on 26/01/26.
+  
+*/
+
+
+/* SHOPPING TASKS - ENGLISH BASE */
+
+"shopping_01_title" = "Brand Challenge";
+"shopping_01_desc" = "Swap 2 famous brand products with store-brand alternatives.";
+
+"shopping_02_title" = "Price Detective";
+"shopping_02_desc" = "Don't look at the final price, check the price per kg/liter of 3 items.";
+
+"shopping_03_title" = "Look Down";
+"shopping_03_desc" = "Cheaper products are often on the bottom shelves. Pick 1 item from there.";
+
+"shopping_04_title" = "Seasonality King";
+"shopping_04_desc" = "Buy only seasonal fruit and vegetables today. Avoid early harvest items.";
+
+"shopping_05_title" = "Fresh vs Frozen";
+"shopping_05_desc" = "Compare fresh vs frozen veggie prices. If frozen is cheaper, grab it.";
+
+"shopping_06_title" = "Protein Swap";
+"shopping_06_desc" = "Replace meat in one dinner with legumes or eggs.";
+
+"shopping_07_title" = "No Pre-Cut";
+"shopping_07_desc" = "Avoid pre-cut/washed fruit or salad. Pay for the product, not the service.";
+
+"shopping_08_title" = "Family Size";
+"shopping_08_desc" = "Buy the max format of a non-perishable item to lower unit cost.";
+
+"shopping_09_title" = "Tap Water";
+"shopping_09_desc" = "Don't buy bottled water today. Use a reusable bottle or filter jug.";
+
+"shopping_10_title" = "Deal Hunter";
+"shopping_10_desc" = "Find 3 items on your list that are on special offer.";
+
+"shopping_11_title" = "No Single Portions";
+"shopping_11_desc" = "Buy the big tub of yogurt instead of 6 small ones and portion it yourself.";
+
+"shopping_12_title" = "Expiration Corner";
+"shopping_12_desc" = "Check the 'near expiration' section. If you cook it tonight, you save 50%.";
+
+"shopping_13_title" = "Iron List";
+"shopping_13_desc" = "Write a grocery list and commit to buying ONLY what is written on it.";
+
+"shopping_14_title" = "Never Hungry";
+"shopping_14_desc" = "Eat a snack before entering the supermarket to avoid impulse buys.";
+
+"shopping_15_title" = "Cash Budget";
+"shopping_15_desc" = "Withdraw the exact cash for groceries. Leave cards at home.";
+
+"shopping_16_title" = "3-Day Planner";
+"shopping_16_desc" = "Plan exactly what to eat for the next 3 dinners. Buy only for these.";
+
+"shopping_17_title" = "Flyer Check";
+"shopping_17_desc" = "Spend 5 minutes browsing digital flyers of nearby stores.";
+
+"shopping_18_title" = "Online Simulation";
+"shopping_18_desc" = "Fill an online cart to see the total. Remove 2 non-essentials before confirming.";
+
+"shopping_19_title" = "Lean Day";
+"shopping_19_desc" = "Postpone grocery shopping by 1 day. Create a dinner with what's left.";
+
+"shopping_20_title" = "Fridge Inventory";
+"shopping_20_desc" = "Take a photo of the inside of your fridge before leaving.";
+
+"shopping_21_title" = "Stop Food Subs";
+"shopping_21_desc" = "Pause ingredient boxes or recurring deliveries for a week.";
+
+"shopping_22_title" = "Shopping Solo";
+"shopping_22_desc" = "If possible, shop alone without kids to avoid extra requests.";
+
+"shopping_23_title" = "Batch Cooking: Sauce";
+"shopping_23_desc" = "Cook double the sauce you need tonight. Freeze half.";
+
+"shopping_24_title" = "Oven King";
+"shopping_24_desc" = "If you turn on the oven, cook 2 different dishes at once.";
+
+"shopping_25_title" = "Veggie Prep";
+"shopping_25_desc" = "Wash and cut vegetables for 3 days as soon as you get home.";
+
+"shopping_26_title" = "Homemade Snacks";
+"shopping_26_desc" = "Prep 4 portions of snacks (nuts, cheese) instead of buying packaged ones.";
+
+"shopping_27_title" = "Soup Base";
+"shopping_27_desc" = "Chop celery, carrots, and onions and freeze them in bags.";
+
+"shopping_28_title" = "Legume Party";
+"shopping_28_desc" = "Cook a whole pack of dry legumes. Portion and freeze.";
+
+"shopping_29_title" = "Breakfast Prep";
+"shopping_29_desc" = "Prepare breakfast for the whole family the night before.";
+
+"shopping_30_title" = "Golden Broth";
+"shopping_30_desc" = "Don't throw away veggie scraps or bones. Use them for homemade broth.";
+
+"shopping_31_title" = "Tactical Meatballs";
+"shopping_31_desc" = "Use leftover meat or bread to make meatballs. Freeze them!";
+
+"shopping_32_title" = "Saved Bread";
+"shopping_32_desc" = "Is bread getting hard? Cube it and freeze for croutons.";
+
+"shopping_33_title" = "Double Lasagna";
+"shopping_33_desc" = "Make two trays of lasagna: one to eat, one straight to the freezer.";
+
+"shopping_34_title" = "Salad Dressing";
+"shopping_34_desc" = "Make a jar of vinaigrette instead of using expensive ready-made sauces.";
+
+"shopping_35_title" = "FIFO Rule";
+"shopping_35_desc" = "First In, First Out. Move old products to the front.";
+
+"shopping_36_title" = "Freezer Clear-out";
+"shopping_36_desc" = "Plan 2 meals using ONLY food you already have in the freezer.";
+
+"shopping_37_title" = "Fridge Tetris";
+"shopping_37_desc" = "Organize a fridge shelf dedicated to 'Eat Me First' items.";
+
+"shopping_38_title" = "Leftover Night";
+"shopping_38_desc" = "Set up a 'Buffet' dinner with all the week's leftovers.";
+
+"shopping_39_title" = "Ugly Fruit";
+"shopping_39_desc" = "Fruit too ripe? Blend it for a smoothie or bake it.";
+
+"shopping_40_title" = "Tube Squeeze";
+"shopping_40_desc" = "Cut open toothpaste or cream tubes. There's product for 3 more days.";
+
+"shopping_41_title" = "Empty Pantry";
+"shopping_41_desc" = "Don't go shopping until you literally see the bottom of the pantry.";
+
+"shopping_42_title" = "Date Truth";
+"shopping_42_desc" = "Learn the difference between 'Use by' (safety) and 'Best before' (quality).";
+
+"shopping_43_title" = "Anti-Waste Bag";
+"shopping_43_desc" = "Use an app to rescue unsold food from a bakery.";
+
+"shopping_44_title" = "24h Rule";
+"shopping_44_desc" = "Put an item in the cart but DON'T pay. Come back in 24h.";
+
+"shopping_45_title" = "Unsubscribe";
+"shopping_45_desc" = "Unsubscribe from 2 newsletters that tempt you with 'Sales'.";
+
+"shopping_46_title" = "Hours/Work Calc";
+"shopping_46_desc" = "Calculate how many hours you must work to pay for that extra item.";
+
+"shopping_47_title" = "Tactical Unfollow";
+"shopping_47_desc" = "Unfollow an influencer who makes you want to buy useless things.";
+
+"shopping_48_title" = "Survival Kit";
+"shopping_48_desc" = "Keep a reusable bag in your purse/car. Avoid paying for bags.";
+
+"shopping_49_title" = "No-Spend Shopping";
+"shopping_49_desc" = "Do not enter any shop today, physical or online. Zero spent.";
+
+"shopping_50_title" = "Honest Review";
+"shopping_50_desc" = "Read 1-star reviews before buying an expensive item, not 5-star ones.";
+
+
+
+
+
+
+
+
+/* FINANCE TASKS - ENGLISH BASE */
+
+"finance_01_title" = "Flash Balance Check";
+"finance_01_desc" = "Open your banking app. Check balance and last 3 transactions.";
+
+"finance_02_title" = "Vampire Hunt";
+"finance_02_desc" = "Find 1 subscription you don't use and cancel it.";
+
+"finance_03_title" = "Vice Cost";
+"finance_03_desc" = "Calculate how much you spend in a year for a small habit (e.g. coffee).";
+
+"finance_04_title" = "Bill Dates";
+"finance_04_desc" = "Mark the due dates of the next 3 bills on the calendar.";
+
+"finance_05_title" = "Wealth Screenshot";
+"finance_05_desc" = "Take a screenshot of your net worth today. Compare in a year.";
+
+"finance_06_title" = "Income Organizer";
+"finance_06_desc" = "Write down all your income sources on a paper.";
+
+"finance_07_title" = "Pink Tax";
+"finance_07_desc" = "Check if you pay more for 'female' products. Look for unisex alternatives.";
+
+"finance_08_title" = "Bank Alert";
+"finance_08_desc" = "Enable push notifications for every transaction over 10€.";
+
+"finance_09_title" = "Wallet Clean-up";
+"finance_09_desc" = "Remove old receipts and loyalty cards you never use.";
+
+"finance_10_title" = "Fee Check";
+"finance_10_desc" = "Check your last statement: how much did you pay in bank fees?";
+
+"finance_11_title" = "Emergency Fund";
+"finance_11_desc" = "Define what amount would make you sleep soundly (e.g. 1000€).";
+
+"finance_12_title" = "Renegotiate";
+"finance_12_desc" = "Call a service provider and ask if a cheaper plan exists.";
+
+"finance_13_title" = "Micro-Lesson: Inflation";
+"finance_13_desc" = "Read: 'Why 100€ under the mattress will be worth 90€ soon'.";
+
+"finance_14_title" = "Micro-Lesson: Stocks";
+"finance_14_desc" = "Learn the difference: a stock is a piece of a company.";
+
+"finance_15_title" = "Micro-Lesson: Bonds";
+"finance_15_desc" = "Understanding Bonds: you lend money, they pay interest.";
+
+"finance_16_title" = "Magic of Compound Interest";
+"finance_16_desc" = "Read how time multiplies money. Starting early beats starting big.";
+
+"finance_17_title" = "50/30/20 Rule";
+"finance_17_desc" = "Try to split your budget: 50% needs, 30% wants, 20% savings.";
+
+"finance_18_title" = "Define Risk";
+"finance_18_desc" = "Ask yourself: if investments dropped 10% tomorrow, would I panic?";
+
+"finance_19_title" = "Diversification 101";
+"finance_19_desc" = "The concept 'Don't put all eggs in one basket'. Learn why.";
+
+"finance_20_title" = "ETF Made Easy";
+"finance_20_desc" = "Discover ETFs: a basket of stocks to invest globally with one click.";
+
+"finance_21_title" = "Time Horizon";
+"finance_21_desc" = "Are you investing for college (10y) or retirement (20y)?";
+
+"finance_22_title" = "PAC Strategy";
+"finance_22_desc" = "Discover Dollar Cost Averaging: invest a small fixed amount monthly.";
+
+"finance_23_title" = "Taxes & Investing";
+"finance_23_desc" = "Briefly check capital gains tax rates in your country.";
+
+"finance_24_title" = "Paper Trading";
+"finance_24_desc" = "Simulate an imaginary 100€ investment on a company you know.";
+
+"finance_25_title" = "Finance Books";
+"finance_25_desc" = "Google 'Best personal finance books' and save one to your wishlist.";
+
+"finance_26_title" = "Round Up";
+"finance_26_desc" = "Round up yesterday's expenses and move cents to savings.";
+
+"finance_27_title" = "No-Spend Day Finance";
+"finance_27_desc" = "Extreme challenge: spend 0€ extra today. Use only what you have.";
+
+"finance_28_title" = "Future Coffee";
+"finance_28_desc" = "Skip a coffee today. Put that 2€ in your 'Freedom Fund'.";
+
+"finance_29_title" = "DIY Beauty";
+"finance_29_desc" = "Do a beauty treatment at home instead of paying for a service.";
+
+"finance_30_title" = "Marketing Unsub";
+"finance_30_desc" = "Unsubscribe from 3 e-commerce newsletters today.";
+
+"finance_31_title" = "48h Rule";
+"finance_31_desc" = "Want to buy something > 50€? Wait 48 hours. Then decide.";
+
+"finance_32_title" = "Packed Lunch";
+"finance_32_desc" = "Bring lunch from home instead of going to the restaurant.";
+
+"finance_33_title" = "Cashback Check";
+"finance_33_desc" = "Check if your card offers cashback on purchases you must make.";
+
+"finance_34_title" = "Quick Sell";
+"finance_34_desc" = "List 1 item you don't use anymore on a local marketplace.";
+
+"finance_35_title" = "Digital Piggy Bank";
+"finance_35_desc" = "If your bank has a 'Vault' feature, activate it.";
+
+"finance_36_title" = "Coupon Hunter";
+"finance_36_desc" = "Before buying online, Google 'Discount code [StoreName]'.";
+
+"finance_37_title" = "Pocket Change";
+"finance_37_desc" = "Collect all loose coins around the house. Put them together.";
+
+"finance_38_title" = "Free Water";
+"finance_38_desc" = "Carry a water bottle all day. Save on buying bottles.";
+
+"finance_39_title" = "Visualize Goal";
+"finance_39_desc" = "Close eyes for 1 min: imagine how you feel when you reach your goal.";
+
+"finance_40_title" = "Pension Calc";
+"finance_40_desc" = "Use a quick online simulator to estimate your future pension.";
+
+"finance_41_title" = "Talk Money";
+"finance_41_desc" = "Talk about a positive financial goal with your partner/friend.";
+
+"finance_42_title" = "Invest in Yourself";
+"finance_42_desc" = "Spend 10 mins learning a skill that could increase your income.";
+
+"finance_43_title" = "Smart Wishlist";
+"finance_43_desc" = "Write 3 expensive things you want in the future. Estimate costs.";
+
+"finance_44_title" = "Automation";
+"finance_44_desc" = "Set up an auto-transfer (even 10€) to savings on payday.";
+
+"finance_45_title" = "Insurance Check";
+"finance_45_desc" = "Do you know what your home/car policy covers? Check it.";
+
+"finance_46_title" = "Digital Legacy";
+"finance_46_desc" = "Ensure someone trusted knows where to find account passwords.";
+
+"finance_47_title" = "Define Wealth";
+"finance_47_desc" = "Write what being rich means to you. Is it time? Travel? Safety?";
+
+"finance_48_title" = "Study Fund";
+"finance_48_desc" = "If you have kids, look up savings plans for minors today.";
+
+"finance_49_title" = "Annual Review";
+"finance_49_desc" = "Mark a date in 6 months on the calendar to review finances.";
+
+"finance_50_title" = "Financial Gratitude";
+"finance_50_desc" = "Write 3 things money allowed you to do this month.";
+
+
+
+
+
+
+
+
+
+
+/* HOME TASKS - ENGLISH BASE */
+
+"home_01_title" = "Energy Vampires";
+"home_01_desc" = "Unplug 3 appliances in standby mode (red light on) that you aren't using.";
+
+"home_02_title" = "Golden Degree";
+"home_02_desc" = "Lower the thermostat by just 1 degree. You won't feel cold, but you'll save ~7%.";
+
+"home_03_title" = "Window Test";
+"home_03_desc" = "Run a wet hand along window edges. If you feel air, mark to buy a draft stopper.";
+
+"home_04_title" = "Eco Wash";
+"home_04_desc" = "Set washing machine or dishwasher to 'Eco' mode today. Longer, but cheaper.";
+
+"home_05_title" = "Ghost Lights";
+"home_05_desc" = "Walk around the house and turn off lights in empty rooms. Teach kids too.";
+
+"home_06_title" = "Free Heat";
+"home_06_desc" = "Move curtains or furniture covering radiators. Let heat circulate freely.";
+
+"home_07_title" = "Express Defrost";
+"home_07_desc" = "If the freezer has too much ice, it consumes more. Schedule a defrost.";
+
+"home_08_title" = "Cold Water";
+"home_08_desc" = "Wash clothes at 30°C or 40°C instead of 60°C. Modern detergents work fine.";
+
+"home_09_title" = "Full Load";
+"home_09_desc" = "Wait to start the appliance until it is completely full.";
+
+"home_10_title" = "Smart Kettle";
+"home_10_desc" = "Making tea or pasta? Boil only the water you actually need.";
+
+"home_11_title" = "Shower vs Bath";
+"home_11_desc" = "Quick shower (max 5 min) for everyone today instead of a bath.";
+
+"home_12_title" = "Bill Check";
+"home_12_desc" = "Compare the last electricity bill with last year's. Did you use more? Why?";
+
+"home_13_title" = "Clean Lungs";
+"home_13_desc" = "Clean AC or kitchen hood filters. Improves efficiency and air quality.";
+
+"home_14_title" = "Washer Saver";
+"home_14_desc" = "Clean the washing machine filter (bottom). Remove coins or debris.";
+
+"home_15_title" = "Magic Vinegar";
+"home_15_desc" = "Run an empty cycle with vinegar to descale dishwasher or washer.";
+
+"home_16_title" = "Leak Check";
+"home_16_desc" = "Check under kitchen and bathroom sinks. If damp, tighten pipes now.";
+
+"home_17_title" = "Mattress Life";
+"home_17_desc" = "Rotate or flip the mattress to make it last longer and sleep better.";
+
+"home_18_title" = "Free Flow";
+"home_18_desc" = "Shower head spraying badly? Soak it in water and vinegar to remove limescale.";
+
+"home_19_title" = "Hidden Dust";
+"home_19_desc" = "Clean coils behind or under the fridge. Dust there increases consumption.";
+
+"home_20_title" = "Sharpen Blades";
+"home_20_desc" = "A dull knife is dangerous. Sharpen your 2 main kitchen knives.";
+
+"home_21_title" = "Squeaky Hinges";
+"home_21_desc" = "Put a drop of oil or WD40 on noisy door or cupboard hinges.";
+
+"home_22_title" = "Mold Escape";
+"home_22_desc" = "Check shower grout. If you see black spots, clean with bleach immediately.";
+
+"home_23_title" = "Clean Ice";
+"home_23_desc" = "Empty and clean the ice bin in the freezer. Remove old odors.";
+
+"home_24_title" = "Safety First";
+"home_24_desc" = "Test the circuit breaker by pressing 'T'. Electrical safety saves money.";
+
+"home_25_title" = "Shop Your Home";
+"home_25_desc" = "Move a decor item (lamp, art, plant) to another room for a fresh look.";
+
+"home_26_title" = "Entrance Declutter";
+"home_26_desc" = "The entryway is the first thing you see. Remove 3 items that don't belong.";
+
+"home_27_title" = "New Light";
+"home_27_desc" = "Dust lamps or bulbs. The room will look brighter and newer immediately.";
+
+"home_28_title" = "Sofa Styling";
+"home_28_desc" = "Remove cushions, fluff them vigorously, and arrange them. Instant 'Hotel' effect.";
+
+"home_29_title" = "Green Touch";
+"home_29_desc" = "Wipe plant leaves with a damp cloth. Shinier, prettier, cleaner air.";
+
+"home_30_title" = "Book Order";
+"home_30_desc" = "Organize a bookshelf (by color or height). Reduces visual noise.";
+
+"home_31_title" = "Clean Wall";
+"home_31_desc" = "Black marks on walls? Use a magic eraser or damp cloth to spot clean.";
+
+"home_32_title" = "Bath Spa";
+"home_32_desc" = "Fold or roll towels neatly. A small touch of daily luxury.";
+
+"home_33_title" = "Shiny Handles";
+"home_33_desc" = "Clean and polish door handles and light switches. Details matter.";
+
+"home_34_title" = "Crystal Glass";
+"home_34_desc" = "Clean the main bathroom mirror or a key window. The house will look bigger.";
+
+"home_35_title" = "Renew Textiles";
+"home_35_desc" = "Have an old blanket? Consider dyeing it or using it as a sofa throw.";
+
+"home_36_title" = "Home Scent";
+"home_36_desc" = "Boil orange peels and cinnamon for 10 min. Natural scent, no chemicals.";
+
+"home_37_title" = "Chaos Drawer";
+"home_37_desc" = "Tackle 'That' junk drawer. Throw away unreadable receipts and dead pens.";
+
+"home_38_title" = "Closet Check";
+"home_38_desc" = "Find 2 items you haven't worn in a year. Sell or donate them.";
+
+"home_39_title" = "Expired Meds";
+"home_39_desc" = "Check the medicine cabinet. Dispose of expired items safely.";
+
+"home_40_title" = "Pantry Detox";
+"home_40_desc" = "Group similar foods together (pasta with pasta). Avoid rebuying duplicates.";
+
+"home_41_title" = "Tupperware Match";
+"home_41_desc" = "Check containers. If one has no lid (or vice versa), recycle it.";
+
+"home_42_title" = "Clear Surface";
+"home_42_desc" = "Completely clear one surface (table or counter). Just empty space.";
+
+"home_43_title" = "Digital Home";
+"home_43_desc" = "Clean the desk or document area. File away paid bills.";
+
+"home_44_title" = "Toy Rotation";
+"home_44_desc" = "Hide some toys in a closet. In a month, they'll seem new again.";
+
+"home_45_title" = "Cable Order";
+"home_45_desc" = "Use ties to bind cables behind the TV. Less dust, less visual stress.";
+
+"home_46_title" = "Ready Bag";
+"home_46_desc" = "Clean your purse. Remove receipts, old tissues, crumbs. Feel lighter.";
+
+"home_47_title" = "Repair Kit";
+"home_47_desc" = "Assemble a box: needle, thread, spare buttons, superglue. The 'Save-All' kit.";
+
+"home_48_title" = "Donation Box";
+"home_48_desc" = "Prepare a box in a corner. Put unused items in it immediately.";
+
+"home_49_title" = "Make-up Check";
+"home_49_desc" = "Check makeup. Mascara open >6 months is an eye risk. Purge it.";
+
+"home_50_title" = "Fresh Flowers";
+"home_50_desc" = "Cut a green branch or flower from the garden. Free decoration.";
+
+
+
+
+
+
+
+
+
+/* FAMILY TASKS - ENGLISH BASE */
+
+"family_01_title" = "The Three Jars";
+"family_01_desc" = "Prepare 3 jars for your child: 'Spend', 'Save', 'Give'. Explain the difference.";
+
+"family_02_title" = "Need vs Want";
+"family_02_desc" = "While out, play 'Need or Want?'. Ask your child to classify 3 items.";
+
+"family_03_title" = "Smart Allowance";
+"family_03_desc" = "If you give allowance, set a rule: 20% must go into savings.";
+
+"family_04_title" = "Cost of Work";
+"family_04_desc" = "Child wants a toy? Explain how many work hours it costs (e.g., 'That's 2 hours of mommy's work').";
+
+"family_05_title" = "Supermarket Game";
+"family_05_desc" = "Give your child a banknote (real or fake) and ask them to pick a snack within budget.";
+
+"family_06_title" = "Library Trip";
+"family_06_desc" = "Take kids to the library instead of the bookstore. Teach the value of sharing.";
+
+"family_07_title" = "Clear Piggy Bank";
+"family_07_desc" = "Use a transparent jar. Seeing money grow visually motivates children.";
+
+"family_08_title" = "Waiting Pays";
+"family_08_desc" = "Impulse want? Say 'Let's put it on the Santa/Birthday list'. Teach patience.";
+
+"family_09_title" = "Toy Sale";
+"family_09_desc" = "Involve kids in choosing 2 old toys to sell or donate. Teach the cycle of objects.";
+
+"family_10_title" = "No Ads";
+"family_10_desc" = "Explain that TV/YouTube ads are designed to make us want things we don't need.";
+
+"family_11_title" = "Family Goal";
+"family_11_desc" = "Set a goal (e.g., 'Park Trip'). Put a jar in the kitchen for everyone's spare change.";
+
+"family_12_title" = "Little Investor";
+"family_12_desc" = "Explain a stock simply: 'We buy a tiny piece of the factory that makes your cookies'.";
+
+"family_13_title" = "Home Cinema";
+"family_13_desc" = "No theater tonight. Pot popcorn, lights off, movie on the couch. Save ~40€.";
+
+"family_14_title" = "Treasure Hunt";
+"family_14_desc" = "Organize a hunt in the park or garden instead of paid rides.";
+
+"family_15_title" = "Indoor Picnic";
+"family_15_desc" = "Raining? Lay a blanket in the living room and have a floor picnic. Kids love it.";
+
+"family_16_title" = "Free Museums";
+"family_16_desc" = "Check if your city has free museum entry on the first Sunday of the month.";
+
+"family_17_title" = "Pizza Masterchef";
+"family_17_desc" = "Don't order pizza (expensive). Buy flour and yeast and make it together.";
+
+"family_18_title" = "Nature Walk";
+"family_18_desc" = "On the weekend, choose a trail or forest nearby. Zero cost, max health.";
+
+"family_19_title" = "Board Game";
+"family_19_desc" = "Dust off an old board game tonight. Zero tech, zero spending.";
+
+"family_20_title" = "Recycle Crafts";
+"family_20_desc" = "Use toilet rolls and boxes to build a castle or robot. Free creativity.";
+
+"family_21_title" = "Toy Swap Party";
+"family_21_desc" = "Swap a box of toys with a mom friend for 2 weeks. 'New' toys for free.";
+
+"family_22_title" = "Homemade Ice Cream";
+"family_22_desc" = "Blend frozen bananas and cocoa/fruit. Healthy, cheap, ready in 2 mins.";
+
+"family_23_title" = "Living Room Camping";
+"family_23_desc" = "Build a fort with pillows. Sleep there in sleeping bags. Adventure guaranteed.";
+
+"family_24_title" = "City Tourist";
+"family_24_desc" = "Google 'Free things to see in [YourCity]'. Visit a spot you've never seen.";
+
+"family_25_title" = "Park Sports";
+"family_25_desc" = "Bring a ball or rackets to the park. Save on pool or playroom entry.";
+
+"family_26_title" = "Money Date";
+"family_26_desc" = "Take 10 mins with your partner (and wine) to discuss financial goals without stress.";
+
+"family_27_title" = "Delegate Task";
+"family_27_desc" = "Assign a simple chore to a child or partner. Your time is money.";
+
+"family_28_title" = "Early Gift List";
+"family_28_desc" = "Christmas far away? Write gift ideas now. Buy when on sale.";
+
+"family_29_title" = "Gift Rule";
+"family_29_desc" = "Agree with relatives: 'Only 1 gift per child' or 'Useful gifts'. Avoid waste.";
+
+"family_30_title" = "Family Subs";
+"family_30_desc" = "Spotify, Netflix: check if you can switch to a 'Family' plan and split cost.";
+
+"family_31_title" = "Shared Menu";
+"family_31_desc" = "Ask family: 'What do you want to eat this week?'. Avoid cooking rejected food.";
+
+"family_32_title" = "Timed Shower";
+"family_32_desc" = "Challenge: play a 3-minute song. Finish showering before it ends.";
+
+"family_33_title" = "Light Manager";
+"family_33_desc" = "Appoint your child 'Energy Manager' today. They must check lights are off.";
+
+"family_34_title" = "Weekend Off";
+"family_34_desc" = "Turn off Wi-Fi for 2 hours. Minimal energy saving, max relationship gain.";
+
+"family_35_title" = "DIY Teacher Gifts";
+"family_35_desc" = "Instead of expensive collections, propose a handmade gift or plant.";
+
+"family_36_title" = "Home Haircut";
+"family_36_desc" = "For boys or bangs, try doing it at home (follow a YouTube tutorial).";
+
+"family_37_title" = "Hand-Me-Downs";
+"family_37_desc" = "Ask a friend with older kids for clothes. It's eco-friendly and free.";
+
+"family_38_title" = "Used School Books";
+"family_38_desc" = "Check online or boards immediately for next year's used books.";
+
+"family_39_title" = "Label Everything";
+"family_39_desc" = "Label jackets and bottles. Recovering lost items is cheaper than rebuying.";
+
+"family_40_title" = "School Snacks Prep";
+"family_40_desc" = "Prep 5 school snacks on Sunday night. Avoid buying expensive bar snacks.";
+
+"family_41_title" = "Backpack Check";
+"family_41_desc" = "Empty backpack on Friday. Find 'lost' pens and uneaten food before mold.";
+
+"family_42_title" = "College Fund";
+"family_42_desc" = "Look into a savings plan for minors. Even 20€/month is huge in 18 years.";
+
+"family_43_title" = "Uniform/Smock";
+"family_43_desc" = "Buy uniforms one size bigger and hem them. They'll last 2 years instead of 1.";
+
+"family_44_title" = "Sports Carpool";
+"family_44_desc" = "Organize rides with another parent. Save half the gas and time.";
+
+"family_45_title" = "WhatsApp Group";
+"family_45_desc" = "Mute parent groups for sanity, but use them to ask 'Anyone have an unused X?'.";
+
+"family_46_title" = "Stationery Stock";
+"family_46_desc" = "Buy notebooks when on super sale, not urgently the night before needed.";
+
+"family_47_title" = "September Budget";
+"family_47_desc" = "Start saving 10€ a week now for back-to-school expenses.";
+
+"family_48_title" = "DIY ID Photos";
+"family_48_desc" = "Take ID photos at home against a white wall, print at kiosk (0.50€ vs 5€).";
+
+"family_49_title" = "Park Birthday";
+"family_49_desc" = "If season allows, host the party at a public park. Save 100-200€ on venue.";
+
+"family_50_title" = "Digital Memories";
+"family_50_desc" = "Instead of printing thousands of photos, create a shared digital album.";
