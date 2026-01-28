@@ -63,7 +63,7 @@ struct HomeView: View {
                             Text(LocalizedStringKey("Inizia la giornata!"))
                                 .font(.system(.title, design: .rounded))
                                 .fontWeight(.semibold)
-                                .foregroundColor(.pink)
+                                .foregroundColor(.primary)
                                 .padding(.bottom, 10)
                             
                             // Barra Progresso
@@ -170,29 +170,7 @@ struct HomeView: View {
                              .foregroundStyle(.secondary)
                              } */
                             
-                            // MARK: - C. GRIGLIA QUOTIDIANA (4 Free)
-                            /*
-                            VStack(alignment: .leading, spacing: 12) {
-                               
-                                
-                                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
-                                    ForEach(viewModel.freeTasks) { taskStatus in
-                                        TaskGridCard(
-                                            taskStatus: taskStatus,
-                                            color: viewModel.colorForTaskStatus(taskStatus),
-                                            onTap: { selectedTask = taskStatus },
-                                            onRefresh: {
-                                                // Chiamata al refresh se disponibile
-                                                if viewModel.canRefresh {
-                                                    viewModel.requestRefresh(for: taskStatus)
-                                                }
-                                            },
-                                            canRefresh: viewModel.canRefresh
-                                        )
-                                    }
-                                }
-                            }*/
-                            
+                        
                             
                             
                             // MARK: - D. VIP ZONE (2 Pro)
@@ -308,9 +286,9 @@ struct HomeView: View {
         // Configurazione Stato (Testo, Colore, Icona)
         private var statusConfig: (text: String, color: Color, icon: String) {
             if taskStatus.isCompleted {
-                return ("Eccellente", .green, "checkmark.circle.fill")
+                return ("Eccellente", .green, "arrow.up.circle.fill")
             } else if taskStatus.currentProgress > 0 {
-                return ("Ok", .orange, "minus.circle.fill")
+                return ("Ok", .blue, "checkmark.circle.fill")
             } else {
                 return ("Insufficiente", .red, "arrow.down.circle.fill")
             }
@@ -326,72 +304,77 @@ struct HomeView: View {
         
         var body: some View {
             Button(action: onTap) {
-                HStack(spacing: 16) {
+                
+                HStack(spacing: 0) {
                     
                     // --- PARTE SINISTRA: INFO ---
-                    VStack(alignment: .leading, spacing: 8) {
+                    VStack(alignment: .leading, spacing: 0) {
+                        
                         
                         // 1. Header: Icona Categoria + Nome Categoria
-                        HStack(spacing: 6) {
+                        HStack(spacing: 0) {
                             Image(systemName: iconName(for: taskStatus.task.category))
-                                .font(.subheadline)
-                                .foregroundStyle(color) // Colore della categoria
-                                .padding(6)
-                                .background(color.opacity(0.1))
-                                .clipShape(Circle())
+                                .font(.system(.caption2, design: .default))
+                                .foregroundStyle(.tertiary)
+                                .padding(.trailing, 4)
                             
                             Text(LocalizedStringKey(taskStatus.task.category.rawValue))
-                                .font(.system(.caption, design: .rounded))
-                                .fontWeight(.bold)
-                                .foregroundStyle(.secondary)
+                                .font(.system(.caption2, design: .rounded))
+                                .fontWeight(.semibold)
+                                .foregroundStyle(.tertiary)
                                 .textCase(.uppercase)
+                               
                         }
+                        .padding(.bottom, 8)
+                        
                         
                         // 2. Titolo del Task
                         Text(LocalizedStringKey(taskStatus.task.title))
                             .font(.system(.title3, design: .rounded))
-                            .fontWeight(.bold) // Più marcato per leggibilità
+                            .fontWeight(.semibold)
                             .foregroundStyle(.primary)
                             .lineLimit(2)
                             .multilineTextAlignment(.leading)
-                            .padding(.vertical, 2)
-                        
-                        Spacer(minLength: 0)
-                        
+                            .padding(.bottom, 8)
+
+                                                
                         // 3. Status (Insufficiente / Ok / Eccellente)
-                        HStack(spacing: 6) {
+                        HStack(spacing: 0) {
                             Image(systemName: statusConfig.icon)
+                                .padding(.trailing, 4)
                             Text(statusConfig.text)
                         }
                         .font(.system(.subheadline, design: .rounded))
                         .fontWeight(.semibold)
                         .foregroundStyle(statusConfig.color) // Colore rosso/arancio/verde
                     }
-                    .padding(.vertical, 16)
-                    .padding(.leading, 16)
                     
                     Spacer()
                     
                     // --- PARTE DESTRA: SLIDER & REFRESH ---
-                    VStack(alignment: .trailing) {
+                    HStack(spacing: 0) {
                         
-                        // Tasto Refresh (in alto a destra)
-                        if !taskStatus.isCompleted && canRefresh {
-                            Button(action: onRefresh) {
-                                Image(systemName: "arrow.triangle.2.circlepath")
-                                    .font(.caption)
-                                    .fontWeight(.bold)
-                                    .foregroundStyle(.secondary)
-                                    .padding(8)
-                                    .background(Color(uiColor: .systemGray6))
-                                    .clipShape(Circle())
+                        VStack(spacing: 0){
+                            // Tasto Refresh (in alto a destra)
+                            if !taskStatus.isCompleted && canRefresh {
+                                Button(action: onRefresh) {
+                                    Image(systemName: "arrow.triangle.2.circlepath")
+                                        .font(.system(.caption, design: .rounded))
+                                        .fontWeight(.bold)
+                                        .foregroundStyle(.secondary)
+                                        .padding(8)
+                                        .background(Color(uiColor: .systemGray5))
+                                        .clipShape(Circle())
+                                }
+                            } else {
+                                // Spacer invisibile per mantenere l'allineamento se non c'è il bottone
+                                Color.clear.frame(width: 32, height: 32)
                             }
-                        } else {
-                            // Spacer invisibile per mantenere l'allineamento se non c'è il bottone
-                            Color.clear.frame(width: 32, height: 32)
+                            
+                            Spacer()
                         }
+                        .padding(.trailing, 8)
                         
-                        Spacer()
                         
                         // Slider Verticale
                         ZStack(alignment: .bottom) {
@@ -409,7 +392,7 @@ struct HomeView: View {
                                         .frame(width: 14, height: 14)
                                         .shadow(color: statusConfig.color.opacity(0.4), radius: 2, x: 0, y: 1)
                                         .overlay(
-                                            Circle().strokeBorder(statusConfig.color, lineWidth: 3)
+                                            Circle().strokeBorder(statusConfig.color, lineWidth: 4)
                                         )
                                         // Calcolo posizione inversa (dal basso)
                                         .offset(y: -((60 - 14) * progressPercentage))
@@ -418,18 +401,18 @@ struct HomeView: View {
                             }
                             .frame(width: 14, height: 60)
                         }
-                        .padding(.bottom, 16)
-                        .padding(.trailing, 4)
+                    
                     }
-                    .padding(.trailing, 12)
-                    .padding(.top, 12)
+                   
                 }
-                .frame(height: 140) // Card più alta per ospitare tutto in verticale
-                .background(Color.white)
-                .cornerRadius(22)
-                .shadow(color: .black.opacity(0.05), radius: 10, x: 0, y: 4)
+                .padding(.horizontal)
+                .padding(.vertical)
+                .background(
+                    RoundedRectangle(cornerRadius: 22, style: .continuous)
+                        .fill(Color(.secondarySystemGroupedBackground))
+                )
             }
-            .buttonStyle(PlainButtonStyle())
+            .buttonStyle(SquishyButtonEffect())
         }
         
         func iconName(for cat: TaskCategory) -> String {
@@ -443,6 +426,17 @@ struct HomeView: View {
         }
     }
     
+    
+    private struct SquishyButtonEffect: ButtonStyle {
+
+        func makeBody(configuration: Configuration) -> some View {
+            configuration.label
+            .scaleEffect(configuration.isPressed ? 0.94 : 1.0)
+            .brightness(configuration.isPressed ? -0.0 : 0)
+            .animation(.spring(response: 0.3, dampingFraction: 0.4, blendDuration: 0), value: configuration.isPressed)
+        }
+    }
+
     
     
     

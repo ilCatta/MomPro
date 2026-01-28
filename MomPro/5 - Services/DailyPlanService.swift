@@ -18,9 +18,11 @@ class DailyPlanService {
     private let kDailyTaskIDs = "dailyTaskIDs"
     private let kDailyArticleID = "dailyArticleID"
     private let kCompletedTaskIDs = "completedTaskIDs_today"
-    
+        
     // MODIFICA: Usiamo un contatore invece di un booleano
     private let kRefreshCount = "refreshCount_today"
+    // NUOVO: Chiave per salvare i progressi parziali (es. 1/3, 2/5) di TUTTI i task
+    private let kTaskProgress = "taskProgress_today"
     
     struct DailyTaskStatus: Identifiable {
         let id: UUID
@@ -150,6 +152,9 @@ class DailyPlanService {
         UserDefaults.standard.set(selectedTaskIDs, forKey: kDailyTaskIDs)
         UserDefaults.standard.set(0, forKey: kRefreshCount) // RESETTA IL CONTATORE A 0
         saveCompletedIDs([])
+        
+        // Quando inizia un nuovo giorno, cancelliamo tutti i progressi parziali di ieri
+        UserDefaults.standard.removeObject(forKey: kTaskProgress)
     }
     
     private func loadDailyPlanFromDisk() -> [DailyTaskStatus] {
@@ -169,11 +174,14 @@ class DailyPlanService {
                 
                 guard let task = originalTask else { return nil }
                 
+                // AGGIUNGI: Recuperiamo il progresso specifico per QUESTO task
+                let savedProgress = getSavedProgress(for: task.id.uuidString)
+                
                 return DailyTaskStatus(
                     id: UUID(),
                     task: task,
                     isCompleted: completed.contains(task.id.uuidString),
-                    currentProgress: 0,
+                    currentProgress: savedProgress,
                     isLocked: task.isPro
                 )
             }
@@ -195,4 +203,25 @@ class DailyPlanService {
             UserDefaults.standard.set(ids, forKey: kDailyTaskIDs)
         }
     }
+    
+    // MARK: - Gestione Progresso Multiplo
+        
+        // Salva il progresso di un task specifico senza toccare gli altri
+        func updateProgress(taskId: UUID, newProgress: Int) {
+            // 1. Carichiamo il dizionario attuale (es. {"TaskA": 1})
+            var progressDict = UserDefaults.standard.dictionary(forKey: kTaskProgress) as? [String: Int] ?? [:]
+            
+            // 2. Aggiorniamo solo il task corrente (es. aggiungiamo "TaskB": 2)
+            progressDict[taskId.uuidString] = newProgress
+            
+            // 3. Salviamo tutto il dizionario aggiornato
+            UserDefaults.standard.set(progressDict, forKey: kTaskProgress)
+        }
+
+        // Legge il progresso di un singolo task
+        private func getSavedProgress(for taskIdString: String) -> Int {
+            let progressDict = UserDefaults.standard.dictionary(forKey: kTaskProgress) as? [String: Int] ?? [:]
+            // Se troviamo un valore per questo ID lo restituiamo, altrimenti 0
+            return progressDict[taskIdString] ?? 0
+        }
 }

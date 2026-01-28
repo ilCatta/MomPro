@@ -170,16 +170,29 @@ class HomeViewModel {
     }
     
     func incrementTaskProgress(taskId: UUID) {
-        guard let index = dailyTasks.firstIndex(where: { $0.id == taskId }) else { return }
+            guard let index = dailyTasks.firstIndex(where: { $0.id == taskId }) else { return }
         
-        dailyTasks[index].currentProgress += 1
-        let target = dailyTasks[index].task.targetCount
-        
-        if dailyTasks[index].currentProgress >= target {
-            dailyTasks[index].isCompleted = true
-            dailyService.completeTask(taskId: dailyTasks[index].task.id)
+            let target = dailyTasks[index].task.targetCount
+
+            // --- AGGIUNTA DI SICUREZZA ---
+            // Se il task è già completato o ha raggiunto il target, non fare nulla.
+            if dailyTasks[index].currentProgress >= target { return }
+            // -----------------------------
+            
+            // 1. Incrementiamo in memoria (per aggiornare la UI subito)
+            dailyTasks[index].currentProgress += 1
+            
+            // 2. [NUOVO] Diciamo al Service di salvare questo numero nel disco
+            // Usiamo task.id (che è stabile) non dailyTasks[index].id (che cambia ogni avvio)
+            dailyService.updateProgress(taskId: dailyTasks[index].task.id, newProgress: dailyTasks[index].currentProgress)
+            
+            // 3. Controllo completamento
+            //let target = dailyTasks[index].task.targetCount
+            if dailyTasks[index].currentProgress >= target {
+                dailyTasks[index].isCompleted = true
+                dailyService.completeTask(taskId: dailyTasks[index].task.id)
+            }
         }
-    }
     
     func requestRefresh(for task: DailyPlanService.DailyTaskStatus) {
         if dailyService.refreshTask(taskToReplace: task) != nil {
