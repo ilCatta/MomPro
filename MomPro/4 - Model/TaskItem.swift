@@ -8,11 +8,11 @@
 import Foundation
 
 enum TaskCategory: String, Codable, CaseIterable {
-    case shopping = "Spesa & Cibo"
-    case home = "Casa"
-    case finance = "Risparmio"
-    case family = "Famiglia"
-    case education = "Educazione" // Per l'articolo fisso
+    case shopping = "task_cat_shopping"
+    case home = "task_cat_home"
+    case finance = "task_cat_finance"
+    case family = "task_cat_family"
+    case education = "task_cat_education"
 }
 
 enum TaskType: String, Codable {

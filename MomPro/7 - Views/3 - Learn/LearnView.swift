@@ -115,7 +115,6 @@ struct LearnView: View {
                 // --- TOOLBAR ---
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
-                    
                     ToolbarItem(placement: .principal) {
                         HStack(spacing: 0) {
                             Text("tab_learn".localized)

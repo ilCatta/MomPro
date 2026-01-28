@@ -7,14 +7,15 @@
 
 import SwiftUI
 
+// Enum globale
+enum Tab {
+    case home
+    case stats
+    case learn
+    case settings
+}
+
 struct MomProAppTabView: View {
-    
-    enum Tab {
-            case home
-            case stats
-            case learn
-            case settings
-        }
     
     @State private var selectedTab: Tab = .home
     
@@ -22,7 +23,7 @@ struct MomProAppTabView: View {
         
         TabView(selection: $selectedTab) {
             
-            HomeView()
+            HomeView(currentTab: $selectedTab)
                 .tabItem {
                 Image(selectedTab == .home ? "calendar-03-duotone-rounded" : "calendar-03-stroke-rounded")
                 Text("tab_today".localized)

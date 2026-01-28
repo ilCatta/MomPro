@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    // Serve a controllare su quale tab ci troviamo (0 = Home, 1 = Learn, etc.)
+    @Binding var currentTab: Tab
+    
     @State private var viewModel = HomeViewModel()
     @State private var selectedTask: DailyPlanService.DailyTaskStatus?
     @State private var showPaywall = false // Per i task VIP
@@ -89,7 +93,7 @@ struct HomeView: View {
                         
                         // --- ATTIVITÀ TITLE ---
                         HStack {
-                            Text("Attività")
+                            Text("home_view_daily_activities".localized)
                                 .font(.system(.title3, design: .rounded))
                                 .fontWeight(.bold)
                                 .foregroundStyle(.primary)
@@ -102,7 +106,7 @@ struct HomeView: View {
                                 HStack(spacing: 4) {
                                     Image(systemName: "arrow.triangle.2.circlepath")
                                     // Mostra "1 Cambio" o "2 Cambi"
-                                    Text("\(viewModel.remainingRefreshes) \(viewModel.remainingRefreshes == 1 ? "Cambio" : "Cambi")")
+                                    Text("\(viewModel.remainingRefreshes) \(viewModel.remainingRefreshes == 1 ? "home_view_swap".localized : "home_view_swaps".localized )")
                                 }
                                 .font(.system(.caption, design: .rounded))
                                 .fontWeight(.semibold)
@@ -116,7 +120,7 @@ struct HomeView: View {
                                 // CASO: Cambi esauriti -> Messaggio conciso
                                 HStack(spacing: 4) {
                                     Image(systemName: "moon.zzz.fill")
-                                    Text("Nuovi cambi domani!")
+                                    Text("home_view_new_swaps_tomorrow".localized)
                                 }
                                 .font(.system(.caption, design: .rounded))
                                 .fontWeight(.medium)
@@ -130,6 +134,22 @@ struct HomeView: View {
                         .padding(.bottom, 20)
                         .padding(.horizontal)
                         // --- FINE ATTIVITÀ TITLE ---
+                        
+                        
+                        //  --- TASK EDUCATIVO (ex Wisdom Card)  ---
+                        if let eduTask = viewModel.educationTaskStatus {
+                            ClassicTask(
+                                taskStatus: eduTask,
+                                color: .purple, // Colore distintivo per l'educazione
+                                onTap: {
+                                    showEducationSheet = true
+                                },
+                                onRefresh: { }, // Nessuna azione
+                                canRefresh: false // Nasconde il tasto refresh
+                            )
+                            .padding(.bottom, 16) // Spazio prima degli altri task
+                            .padding(.horizontal)
+                        }
                         
                         
                         // --- I 4 TASK"GIORNALIERI CLASSICI ---
@@ -149,62 +169,78 @@ struct HomeView: View {
                                 )
                             }
                         }
-                        .padding(.bottom)
+                        .padding(.bottom, 20)
                         .padding(.horizontal)
                         // --- FINE 4 TASK"GIORNALIERI CLASSICI ---
 
                         
+                        // Divider
+                        Rectangle()
+                            .fill(Color(uiColor: .separator))
+                            .frame(height: 1)
+                            .padding(.horizontal)
+                            .padding(.bottom, 20)
+
                         
+                        // --- ATTIVITÀ PRO ---
+                        HStack(spacing:0) {
+                            Text("home_view_extra_activities".localized)
+                                .font(.system(.title3, design: .rounded))
+                                .fontWeight(.bold)
+                                .foregroundStyle(.primary)
+                                .padding(.trailing, 6)
+                            
+                            Text("PRO")
+                                .font(.system(.caption ,design: .rounded))
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .padding(.horizontal,8)
+                                .padding(.vertical,6)
+                                .background(.pink)
+                                .cornerRadius(10)
+                            
+                           
+                        }
+                        .padding(.bottom, 20)
+                        .padding(.horizontal)
+                        // --- FINE ATTIVITÀ TITLE ---
                         
-                        
-                        // MARK: - BODY
-                        VStack(spacing: 24) {
+               
+                        // --- I 2 TASK"GIORNALIERI PRO ---
+                        VStack(alignment: .leading, spacing: 16) {
                             
-                            /*
-                             // MARK: - B. DAILY WISDOM (Task Fisso)
-                             if let article = viewModel.dailyArticle {
-                             wisdomCard(article: article)
-                             } else {
-                             Text("Caricamento articolo...")
-                             .font(.caption)
-                             .foregroundStyle(.secondary)
-                             } */
-                            
-                        
-                            
-                            
-                            // MARK: - D. VIP ZONE (2 Pro)
-                            VStack(alignment: .leading, spacing: 12) {
-                                HStack {
-                                    Text("Zona VIP")
-                                        .font(.title3)
-                                        .fontWeight(.bold)
-                                    
-                                    Image(systemName: "crown.fill")
-                                        .foregroundStyle(.yellow)
-                                    
-                                    Spacer()
-                                }
-                                
-                                ForEach(viewModel.vipTasks) { taskStatus in
-                                    VipTaskRow(taskStatus: taskStatus) {
-                                        // Se è bloccato apre paywall, altrimenti apre dettaglio
-                                        if !StoreService.shared.isPro {
-                                            showPaywall = true
-                                        } else {
-                                            selectedTask = taskStatus
-                                        }
+                            ForEach(viewModel.vipTasks) { taskStatus in
+                                // USIAMO LA NUOVA CARD
+                                VipTaskCard(taskStatus: taskStatus) {
+                                    // Se è bloccato apre paywall, altrimenti apre dettaglio
+                                    if !StoreService.shared.isPro {
+                                        showPaywall = true
+                                    } else {
+                                        selectedTask = taskStatus
                                     }
                                 }
                             }
-                            
-                            Spacer(minLength: 50)
                         }
-                        .padding()
-                        .background(Color(uiColor: .systemGroupedBackground))
-                        // Corner radius negativo per effetto "foglio che copre l'header"
-                        //.clipShape(RoundedRectangle(cornerRadius: 24))
-                        //.offset(y: -20)
+                        .padding(.horizontal)
+                        .padding(.bottom, 16)
+                        
+                        
+                        // --- DISCLAIMER TASK PRO ---
+                        // Tailored selection: 2 extra high-impact tasks, distinct from your base plan, curated daily to fast-track your goals.
+                        Text("home_view_extra_activities_desc".localized)
+                            .font(.system(.caption, design: .default))
+                            .fontWeight(.medium)
+                            .foregroundStyle(.secondary)
+                            .padding(.horizontal)
+                        
+
+                        
+                        
+                        // --- SPACE ---
+                        Spacer(minLength: 40)
+
+   
+                       
                     }
                 }
                 .ignoresSafeArea(.all, edges: .top)
@@ -246,10 +282,29 @@ struct HomeView: View {
                     Text("Paywall Placeholder")
                 }
                 // SHEET 3: Istruzioni Education (NUOVO)
+                // MARK: - SHEET UNIFICATO EDUCATION
                 .sheet(isPresented: $showEducationSheet) {
-                    EducationInstructionSheet()
-                        .presentationDetents([.fraction(0.40)]) // Occupa solo il 40% dello schermo
-                        .presentationDragIndicator(.visible)
+                    if let task = viewModel.educationTaskStatus, task.isCompleted {
+                        
+                        // CASO 1: Successo
+                        EducationSuccessSheet()
+                            .presentationDetents([.fraction(0.50)])
+                            
+                    } else {
+                        
+                        // CASO 2: Istruzioni -> VAI A LEARN
+                        EducationInstructionSheet(onGoToLearn: {
+                            showEducationSheet = false
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                                withAnimation {
+                                    // MODIFICA QUI: Usa l'enum .learn
+                                    currentTab = .learn
+                                }
+                            }
+                        })
+                        .presentationDetents([.fraction(0.45)])
+                    }
                 }
             }
         }
@@ -286,11 +341,11 @@ struct HomeView: View {
         // Configurazione Stato (Testo, Colore, Icona)
         private var statusConfig: (text: String, color: Color, icon: String) {
             if taskStatus.isCompleted {
-                return ("Eccellente", .green, "arrow.up.circle.fill")
+                return ("home_view_excellent".localized, .green, "arrow.up.circle.fill")
             } else if taskStatus.currentProgress > 0 {
-                return ("Ok", .blue, "checkmark.circle.fill")
+                return ("home_view_ok".localized, .blue, "checkmark.circle.fill")
             } else {
-                return ("Insufficiente", .red, "arrow.down.circle.fill")
+                return ("home_view_low".localized, .red, "arrow.down.circle.fill") 
             }
         }
         
@@ -314,11 +369,11 @@ struct HomeView: View {
                         // 1. Header: Icona Categoria + Nome Categoria
                         HStack(spacing: 0) {
                             Image(systemName: iconName(for: taskStatus.task.category))
-                                .font(.system(.caption2, design: .default))
+                                .font(.system(.caption2, design: .rounded))
                                 .foregroundStyle(.tertiary)
                                 .padding(.trailing, 4)
                             
-                            Text(LocalizedStringKey(taskStatus.task.category.rawValue))
+                            Text((taskStatus.task.category.rawValue).localized)
                                 .font(.system(.caption2, design: .rounded))
                                 .fontWeight(.semibold)
                                 .foregroundStyle(.tertiary)
@@ -362,7 +417,7 @@ struct HomeView: View {
                                         .font(.system(.caption, design: .rounded))
                                         .fontWeight(.bold)
                                         .foregroundStyle(.secondary)
-                                        .padding(8)
+                                        .padding(6)
                                         .background(Color(uiColor: .systemGray5))
                                         .clipShape(Circle())
                                 }
@@ -415,118 +470,18 @@ struct HomeView: View {
             .buttonStyle(SquishyButtonEffect())
         }
         
-        func iconName(for cat: TaskCategory) -> String {
-            switch cat {
-            case .shopping: return "cart.fill"
-            case .home: return "house.fill"
-            case .finance: return "banknote.fill"
-            case .family: return "figure.2.and.child.holdinghands"
-            default: return "star.fill"
-            }
-        }
+        
     }
     
     
-    private struct SquishyButtonEffect: ButtonStyle {
 
-        func makeBody(configuration: Configuration) -> some View {
-            configuration.label
-            .scaleEffect(configuration.isPressed ? 0.94 : 1.0)
-            .brightness(configuration.isPressed ? -0.0 : 0)
-            .animation(.spring(response: 0.3, dampingFraction: 0.4, blendDuration: 0), value: configuration.isPressed)
-        }
-    }
 
     
     
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // Componente Wisdom Card
-        func wisdomCard(article: Article) -> some View {
-            // MODIFICA CRUCIALE:
-            // Controlliamo se il TASK "Leggi un articolo" è completato,
-            // NON se questo specifico articolo è stato letto.
-            let isCompleted = viewModel.isEducationTaskCompleted
-            
-            return Button(action: {
-                if !isCompleted {
-                    showEducationSheet = true
-                } else {
-                    let generator = UINotificationFeedbackGenerator()
-                    generator.notificationOccurred(.success)
-                }
-            }) {
-                HStack(spacing: 16) {
-                    ZStack {
-                        Circle()
-                            .fill(isCompleted ? Color.green.opacity(0.15) : Color.purple.opacity(0.15))
-                            .frame(width: 50, height: 50)
-                        
-                        Image(systemName: isCompleted ? "checkmark" : "book.fill")
-                            .foregroundStyle(isCompleted ? .green : .purple)
-                            .font(.title3)
-                            .fontWeight(isCompleted ? .bold : .regular)
-                    }
-                    
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("IL TUO MOMENTO CRESCITA")
-                            .font(.caption)
-                            .fontWeight(.bold)
-                            .foregroundStyle(.secondary)
-                        
-                        // Titolo: "Obiettivo completato" se fatto, altrimenti titolo articolo suggerito
-                        Text(isCompleted ? "Obiettivo lettura completato!" : "Investi 5 minuti su te stessa: leggi una guida.")
-                            .font(.headline)
-                            .fontWeight(.bold)
-                            .foregroundStyle(isCompleted ? .secondary : .primary)
-                            .strikethrough(isCompleted)
-                            .lineLimit(2)
-                            .multilineTextAlignment(.leading)
-                    }
-                    
-                    Spacer()
-                    
-                    if !isCompleted {
-                        Image(systemName: "chevron.right")
-                            .foregroundStyle(.secondary)
-                    }
-                }
-                .padding()
-                .background(Color.white)
-                .cornerRadius(16)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(isCompleted ? Color.green.opacity(0.3) : Color.clear, lineWidth: 2)
-                )
-                .shadow(color: .black.opacity(0.05), radius: 5, x: 0, y: 2)
-            }
-            .buttonStyle(PlainButtonStyle())
-        }
+   
 }
 
 
@@ -553,12 +508,14 @@ struct HomeView: View {
 
 
 
-// MARK: - NUOVO COMPONENTE: Foglio Istruzioni Education
+// MARK: - SHEET 1: Istruzioni (Prima di completare)
 struct EducationInstructionSheet: View {
     @Environment(\.dismiss) private var dismiss
+    // Questa closure serve per dire alla Home: "Spostati sul tab Learn"
+    var onGoToLearn: () -> Void
     
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 24) {
             
             // Icona Grande
             Image(systemName: "signpost.right.and.left.fill")
@@ -568,7 +525,7 @@ struct EducationInstructionSheet: View {
                 .background(Color.purple.opacity(0.1))
                 .clipShape(Circle())
             
-            VStack(spacing: 10) {
+            VStack(spacing: 12) {
                 Text("Tempo di imparare!")
                     .font(.title2)
                     .fontWeight(.bold)
@@ -584,8 +541,10 @@ struct EducationInstructionSheet: View {
             
             Button(action: {
                 dismiss()
-                // Nota: L'utente dovrà cambiare tab manualmente.
-                // Questo è voluto per fargli esplorare l'app.
+                // Ritardiamo leggermente la navigazione per far chiudere il foglio in modo fluido
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    onGoToLearn()
+                }
             }) {
                 Text("Ho capito, vado a leggere")
                     .font(.headline)
@@ -597,13 +556,99 @@ struct EducationInstructionSheet: View {
             }
         }
         .padding(24)
+        .presentationDetents([.fraction(0.45)])
+        .presentationDragIndicator(.visible)
+    }
+}
+
+// MARK: - SHEET 2: Successo (Dopo aver completato)
+struct EducationSuccessSheet: View {
+    @Environment(\.dismiss) private var dismiss
+    
+    var body: some View {
+        VStack(spacing: 24) {
+            
+            // Icona Successo
+            Image(systemName: "checkmark.seal.fill")
+                .font(.system(size: 65))
+                .foregroundStyle(.green)
+                .padding()
+                .background(Color.green.opacity(0.1))
+                .clipShape(Circle())
+                .shadow(color: .green.opacity(0.2), radius: 10, x: 0, y: 5)
+            
+            VStack(spacing: 8) {
+                Text("Obiettivo Completato!")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundStyle(.primary)
+                
+                Text("Ottimo lavoro! Hai investito del tempo prezioso per la tua crescita personale.")
+                    .font(.body)
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal)
+            }
+            
+            // Box Riepilogo (Simile a ClassicTask ma statico)
+            HStack {
+                Image(systemName: "book.fill")
+                    .foregroundStyle(.purple)
+                    .padding(10)
+                    .background(Color.purple.opacity(0.1))
+                    .clipShape(Circle())
+                
+                VStack(alignment: .leading) {
+                    Text("Lettura Giornaliera")
+                        .font(.caption)
+                        .fontWeight(.bold)
+                        .foregroundStyle(.secondary)
+                    Text("Completata")
+                        .font(.headline)
+                        .fontWeight(.bold)
+                        .foregroundStyle(.primary)
+                }
+                Spacer()
+                Image(systemName: "checkmark.circle.fill")
+                    .font(.title2)
+                    .foregroundStyle(.green)
+            }
+            .padding()
+            .background(Color(uiColor: .secondarySystemGroupedBackground))
+            .cornerRadius(16)
+            .padding(.horizontal)
+            
+            Spacer()
+            
+            Button(action: { dismiss() }) {
+                Text("Chiudi")
+                    .font(.headline)
+                    .foregroundStyle(.primary)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color(uiColor: .tertiarySystemFill))
+                    .clipShape(Capsule())
+            }
+        }
+        .padding(24)
+        .presentationDetents([.fraction(0.50)]) // Mezzo schermo
+        .presentationDragIndicator(.visible)
     }
 }
 
 
 
 
-struct VipTaskRow: View {
+
+
+
+
+
+
+
+
+
+struct VipTaskCard: View {
     let taskStatus: DailyPlanService.DailyTaskStatus
     let onTap: () -> Void
     
@@ -611,46 +656,128 @@ struct VipTaskRow: View {
         return !StoreService.shared.isPro
     }
     
+    // MARK: - Generazione Testi Misteriosi
+        // Questi testi cambiano in base alla VERA categoria del task nascosto.
+        // Così non rischi mai di avere un titolo sbagliato.
+    var lockedTitle: String {
+        switch taskStatus.task.category {
+        case .finance:
+            return "home_view_mystery_finance".localized   // "Finance Strategy" - "Strategia Finanziaria"
+        case .shopping:
+            return "home_view_mystery_shopping".localized  // "Shopping Protocol" - "Protocollo Spesa"
+        case .home:
+            return "home_view_mystery_home".localized     // "Home Efficiency" - "Efficienza Domestica"
+        case .family:
+            return "home_view_mystery_family".localized    // "Family Balance" - "Equilibrio Familiare"
+        case .education:
+            return ""
+        }
+    }
+        
+        var lockedSubtitle: String {
+            // Un sottotitolo unico, elegante e motivante per tutti
+            return "home_view_locked_subtitle".localized // "Reveal the advanced method." - "Rivela il metodo avanzato."
+        }
+    
     var body: some View {
         Button(action: onTap) {
-            HStack(spacing: 16) {
-                // Icona Lucchetto o Categoria
-                ZStack {
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(isLocked ? Color.gray.opacity(0.2) : Color.pink.opacity(0.1))
-                        .frame(width: 50, height: 50)
+            
+            HStack(spacing: 0) {
+                
+                // --- PARTE SINISTRA: INFO ---
+                VStack(alignment: .leading, spacing: 0) {
                     
-                    Image(systemName: isLocked ? "lock.fill" : "crown.fill")
-                        .foregroundStyle(isLocked ? .gray : .pink)
-                        .font(.title3)
+                    // 1. Header: Icona Categoria + Nome Categoria (o PRO)
+                    HStack(spacing: 0) {
+                        
+                        Text(isLocked ? "home_view_exclusive_access".localized : (taskStatus.task.category.rawValue.localized))
+                            .font(.system(.caption2, design: .rounded))
+                            .fontWeight(.semibold)
+                            .foregroundStyle(  isLocked ? .pink : Color(uiColor: .tertiaryLabel))
+                            .textCase(.uppercase)
+                    }
+                    .padding(.bottom, 8)
+                    
+                    
+                    // 2. Titolo del Task (o Teaser se bloccato)
+                    Text(isLocked ? lockedTitle.localized : taskStatus.task.title.localized)
+                        .font(.system(.title3, design: .rounded))
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.primary)
+                        .lineLimit(2)
+                        .multilineTextAlignment(.leading)
+                        .padding(.bottom, 8)
+
+                    
+                    // 3. Status / Call to Action
+                    HStack(spacing: 4) {
+                        if isLocked {
+                            // Testo persuasivo basato sul brief
+                            Text(lockedSubtitle)
+                                .font(.system(.subheadline, design: .rounded))
+                                .fontWeight(.medium)
+                                .foregroundStyle(.secondary)
+                                .lineLimit(2)
+                                .fixedSize(horizontal: false, vertical: true)
+                        } else {
+                            // Se sbloccato, mostra lo stato classico
+                            Image(systemName: taskStatus.isCompleted ? "checkmark.circle.fill" : "circle")
+                            Text(taskStatus.isCompleted ? "Completato" : "Pronto per iniziare")
+                        }
+                    }
+                    .font(.system(.subheadline, design: .rounded))
+                    .foregroundStyle(isLocked ? .secondary : .primary)
                 }
                 
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(isLocked ? "Strategia Avanzata" : taskStatus.task.title)
-                        .font(.headline)
-                        .fontWeight(.bold)
-                        .foregroundStyle(isLocked ? .secondary : .primary)
+                Spacer(minLength: 16)
+                
+                // --- PARTE DESTRA: LUCCHETTO O FRECCIA ---
+                ZStack {
+                    // Sfondo cerchio leggero per dare importanza
+                    Circle()
+                        .fill(isLocked ? Color(uiColor: .systemGray5) : Color(uiColor: .systemGray6))
+                        .frame(width: 44, height: 44)
                     
                     if isLocked {
-                        Text("Sblocca per risparmiare di più")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+                        Image(systemName: "lock.fill")
+                            .font(.title3)
+                            .foregroundColor(.secondary)
                     } else {
-                        Text(taskStatus.task.category.rawValue)
-                            .font(.caption)
-                            .foregroundStyle(.pink)
+                        Image(systemName: "chevron.right")
+                            .font(.headline)
+                            .foregroundStyle(.secondary)
                     }
                 }
-                
-                Spacer()
-                
-                Image(systemName: "chevron.right")
-                    .foregroundStyle(.secondary.opacity(0.5))
             }
-            .padding()
-            .background(Color.white)
-            .cornerRadius(16)
-            .shadow(color: .black.opacity(0.05), radius: 5, x: 0, y: 2)
+            .padding(.horizontal)
+            .padding(.vertical, 20) // Un po' più di padding verticale per i VIP
+            .background(
+                RoundedRectangle(cornerRadius: 22, style: .continuous)
+                    .fill(Color(.secondarySystemGroupedBackground))
+            )
         }
+        .buttonStyle(SquishyButtonEffect()) // Stesso effetto tocco della ClassicTask
+    }
+    
+}
+
+
+private func iconName(for cat: TaskCategory) -> String {
+    switch cat {
+    case .shopping: return "cart.fill"
+    case .home: return "house.fill"
+    case .finance: return "banknote.fill"
+    case .family: return "figure.2.and.child.holdinghands"
+    case .education: return "graduationcap.fill"
+    }
+}
+
+private struct SquishyButtonEffect: ButtonStyle {
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+        .scaleEffect(configuration.isPressed ? 0.94 : 1.0)
+        .brightness(configuration.isPressed ? -0.0 : 0)
+        .animation(.spring(response: 0.3, dampingFraction: 0.4, blendDuration: 0), value: configuration.isPressed)
     }
 }
