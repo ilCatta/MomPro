@@ -26,15 +26,24 @@ struct TaskItem: Identifiable, Codable, Hashable {
     let description: String
     let category: TaskCategory
     let type: TaskType
-    let targetCount: Int // Es. 3 (se type è simpleCheck, questo è 1)
+    let targetCount: Int
+    let isPro: Bool // <--- NUOVA PROPRIETÀ
     
-    // Per facilitare la creazione
-    init(id: UUID = UUID(), title: String, description: String, category: TaskCategory, type: TaskType = .simpleCheck, targetCount: Int = 1) {
+    // Init aggiornato con isPro
+    init(id: UUID = UUID(),
+         title: String,
+         description: String,
+         category: TaskCategory,
+         type: TaskType = .simpleCheck,
+         targetCount: Int = 1,
+         isPro: Bool = false) { // Default false
+        
         self.id = id
         self.title = title
         self.description = description
         self.category = category
         self.type = type
         self.targetCount = targetCount
+        self.isPro = isPro
     }
 }

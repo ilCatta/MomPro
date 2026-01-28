@@ -40,9 +40,15 @@ class ArticleReaderViewModel {
     }
     
     private func completeDailyReadingTask() {
-        // Cerca nei task di oggi quello di categoria .education e completalo
-        if let readingTask = DailyPlanService.shared.dailyTasks.first(where: { $0.task.category == .education }) {
-            DailyPlanService.shared.updateTaskProgress(id: readingTask.id)
+            // 1. Recuperiamo il piano di oggi chiamando la funzione del servizio
+            let todaysPlan = DailyPlanService.shared.getOrGenerateDailyPlan()
+            
+            // 2. Cerchiamo il task che ha categoria .education
+            // (Ora Swift sa che todaysPlan è un array di DailyTaskStatus, quindi riconosce .education)
+            if let readingStatus = todaysPlan.first(where: { $0.task.category == .education }) {
+                
+                // 3. Usiamo il metodo corretto 'completeTask' passando l'ID del Task originale
+                DailyPlanService.shared.completeTask(taskId: readingStatus.task.id)
+            }
         }
-    }
 }
