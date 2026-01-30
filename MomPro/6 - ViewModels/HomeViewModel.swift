@@ -14,24 +14,27 @@ class HomeViewModel {
     private var dailyService = DailyPlanService.shared
     private var storeService = StoreService.shared
     
-    private var randomMascotVariant1: String = "mascotte_today_lv1_a"
-    private var randomMascotVariant2: String = "mascotte_today_lv2_a"
-    private var randomMascotVariant3: String = "mascotte_today_lv3_a"
-    private var randomMascotVariant4: String = "mascotte_today_lv4_a"
-    private var randomMascotVariant5: String = "mascotte_today_lv5_a"
-    private var randomMascotVariant6: String = "mascotte_today_lv6_a"
-    private var randomMascotVariant7: String = "mascotte_today_lv7_a"
+    // MARK: - Mascotte Assets (Varianti)
+    private let mascotOptionsLv1 = ["mascotte_today_lv1_a", "mascotte_today_lv1_b", "mascotte_today_lv1_c", "mascotte_today_lv1_d"]
+    private let mascotOptionsLv2 = ["mascotte_today_lv2_a", "mascotte_today_lv2_b", "mascotte_today_lv2_c"]
+    private let mascotOptionsLv3 = ["mascotte_today_lv3_a", "mascotte_today_lv3_b", "mascotte_today_lv3_c"]
+    private let mascotOptionsLv4 = ["mascotte_today_lv4_a", "mascotte_today_lv4_b", "mascotte_today_lv4_c"]
+    private let mascotOptionsLv5 = ["mascotte_today_lv5_a", "mascotte_today_lv5_b", "mascotte_today_lv5_c"]
+    // Varianti PRO
+    private let mascotOptionsLv6 = ["mascotte_today_lv6_a", "mascotte_today_lv6_b", "mascotte_today_lv6_c"]
+    private let mascotOptionsLv7 = ["mascotte_today_lv7_a", "mascotte_today_lv7_b", "mascotte_today_lv7_c"]
 
-    private let options1 = ["mascotte_today_lv1_a", "mascotte_today_lv1_b", "mascotte_today_lv1_c", "mascotte_today_lv1_d"]
-    private let options2 = ["mascotte_today_lv2_a", "mascotte_today_lv2_b", "mascotte_today_lv2_c"]
-    private let options3 = ["mascotte_today_lv3_a", "mascotte_today_lv3_b", "mascotte_today_lv3_c"]
-    private let options4 = ["mascotte_today_lv4_a", "mascotte_today_lv4_b", "mascotte_today_lv4_c"]
-    private let options5 = ["mascotte_today_lv5_a", "mascotte_today_lv5_b", "mascotte_today_lv5_c"]
-    private let options6 = ["mascotte_today_lv6_a", "mascotte_today_lv6_b", "mascotte_today_lv6_c"]
-    private let options7 = ["mascotte_today_lv7_a", "mascotte_today_lv7_b", "mascotte_today_lv7_c"]
+    // MARK: - Testi Motivazionali (Chiavi Localizzate)
+    // 3 varianti per ogni livello, basate sul brief (Risparmio, No Stress, Investimenti)
+    private let textOptionsLv1 = ["quote_today_lv1_a", "quote_today_lv1_b", "quote_today_lv1_c"] // Inizio
+    private let textOptionsLv2 = ["quote_today_lv2_a", "quote_today_lv2_b", "quote_today_lv2_c"] // Riscaldamento
+    private let textOptionsLv3 = ["quote_today_lv3_a", "quote_today_lv3_b", "quote_today_lv3_c"] // Metà strada
+    private let textOptionsLv4 = ["quote_today_lv4_a", "quote_today_lv4_b", "quote_today_lv4_c"] // Quasi fatto
+    private let textOptionsLv5 = ["quote_today_lv5_a", "quote_today_lv5_b", "quote_today_lv5_c"] // Base completata
+    private let textOptionsLv6 = ["quote_today_lv6_a", "quote_today_lv6_b", "quote_today_lv6_c"] // Bonus 1
+    private let textOptionsLv7 = ["quote_today_lv7_a", "quote_today_lv7_b", "quote_today_lv7_c"] // Tutto completato
 
 
-    
     
     // Contiene TUTTI i 7 task (1 Edu + 4 Grid + 2 VIP)
     var dailyTasks: [DailyPlanService.DailyTaskStatus] = []
@@ -40,7 +43,7 @@ class HomeViewModel {
     var showRefreshAlert = false
     
         
-    // MARK: - Separazione Intelligente dei Task
+    // MARK: - Computed Properties (Task Separation)
     
     // Il 1° task è sempre quello Educativo
     var educationTaskStatus: DailyPlanService.DailyTaskStatus? {
@@ -101,54 +104,94 @@ class HomeViewModel {
         return completedCount / baseTotal
     }
     
-    // --- NUOVA FUNZIONE ---
-        // Chiamata quando la vista appare
-        func randomizeMascotVariant() {
-            self.randomMascotVariant1 = options1.randomElement() ?? "mascotte_today_lv1_a"
-            self.randomMascotVariant2 = options2.randomElement() ?? "mascotte_today_lv2_a"
-            self.randomMascotVariant3 = options3.randomElement() ?? "mascotte_today_lv3_a"
-            self.randomMascotVariant4 = options4.randomElement() ?? "mascotte_today_lv4_a"
-            self.randomMascotVariant5 = options5.randomElement() ?? "mascotte_today_lv5_a"
-            self.randomMascotVariant6 = options6.randomElement() ?? "mascotte_today_lv6_a"
-            self.randomMascotVariant7 = options7.randomElement() ?? "mascotte_today_lv7_a"
-        }
+    // MARK: - Helper Logica Giornaliera (STABILE)
+        
+    // Restituisce un elemento dall'array in base al giorno dell'anno.
+    // Questo garantisce che per TUTTO il giorno l'utente veda la stessa variante,
+    // ma il giorno dopo cambi automaticamente.
+    private func getDailyVariant(for options: [String], salt: Int) -> String {
+        guard !options.isEmpty else { return "" }
+        
+        let calendar = Calendar.current
+        // Otteniamo il numero del giorno nell'anno (1...365)
+        let dayOfYear = calendar.ordinality(of: .day, in: .year, for: Date()) ?? 1
+        let year = calendar.component(.year, from: Date())
+        
+        // Creiamo un indice univoco combinando anno, giorno e un "sale" (per variare tra livelli)
+        let uniqueIndex = dayOfYear + year + salt
+        
+        // Usiamo il modulo (%) per ruotare le opzioni
+        return options[uniqueIndex % options.count]
+    }
     
     
     // MODIFICA 2: Mascotte Dinamica con livelli PRO
     var dailyMascotImageName: String {
         let p = dailyProgress
         
-        // FASE 1: Completamento Base (0% - 99%)
+        // FASE 1: Base incompleta -  Completamento Base (0% - 99%)
         // Se non hai finito la base, la mascotte segue la logica standard
-        if p < 1.0 {
-            if p < 0.2 { return randomMascotVariant1 }
-            if p < 0.4 { return randomMascotVariant2 }
-            if p < 0.6 { return randomMascotVariant3 }
-            if p < 0.8 { return randomMascotVariant4 }
-            return randomMascotVariant5
-        }
+        if p < 0.2 { return getDailyVariant(for: mascotOptionsLv1, salt: 1) }
+        if p < 0.4 { return getDailyVariant(for: mascotOptionsLv2, salt: 2) }
+        if p < 0.6 { return getDailyVariant(for: mascotOptionsLv3, salt: 3) }
+        if p < 0.8 { return getDailyVariant(for: mascotOptionsLv4, salt: 4) }
+        if p < 1.0 { return getDailyVariant(for: mascotOptionsLv5, salt: 5) } // Quasi finito
         
         // FASE 2: Base Completata (100%)
         // Se arriviamo qui, la base è finita.
         
         // Se l'utente NON è Pro, rimane semplicemente "Felice"
         if !storeService.isPro {
-            return randomMascotVariant5
+            return getDailyVariant(for: mascotOptionsLv5, salt: 5)
         }
         
         // Se l'utente È PRO, guardiamo i Bonus (VIP Tasks)
         let completedVipCount = vipTasks.filter { $0.isCompleted }.count
         
         if completedVipCount == 1 {
-            return randomMascotVariant6 // Ha fatto 1 bonus su 2
+            return getDailyVariant(for: mascotOptionsLv6, salt: 6)
         } else if completedVipCount >= 2 {
-            return randomMascotVariant7 // Ha fatto tutto (Super Mamma Livello Massimo)
+            return getDailyVariant(for: mascotOptionsLv7, salt: 7)
         } else {
-            // Ha finito la base ma nessun bonus ancora
-            return randomMascotVariant5
+            // Base finita, nessun bonus ancora
+            return getDailyVariant(for: mascotOptionsLv5, salt: 5)
         }
     }
     
+    // MARK: - Testo Motivazionale (Data-Driven)
+        
+    var dailyMotivationalText: String {
+        let p = dailyProgress
+        
+        // FASE 1: Incoraggiamento Iniziale
+        if p < 0.2 { return getDailyVariant(for: textOptionsLv1, salt: 10) }
+        
+        // FASE 2: Momentum
+        if p < 0.4 { return getDailyVariant(for: textOptionsLv2, salt: 20) }
+        if p < 0.6 { return getDailyVariant(for: textOptionsLv3, salt: 30) }
+        if p < 0.8 { return getDailyVariant(for: textOptionsLv4, salt: 40) }
+        
+        // FASE 3: Soddisfazione (Base 100%)
+        if p < 1.0 { return getDailyVariant(for: textOptionsLv5, salt: 50) } // Quasi finito
+        
+        // FASE 4: Base Completata
+        if !storeService.isPro {
+            return getDailyVariant(for: textOptionsLv5, salt: 50)
+        }
+        
+        // FASE 5: Bonus PRO
+        let completedVipCount = vipTasks.filter { $0.isCompleted }.count
+        
+        if completedVipCount == 1 {
+            return getDailyVariant(for: textOptionsLv6, salt: 60)
+        } else if completedVipCount >= 2 {
+            return getDailyVariant(for: textOptionsLv7, salt: 70)
+        } else {
+            return getDailyVariant(for: textOptionsLv5, salt: 50)
+        }
+    }
+    
+        
     // MARK: - Init & Load
     
     init() {

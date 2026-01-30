@@ -59,23 +59,45 @@ struct HomeView: View {
                         // --- PROGRESSO E BARRA PROGRESSO ---
                         VStack(alignment: .leading, spacing: 2) {
                             
+                            /*
                             Text(LocalizedStringKey("Progresso"))
                                 .font(.system(.callout, design: .default))
                                 .fontWeight(.medium)
                                 .foregroundColor(.secondary)
+                             */
                             
+                            /*
                             Text(LocalizedStringKey("Inizia la giornata!"))
                                 .font(.system(.title, design: .rounded))
                                 .fontWeight(.semibold)
                                 .foregroundColor(.primary)
                                 .padding(.bottom, 10)
+                             */
+                            
+                            Text(formattedDate.capitalized)
+                                .font(.system(.title3, design: .rounded))
+                                .fontWeight(.semibold)
+                                .foregroundColor(.pink)
+                                .padding(.bottom, 8)
+                            
+                            // Testo Motivazionale Variabile
+                            Text(viewModel.dailyMotivationalText.localized)
+                                .font(.system(.body, design: .rounded)) // Font leggibile
+                                .fontWeight(.regular)
+                                .foregroundColor(.primary)
+                                .lineLimit(8)
+                                .fixedSize(horizontal: false, vertical: true) // Evita troncamenti
+                                .padding(.bottom, 20) // Spazio prima della barra
+                                .animation(.easeInOut, value: viewModel.dailyMotivationalText)
                             
                             // Barra Progresso
+                            CustomProgressBar(progress: viewModel.dailyProgress)
+                            /*
                             ProgressView(value: viewModel.dailyProgress)
                                 .tint(.green)
                                 .background(Color.white.opacity(0.3))
                                 .scaleEffect(x: 1, y: 2, anchor: .center)
-                                .clipShape(Capsule())
+                                .clipShape(Capsule())*/
                             
                         }
                         .padding(.bottom, 20)
@@ -245,18 +267,15 @@ struct HomeView: View {
                 }
                 .ignoresSafeArea(.all, edges: .top)
                 .onAppear {
-                    // 1. Ricarica i dati dei task
+                    // Ricarica solo i dati, la mascotte e i testi si aggiornano da soli con la data
                     viewModel.refreshData()
-                    // 2. NUOVO: Cambia "vestito" alla mascotte ogni volta che entri qui!
-                    viewModel.randomizeMascotVariant()
-                    //
                 }
-                .onAppear { viewModel.refreshData() }
                 //
                 //
                 // -------------------------------------------------
                 // MARK: --- TOOLBAR
                 //
+                /*
                 .toolbar {
                     ToolbarItem(placement: .principal) {
                         Text(formattedDate.capitalized)
@@ -265,7 +284,8 @@ struct HomeView: View {
                             .foregroundStyle(.primary)
                     }
                 }
-                // NUOVO: Aggiorna la data automaticamente a mezzanotte
+                 */
+                // Aggiorna la data automaticamente a mezzanotte
                 .onReceive(NotificationCenter.default.publisher(for: .NSCalendarDayChanged)) { _ in
                     self.todayDate = Date()
                 }
@@ -325,6 +345,294 @@ struct HomeView: View {
         return formatter.string(from: todayDate)
     }
    
+    // -------------------------------------------------
+    //
+    // MARK: - Custom Progress Bar
+    //
+    // -------------------------------------------------
+    /*
+    struct CustomProgressBar: View {
+        // Riceviamo il progresso come percentuale (0.0 - 1.0) dal ViewModel
+        var progress: Double
+        
+        // Costanti di configurazione
+        private let totalSteps: Int = 5 // 1 Edu + 4 Grid
+        private let spacing: CGFloat = 6 // Spazio tra i rettangoli
+        
+        var body: some View {
+            GeometryReader { geo in
+                let totalWidth = geo.size.width
+                let height = geo.size.height
+                
+                // --- CALCOLO DIMENSIONI RETTANGOLI ---
+                // Definiamo le proporzioni: Piccolo (15%), Grande (70%), Piccolo (15%)
+                // Sottraiamo lo spazio (spacing * 2) dal totale disponibile
+                let availableWidth = totalWidth - (spacing * 2)
+                let smallWidth = availableWidth * 0.15
+                let largeWidth = availableWidth * 0.70
+                
+                // --- CALCOLO STEP CORRENTE ---
+                // Convertiamo 0.0-1.0 in un numero intero da 0 a 5
+                let currentStep = Int(round(progress * Double(totalSteps)))
+                
+                // --- CALCOLO POSIZIONE PALLINO (Knob X) ---
+                let knobX: CGFloat = calculateKnobPosition(
+                    step: currentStep,
+                    smallW: smallWidth,
+                    largeW: largeWidth,
+                    gap: spacing
+                )
+                
+                ZStack(alignment: .leading) {
+                    
+                    // 1. LIVELLO SFONDO (I 3 rettangoli grigi vuoti)
+                    // Usiamo un HStack per disegnarli separati
+                    segmentedCapsules(smallW: smallWidth, largeW: largeWidth)
+                        .foregroundStyle(Color(uiColor: .systemGray5))
+                    
+                    // 2. LIVELLO COLORE (Il riempimento Pink)
+                    // Disegniamo un gradiente che va dal trasparente al rosa pieno.
+                    // LO MASCHERIAMO in due modi:
+                    // A. Deve fermarsi dove c'è il pallino (frame width)
+                    // B. Deve rispettare la forma dei rettangoli e i buchi (mask)
+                    LinearGradient(
+                        colors: [Color.pink.opacity(0.1), Color.pink],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                    .frame(width: knobX) // Il colore arriva solo fino al pallino
+                    .mask(
+                        // Maschera usando la stessa forma dei rettangoli
+                        segmentedCapsules(smallW: smallWidth, largeW: largeWidth)
+                            .alignmentGuide(.leading) { _ in 0 } // Fix allineamento
+                    )
+                    // Animazione fluida del riempimento
+                    .animation(.spring(response: 0.6, dampingFraction: 0.8), value: knobX)
+                    
+                    // 3. IL PALLINO (Knob)
+                    // Simile all'immagine: cerchio colorato con bordo bianco e ombra
+                    Circle()
+                        .fill(Color.pink)
+                        .frame(width: 20, height: 20)
+                        .overlay(
+                            Circle()
+                                .stroke(Color.white, lineWidth: 3)
+                        )
+                        .shadow(color: Color.pink.opacity(0.3), radius: 4, x: 0, y: 2)
+                        // Lo centriamo sulla coordinata X calcolata
+                        .position(x: knobX, y: height / 2)
+                        .animation(.spring(response: 0.6, dampingFraction: 0.8), value: knobX)
+                }
+            }
+            .frame(height: 24) // Altezza fissa del componente
+        }
+        
+        // --- FUNZIONI DI SUPPORTO ---
+        
+        // Disegna la forma base: [Piccolo] [Grande] [Piccolo]
+        @ViewBuilder
+        private func segmentedCapsules(smallW: CGFloat, largeW: CGFloat) -> some View {
+            HStack(spacing: spacing) {
+                Capsule().frame(width: smallW)
+                Capsule().frame(width: largeW)
+                Capsule().frame(width: smallW)
+            }
+        }
+        
+        // Logica personalizzata per posizionare il cursore
+        private func calculateKnobPosition(step: Int, smallW: CGFloat, largeW: CGFloat, gap: CGFloat) -> CGFloat {
+            
+            // Offset di partenza dei vari blocchi
+            let block1_Start: CGFloat = 0
+            let block2_Start: CGFloat = smallW + gap
+            let block3_Start: CGFloat = smallW + gap + largeW + gap
+            
+            switch step {
+            case 0:
+                // Caso 0: Esattamente al CENTRO del primo rettangolo piccolo
+                return block1_Start + (smallW / 2)
+                
+            case 5:
+                // Caso 5 (Finale): Esattamente al CENTRO dell'ultimo rettangolo piccolo
+                return block3_Start + (smallW / 2)
+                
+            default:
+                // Casi 1, 2, 3, 4: Distribuiti dentro il rettangolo GRANDE centrale
+                // Definiamo un margine interno per non far toccare i bordi
+                let padding: CGFloat = 10
+                
+                // Spazio utile dentro il rettangolo grande
+                let availableSpace = largeW - (padding * 2)
+                
+                // Dobbiamo distribuire 4 step (1,2,3,4) in questo spazio.
+                // Matematicamente significa mappare:
+                // 1 -> 0% dello spazio utile
+                // 4 -> 100% dello spazio utile
+                
+                // Normalizziamo lo step da (1...4) a (0...3)
+                let relativeStep = CGFloat(step - 1)
+                let maxSteps = CGFloat(3) // (4-1)
+                
+                let progressInBlock = relativeStep / maxSteps // 0.0, 0.33, 0.66, 1.0
+                
+                let positionInBlock = padding + (availableSpace * progressInBlock)
+                
+                return block2_Start + positionInBlock
+            }
+        }
+    } */
+    
+    struct CustomProgressBar: View {
+        // Riceviamo il progresso come percentuale (0.0 - 1.0) dal ViewModel
+        var progress: Double
+        
+        // Costanti di configurazione
+        private let totalSteps: Int = 5
+        private let spacing: CGFloat = 6
+        
+        var body: some View {
+            GeometryReader { geo in
+                let totalWidth = geo.size.width
+                let height = geo.size.height
+                
+                // --- 1. CALCOLO DIMENSIONI ---
+                // Proporzioni: 15% - 70% - 15%
+                let availableWidth = totalWidth - (spacing * 2)
+                let smallWidth = availableWidth * 0.15
+                let largeWidth = availableWidth * 0.70
+                
+                // --- 2. CALCOLO STEP CORRENTE (0...5) ---
+                let currentStep = Int(round(progress * Double(totalSteps)))
+                
+                ZStack(alignment: .leading) {
+                    
+                    // --- STRATO A: I 3 RETTANGOLI ---
+                    HStack(spacing: spacing) {
+                        
+                        // RETTANGOLO 1 (Iniziale) - Step 0
+                        renderGlowBar(
+                            width: smallWidth,
+                            isActive: currentStep == 0,
+                            knobRelativePos: 0.5 // Cursore al centro
+                        )
+                        
+                        // RETTANGOLO 2 (Centrale) - Step 1...4
+                        renderGlowBar(
+                            width: largeWidth,
+                            isActive: (currentStep >= 1 && currentStep <= 4),
+                            knobRelativePos: calculateCenterKnobRelativePos(step: currentStep)
+                        )
+                        
+                        // RETTANGOLO 3 (Finale) - Step 5
+                        renderGlowBar(
+                            width: smallWidth,
+                            isActive: currentStep == 5,
+                            knobRelativePos: 0.5 // Cursore al centro
+                        )
+                    }
+                    
+                    // --- STRATO B: IL PALLINO (Knob) ---
+                    let knobX = calculateGlobalKnobPosition(
+                        step: currentStep,
+                        smallW: smallWidth,
+                        largeW: largeWidth,
+                        gap: spacing
+                    )
+                    
+                    Circle()
+                        .fill(Color.pink)
+                        .frame(width: 20, height: 20)
+                        .overlay(
+                            Circle()
+                                .stroke(Color.white, lineWidth: 3)
+                        )
+                        .shadow(color: Color.pink.opacity(0.3), radius: 4, x: 0, y: 2)
+                        .position(x: knobX, y: height / 2)
+                        .animation(.spring(response: 0.6, dampingFraction: 0.8), value: knobX)
+                }
+            }
+            .frame(height: 24)
+        }
+        
+        // --- COMPONENTE: BARRA CON EFFETTO GLOW ---
+        @ViewBuilder
+        private func renderGlowBar(width: CGFloat, isActive: Bool, knobRelativePos: CGFloat) -> some View {
+            ZStack(alignment: .leading) {
+                
+                // 1. Sfondo Grigio (Base)
+                Capsule()
+                    .fill(Color(uiColor: .systemGray5))
+                    .frame(width: width, height: 16)
+                
+                // 2. Luce Rosa (Glow)
+                // Mostriamo il bagliore solo se la barra è attiva
+                if isActive {
+                    GeometryReader { internalGeo in
+                        // Creiamo un gradiente largo il doppio della barra per avere una sfumatura morbida
+                        let glowWidth = width * 1.5
+                        
+                        // Gradiente: Trasparente -> Rosa Forte -> Trasparente
+                        LinearGradient(
+                            stops: [
+                                .init(color: .pink.opacity(0.01), location: 0.0),
+                                .init(color: .pink, location: 0.5), // Centro del bagliore
+                                .init(color: .pink.opacity(0.01), location: 1.0)
+                            ],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                        .frame(width: glowWidth, height: 16)
+                        // Posizioniamo il CENTRO del gradiente esattamente sotto il cursore
+                        // knobRelativePos è 0.0-1.0. Moltiplichiamo per la larghezza per avere i pixel.
+                        // Sottraiamo metà della larghezza del gradiente (glowWidth/2) per centrarlo.
+                        .offset(x: (width * knobRelativePos) - (glowWidth / 2))
+                        .animation(.spring(response: 0.6, dampingFraction: 0.8), value: knobRelativePos)
+                    }
+                    // Mascheriamo tutto dentro la forma della capsula così il gradiente non esce
+                    .mask(Capsule())
+                }
+            }
+            .frame(width: width, height: 16) // Forza la dimensione del contenitore
+        }
+        
+        // --- CALCOLI MATEMATICI ---
+        
+        // Calcola la posizione relativa (0.0 - 1.0) del cursore DENTRO il blocco centrale
+        private func calculateCenterKnobRelativePos(step: Int) -> CGFloat {
+            guard step >= 1 && step <= 4 else { return 0.5 }
+            
+            let stepsInRange = CGFloat(step - 1) // 0, 1, 2, 3
+            let maxSteps = CGFloat(3) // 4-1
+            let rawPercent = stepsInRange / maxSteps
+            
+            // Margini visivi: non vogliamo il cursore attaccato ai bordi (15% - 85%)
+            let minPos = 0.15
+            let maxPos = 0.85
+            
+            return minPos + (rawPercent * (maxPos - minPos))
+        }
+        
+        // Calcola la posizione assoluta X per il pallino bianco (sopra tutto)
+        private func calculateGlobalKnobPosition(step: Int, smallW: CGFloat, largeW: CGFloat, gap: CGFloat) -> CGFloat {
+            
+            let block1_Start: CGFloat = 0
+            let block2_Start: CGFloat = smallW + gap
+            let block3_Start: CGFloat = smallW + gap + largeW + gap
+            
+            switch step {
+            case 0:
+                return block1_Start + (smallW / 2)
+            case 5:
+                return block3_Start + (smallW / 2)
+            default:
+                // Usiamo la stessa logica relativa per trovare i pixel assoluti
+                let relativePos = calculateCenterKnobRelativePos(step: step)
+                // Mappiamo la posizione relativa nella larghezza del blocco centrale
+                return block2_Start + (largeW * relativePos)
+            }
+        }
+    }
+    
     // -------------------------------------------------
     //
     // MARK: - Classic Task Component

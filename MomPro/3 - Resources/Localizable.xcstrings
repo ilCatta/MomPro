@@ -5765,9 +5765,6 @@
     "Inizia il viaggio" : {
 
     },
-    "Inizia la giornata!" : {
-
-    },
     "inv_001_title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -6174,9 +6171,6 @@
     "PRO" : {
 
     },
-    "Progresso" : {
-
-    },
     "Progresso: %lld di %lld" : {
       "localizations" : {
         "en" : {
@@ -6193,6 +6187,363 @@
     },
     "Questo obiettivo si completa leggendo l'articolo nella sezione Guide." : {
 
+    },
+    "quote_today_lv1_a" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Small steps lead to big savings. Let's start!"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Piccoli passi portano a grandi risparmi. Iniziamo!"
+          }
+        }
+      }
+    },
+    "quote_today_lv1_b" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your financial independence starts with one habit."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La tua indipendenza finanziaria inizia da un'abitudine."
+          }
+        }
+      }
+    },
+    "quote_today_lv1_c" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No rush today, just smart choices."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nessuna fretta oggi, solo scelte intelligenti."
+          }
+        }
+      }
+    },
+    "quote_today_lv2_a" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You're getting the rhythm! Your budget thanks you."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stai prendendo il ritmo! Il budget ti ringrazia."
+          }
+        }
+      }
+    },
+    "quote_today_lv2_b" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optimizing your home is the first investment."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ottimizzare la casa è il primo investimento."
+          }
+        }
+      }
+    },
+    "quote_today_lv2_c" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every checkmark is a step towards peace of mind."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ogni spunta è un passo verso la serenità."
+          }
+        }
+      }
+    },
+    "quote_today_lv3_a" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Halfway there! Your management is flawless."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siamo a metà! La tua gestione è impeccabile."
+          }
+        }
+      }
+    },
+    "quote_today_lv3_b" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saving doesn't mean giving up, but choosing better."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Risparmiare non significa rinunciare, ma scegliere meglio."
+          }
+        }
+      }
+    },
+    "quote_today_lv3_c" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You are building value for your family."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stai costruendo valore per la tua famiglia."
+          }
+        }
+      }
+    },
+    "quote_today_lv4_a" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Almost done! Your productive day is paying off."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quasi fatto! La tua giornata produttiva sta pagando."
+          }
+        }
+      }
+    },
+    "quote_today_lv4_b" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batch cooking or investing? You're a pro at everything."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batch cooking o investimenti? Sei una pro in tutto."
+          }
+        }
+      }
+    },
+    "quote_today_lv4_c" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controlling finances is true freedom."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il controllo delle finanze è la vera libertà."
+          }
+        }
+      }
+    },
+    "quote_today_lv5_a" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Base goals reached! You are a force of nature."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obiettivi base raggiunti! Sei una forza della natura."
+          }
+        }
+      }
+    },
+    "quote_today_lv5_b" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mission accomplished. Today you invested in yourself."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Missione compiuta. Oggi hai investito su te stessa."
+          }
+        }
+      }
+    },
+    "quote_today_lv5_c" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fantastic! Now enjoy the time you've earned."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fantastica! Ora goditi il tempo che hai guadagnato."
+          }
+        }
+      }
+    },
+    "quote_today_lv6_a" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Extra level unlocked! Your ambition pays off."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Livello Extra sbloccato! La tua ambizione ti premia."
+          }
+        }
+      }
+    },
+    "quote_today_lv6_b" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You're going beyond ordinary. Extraordinary results."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stai andando oltre l'ordinario. Risultati straordinari."
+          }
+        }
+      }
+    },
+    "quote_today_lv6_c" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One extra step towards your personal growth."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un passo in più verso la tua crescita personale."
+          }
+        }
+      }
+    },
+    "quote_today_lv7_a" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Absolute MomPro! You mastered saving and growth."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MomPro assoluta! Hai dominato risparmio e crescita."
+          }
+        }
+      }
+    },
+    "quote_today_lv7_b" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unstoppable. The future is in your hands."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inarrestabile. Il futuro è nelle tue mani."
+          }
+        }
+      }
+    },
+    "quote_today_lv7_c" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pure excellence. You are today's inspiration!"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eccellenza pura. Sei l'ispirazione di oggi!"
+          }
+        }
+      }
     },
     "sav_001_title" : {
       "extractionState" : "manual",
