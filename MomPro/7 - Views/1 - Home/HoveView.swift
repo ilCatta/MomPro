@@ -55,50 +55,43 @@ struct HomeView: View {
                         // --- FINE IMMAGINE HEADER (STRETCHY HEADER) ---
                         
                         
-                        
-                        // --- PROGRESSO E BARRA PROGRESSO ---
-                        VStack(alignment: .leading, spacing: 2) {
-                            
-                            /*
-                            Text(LocalizedStringKey("Progresso"))
-                                .font(.system(.callout, design: .default))
-                                .fontWeight(.medium)
-                                .foregroundColor(.secondary)
-                             */
-                            
-                            /*
-                            Text(LocalizedStringKey("Inizia la giornata!"))
-                                .font(.system(.title, design: .rounded))
-                                .fontWeight(.semibold)
-                                .foregroundColor(.primary)
-                                .padding(.bottom, 10)
-                             */
+                      
+                        // --- CARD PROGRESSO ---
+                        VStack(alignment: .leading, spacing: 0) {
                             
                             Text(formattedDate.capitalized)
                                 .font(.system(.title3, design: .rounded))
                                 .fontWeight(.semibold)
-                                .foregroundColor(.pink)
+                                .foregroundStyle(.pink)
+                                .lineLimit(2)
+                                .multilineTextAlignment(.leading)
                                 .padding(.bottom, 8)
                             
-                            // Testo Motivazionale Variabile
                             Text(viewModel.dailyMotivationalText.localized)
                                 .font(.system(.body, design: .rounded)) // Font leggibile
                                 .fontWeight(.regular)
                                 .foregroundColor(.primary)
                                 .lineLimit(8)
                                 .fixedSize(horizontal: false, vertical: true) // Evita troncamenti
-                                .padding(.bottom, 20) // Spazio prima della barra
                                 .animation(.easeInOut, value: viewModel.dailyMotivationalText)
-                            
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal)
+                        .padding(.vertical)
+                        .background(
+                            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                                .fill(Color(.secondarySystemGroupedBackground))
+                        )
+                        .padding(.horizontal)
+                        .padding(.vertical)
+                        .padding(.bottom, 4)
+                        // --- FINE CARD PROGRESSO ---
+                        
+                        
+                        // --- PROGRESSO E BARRA PROGRESSO ---
+                        VStack(alignment: .leading, spacing: 0) {
                             // Barra Progresso
                             CustomProgressBar(progress: viewModel.dailyProgress)
-                            /*
-                            ProgressView(value: viewModel.dailyProgress)
-                                .tint(.green)
-                                .background(Color.white.opacity(0.3))
-                                .scaleEffect(x: 1, y: 2, anchor: .center)
-                                .clipShape(Capsule())*/
-                            
                         }
                         .padding(.bottom, 20)
                         .padding(.horizontal)
@@ -350,137 +343,6 @@ struct HomeView: View {
     // MARK: - Custom Progress Bar
     //
     // -------------------------------------------------
-    /*
-    struct CustomProgressBar: View {
-        // Riceviamo il progresso come percentuale (0.0 - 1.0) dal ViewModel
-        var progress: Double
-        
-        // Costanti di configurazione
-        private let totalSteps: Int = 5 // 1 Edu + 4 Grid
-        private let spacing: CGFloat = 6 // Spazio tra i rettangoli
-        
-        var body: some View {
-            GeometryReader { geo in
-                let totalWidth = geo.size.width
-                let height = geo.size.height
-                
-                // --- CALCOLO DIMENSIONI RETTANGOLI ---
-                // Definiamo le proporzioni: Piccolo (15%), Grande (70%), Piccolo (15%)
-                // Sottraiamo lo spazio (spacing * 2) dal totale disponibile
-                let availableWidth = totalWidth - (spacing * 2)
-                let smallWidth = availableWidth * 0.15
-                let largeWidth = availableWidth * 0.70
-                
-                // --- CALCOLO STEP CORRENTE ---
-                // Convertiamo 0.0-1.0 in un numero intero da 0 a 5
-                let currentStep = Int(round(progress * Double(totalSteps)))
-                
-                // --- CALCOLO POSIZIONE PALLINO (Knob X) ---
-                let knobX: CGFloat = calculateKnobPosition(
-                    step: currentStep,
-                    smallW: smallWidth,
-                    largeW: largeWidth,
-                    gap: spacing
-                )
-                
-                ZStack(alignment: .leading) {
-                    
-                    // 1. LIVELLO SFONDO (I 3 rettangoli grigi vuoti)
-                    // Usiamo un HStack per disegnarli separati
-                    segmentedCapsules(smallW: smallWidth, largeW: largeWidth)
-                        .foregroundStyle(Color(uiColor: .systemGray5))
-                    
-                    // 2. LIVELLO COLORE (Il riempimento Pink)
-                    // Disegniamo un gradiente che va dal trasparente al rosa pieno.
-                    // LO MASCHERIAMO in due modi:
-                    // A. Deve fermarsi dove c'è il pallino (frame width)
-                    // B. Deve rispettare la forma dei rettangoli e i buchi (mask)
-                    LinearGradient(
-                        colors: [Color.pink.opacity(0.1), Color.pink],
-                        startPoint: .leading,
-                        endPoint: .trailing
-                    )
-                    .frame(width: knobX) // Il colore arriva solo fino al pallino
-                    .mask(
-                        // Maschera usando la stessa forma dei rettangoli
-                        segmentedCapsules(smallW: smallWidth, largeW: largeWidth)
-                            .alignmentGuide(.leading) { _ in 0 } // Fix allineamento
-                    )
-                    // Animazione fluida del riempimento
-                    .animation(.spring(response: 0.6, dampingFraction: 0.8), value: knobX)
-                    
-                    // 3. IL PALLINO (Knob)
-                    // Simile all'immagine: cerchio colorato con bordo bianco e ombra
-                    Circle()
-                        .fill(Color.pink)
-                        .frame(width: 20, height: 20)
-                        .overlay(
-                            Circle()
-                                .stroke(Color.white, lineWidth: 3)
-                        )
-                        .shadow(color: Color.pink.opacity(0.3), radius: 4, x: 0, y: 2)
-                        // Lo centriamo sulla coordinata X calcolata
-                        .position(x: knobX, y: height / 2)
-                        .animation(.spring(response: 0.6, dampingFraction: 0.8), value: knobX)
-                }
-            }
-            .frame(height: 24) // Altezza fissa del componente
-        }
-        
-        // --- FUNZIONI DI SUPPORTO ---
-        
-        // Disegna la forma base: [Piccolo] [Grande] [Piccolo]
-        @ViewBuilder
-        private func segmentedCapsules(smallW: CGFloat, largeW: CGFloat) -> some View {
-            HStack(spacing: spacing) {
-                Capsule().frame(width: smallW)
-                Capsule().frame(width: largeW)
-                Capsule().frame(width: smallW)
-            }
-        }
-        
-        // Logica personalizzata per posizionare il cursore
-        private func calculateKnobPosition(step: Int, smallW: CGFloat, largeW: CGFloat, gap: CGFloat) -> CGFloat {
-            
-            // Offset di partenza dei vari blocchi
-            let block1_Start: CGFloat = 0
-            let block2_Start: CGFloat = smallW + gap
-            let block3_Start: CGFloat = smallW + gap + largeW + gap
-            
-            switch step {
-            case 0:
-                // Caso 0: Esattamente al CENTRO del primo rettangolo piccolo
-                return block1_Start + (smallW / 2)
-                
-            case 5:
-                // Caso 5 (Finale): Esattamente al CENTRO dell'ultimo rettangolo piccolo
-                return block3_Start + (smallW / 2)
-                
-            default:
-                // Casi 1, 2, 3, 4: Distribuiti dentro il rettangolo GRANDE centrale
-                // Definiamo un margine interno per non far toccare i bordi
-                let padding: CGFloat = 10
-                
-                // Spazio utile dentro il rettangolo grande
-                let availableSpace = largeW - (padding * 2)
-                
-                // Dobbiamo distribuire 4 step (1,2,3,4) in questo spazio.
-                // Matematicamente significa mappare:
-                // 1 -> 0% dello spazio utile
-                // 4 -> 100% dello spazio utile
-                
-                // Normalizziamo lo step da (1...4) a (0...3)
-                let relativeStep = CGFloat(step - 1)
-                let maxSteps = CGFloat(3) // (4-1)
-                
-                let progressInBlock = relativeStep / maxSteps // 0.0, 0.33, 0.66, 1.0
-                
-                let positionInBlock = padding + (availableSpace * progressInBlock)
-                
-                return block2_Start + positionInBlock
-            }
-        }
-    } */
     
     struct CustomProgressBar: View {
         // Riceviamo il progresso come percentuale (0.0 - 1.0) dal ViewModel
@@ -569,7 +431,7 @@ struct HomeView: View {
                 if isActive {
                     GeometryReader { internalGeo in
                         // Creiamo un gradiente largo il doppio della barra per avere una sfumatura morbida
-                        let glowWidth = width * 1.5
+                        let glowWidth = width * 1.75
                         
                         // Gradiente: Trasparente -> Rosa Forte -> Trasparente
                         LinearGradient(
