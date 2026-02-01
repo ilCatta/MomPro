@@ -37,12 +37,12 @@ struct TaskDetailSheet: View {
             
             // Info Testuali
             VStack(spacing: 8) {
-                Text(taskStatus.task.title)
+                Text(taskStatus.task.title.localized)
                     .font(.title2)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.center)
                 
-                Text(taskStatus.task.description)
+                Text(taskStatus.task.description.localized)
                     .font(.body)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -117,7 +117,7 @@ struct TaskDetailSheet: View {
     // Componente Contatore
     var counterControlView: some View {
         VStack(spacing: 20) {
-            Text("Progresso: \(taskStatus.currentProgress) di \(taskStatus.task.targetCount)")
+            Text("\(taskStatus.currentProgress) / \(taskStatus.task.targetCount)")
                 .font(.headline)
                 .foregroundStyle(.secondary)
             
@@ -163,9 +163,11 @@ struct TaskDetailSheet: View {
         switch category {
         case .shopping: return "cart.fill"
         case .home: return "house.fill"
-        case .finance: return "eurosign.circle.fill"
+        case .finance: return "banknote.fill"
         case .family: return "figure.2.and.child.holdinghands"
-        case .education: return "book.fill"
+        case .education: return "graduationcap.fill"
         }
     }
 }
+
+

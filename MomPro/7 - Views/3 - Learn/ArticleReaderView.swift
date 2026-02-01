@@ -5,6 +5,7 @@
 //  Created by Andrea Cataldo on 18/01/26.
 //
 import SwiftUI
+import RevenueCat
 import RevenueCatUI // Per il paywall se l'utente clicca su un articolo bloccato
 
 struct ArticleReaderView: View {
@@ -188,9 +189,17 @@ struct ArticleReaderView: View {
                 }
             }
         }
+        // PAYWALL
         .sheet(isPresented: $showPaywall) {
-            PaywallView(displayCloseButton: true)
+            PaywallView(displayCloseButton: true) // Questa è la vista nativa di RevenueCat
+                .onRestoreCompleted { info in
+                     // Gestione opzionale se l'utente ripristina gli acquisti
+                     if info.entitlements.active.isEmpty == false {
+                         showPaywall = false
+                     }
+                }
         }
+      
     }
     
     // Vista quando l'articolo è bloccato
@@ -232,7 +241,7 @@ struct ArticleReaderView: View {
     }
     
     private struct PremiumGlassPressStyle: ButtonStyle {
-        func makeBody(configuration: Configuration) -> some View {
+        func makeBody(configuration: ButtonStyle.Configuration) -> some View {
             configuration.label
                 .scaleEffect(
                     x: configuration.isPressed ? 1.045 : 1,

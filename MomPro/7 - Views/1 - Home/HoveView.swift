@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import RevenueCat
+import RevenueCatUI
 
 struct HomeView: View {
     
@@ -68,7 +70,7 @@ struct HomeView: View {
                                 .padding(.bottom, 8)
                             
                             Text(viewModel.dailyMotivationalText.localized)
-                                .font(.system(.body, design: .rounded)) // Font leggibile
+                                .font(.system(.body, design: .rounded)) 
                                 .fontWeight(.regular)
                                 .foregroundColor(.primary)
                                 .lineLimit(8)
@@ -280,31 +282,31 @@ struct HomeView: View {
                  */
                 // Aggiorna la data automaticamente a mezzanotte
                 .onReceive(NotificationCenter.default.publisher(for: .NSCalendarDayChanged)) { _ in
-                    self.todayDate = Date()
+                    // 1. Aggiorna la data visualizzata nella UI
+                        self.todayDate = Date()
+                    // 2. Forza il ViewModel a rigenerare i task e ricalcolare mascotte/testi
+                    // Questo è fondamentale per "azzerare" la giornata
+                    viewModel.refreshData()
                 }
                 //
                 // -------------------------------------------------
                 // MARK: --- SHEET
                 //
+                // SINGLE TASK
                 .sheet(item: $selectedTask) { task in
                     // Logic to pass updated task...
                     TaskDetailSheet(taskStatus: task, viewModel: viewModel)
                 }
-                .sheet(isPresented: $showPaywall) {
-                    // PaywallView() // Scommenta quando hai importato RevenueCatUI
-                    Text("Paywall Placeholder")
-                }
-                // SHEET 3: Istruzioni Education (NUOVO)
-                // MARK: - SHEET UNIFICATO EDUCATION
+                //
+                //
+                // EDUCATION
+                
                 .sheet(isPresented: $showEducationSheet) {
                     if let task = viewModel.educationTaskStatus, task.isCompleted {
-                        
                         // CASO 1: Successo
                         EducationSuccessSheet()
                             .presentationDetents([.fraction(0.50)])
-                            
                     } else {
-                        
                         // CASO 2: Istruzioni -> VAI A LEARN
                         EducationInstructionSheet(onGoToLearn: {
                             showEducationSheet = false
@@ -318,6 +320,19 @@ struct HomeView: View {
                         })
                         .presentationDetents([.fraction(0.45)])
                     }
+                }
+                 
+                //
+                //
+                // PAYWALL
+                .sheet(isPresented: $showPaywall) {
+                    PaywallView(displayCloseButton: true) // Questa è la vista nativa di RevenueCat
+                        .onRestoreCompleted { info in
+                             // Gestione opzionale se l'utente ripristina gli acquisti
+                             if info.entitlements.active.isEmpty == false {
+                                 showPaywall = false
+                             }
+                        }
                 }
             }
         }
@@ -644,31 +659,8 @@ struct HomeView: View {
     }
     
     
-
-
-    
-    
-    
-    
-    
    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -944,7 +936,7 @@ private func iconName(for cat: TaskCategory) -> String {
 
 private struct SquishyButtonEffect: ButtonStyle {
 
-    func makeBody(configuration: Configuration) -> some View {
+    func makeBody(configuration: ButtonStyle.Configuration) -> some View {
         configuration.label
         .scaleEffect(configuration.isPressed ? 0.94 : 1.0)
         .brightness(configuration.isPressed ? -0.0 : 0)

@@ -1,8 +1,4 @@
 
-import SwiftUI
-import RevenueCatUI // Serve per il Paywall
-
-
 /*
 OLD CODE
  FUNZIONANTE MA CON UI UX VECCHIA
@@ -132,6 +128,7 @@ struct SettingsView: View {
 
 import SwiftUI
 import StoreKit
+import RevenueCat
 import RevenueCatUI
 import Combine
 import HugeiconsCore
@@ -145,9 +142,15 @@ struct SettingsView: View {
     // VM
     @State private var viewModel = SettingsViewModel()
 
+    // Sheet
+    @State private var showDailyBoostSheet = false
+    @State private var showUnlimitedLearningSheet = false
+    @State private var showAdvancedStatisticsSheet = false
+    
+    @State private var showPaywall = false
+
     // Navigation
     @State private var goToLanguageSubView = false
-    @State private var goToCategorySubView = false
     
     @Environment(\.openURL) private var openURL
     
@@ -158,11 +161,27 @@ struct SettingsView: View {
     // ---- ---- ---- ---- ---- ---- ---- ---- ----
     
     private func _tapLanguage(){
+        let impact = UIImpactFeedbackGenerator(style: .light)
+        impact.impactOccurred()
         goToLanguageSubView = true
     }
     
-    private func _tapCategoryManagement(){
-        goToCategorySubView = true
+    private func _tapDailyBoost(){
+        let impact = UIImpactFeedbackGenerator(style: .light)
+        impact.impactOccurred()
+        showDailyBoostSheet = true
+    }
+    
+    private func _tapUnlimitedLearnin(){
+        let impact = UIImpactFeedbackGenerator(style: .light)
+        impact.impactOccurred()
+        showUnlimitedLearningSheet = true
+    }
+    
+    private func _tapAdvancedStatistics(){
+        let impact = UIImpactFeedbackGenerator(style: .light)
+        impact.impactOccurred()
+        showAdvancedStatisticsSheet = true
     }
     
     private func _tapInviteFriend() {
@@ -303,7 +322,7 @@ struct SettingsView: View {
                             
                             VStack(alignment: .leading, spacing: 0){
                                 
-                                Text(LocalizedStringKey("settings_view_settings"))
+                                Text("settings_view_settings".localized)
                                     .font(.system(.title3, design: .default))
                                     .fontWeight(.semibold)
                                     .foregroundColor(.primary)
@@ -333,28 +352,36 @@ struct SettingsView: View {
                             
                             VStack(alignment: .leading, spacing: 0){
                                 
-                                Text(LocalizedStringKey("settings_view_premium_features"))
+                                Text("settings_view_premium_features".localized)
                                     .font(.system(.title3, design: .default))
                                     .fontWeight(.semibold)
                                     .foregroundColor(.primary)
                                     .padding(.bottom, 28)
                                 
-                                /*
-                                 ListTilePro(
-                                 iconName: "tag-01",
-                                 textKey: "settings_view_category_management",
-                                 action: _tapCategoryManagement
-                                 )
-                                 .paddingVerticalBottom(small: 16, standard: 18,large: 20,ipadMini: 22,ipadStandard: 24, ipadHuge: 24)
-                                 
-                                 DottedLine()
-                                 .paddingVerticalBottom(small: 16, standard: 18,large: 20,ipadMini: 22,ipadStandard: 24, ipadHuge: 24)
-                                 */
+                                ListTilePro(
+                                    iconName: "mortarboard-02",
+                                    textKey: "settings_view_unlimited_learning",
+                                    action: _tapUnlimitedLearnin
+                                )
+                                .padding(.bottom, 20)
+                                
+                                DottedLine()
+                                    .padding(.bottom, 20)
                                 
                                 ListTilePro(
-                                    iconName: "colors",
-                                    textKey: "settings_view_custom_colors",
-                                    action: {}
+                                    iconName: "task-daily-01",
+                                    textKey: "settings_view_daily_boost",
+                                    action: _tapDailyBoost
+                                )
+                                .padding(.bottom, 20)
+                                
+                                DottedLine()
+                                    .padding(.bottom, 20)
+                                
+                                ListTilePro(
+                                    iconName: "activity-01",
+                                    textKey: "settings_view_advanced_statistics",
+                                    action: _tapAdvancedStatistics
                                 )
                                 .padding(.bottom, 20)
                                 
@@ -369,7 +396,7 @@ struct SettingsView: View {
                             
                             VStack(alignment: .leading, spacing: 0){
                                 
-                                Text(LocalizedStringKey("settings_view_general"))
+                                Text("settings_view_general".localized)
                                     .font(.system(.title3, design: .default))
                                     .fontWeight(.semibold)
                                     .foregroundColor(.primary)
@@ -433,7 +460,7 @@ struct SettingsView: View {
                             
                             VStack(alignment: .leading, spacing: 0){
                                 
-                                Text(LocalizedStringKey("settings_view_legal"))
+                                Text("settings_view_legal".localized)
                                     .font(.system(.title3, design: .default))
                                     .fontWeight(.semibold)
                                     .foregroundColor(.primary)
@@ -484,14 +511,69 @@ struct SettingsView: View {
                     }
                 }
             }
-            // Navigation
+            // --- NAVIGATION ---
             .navigationDestination(isPresented: $goToLanguageSubView) {
                 //LanguageSubView()
             }
-            .navigationDestination(isPresented: $goToCategorySubView) {
-                //CategorySubView()
+            //
+            //
+            // PAYWALL
+            .sheet(isPresented: $showPaywall) {
+                PaywallView(displayCloseButton: false) // Questa è la vista nativa di RevenueCat
+                    .onRestoreCompleted { info in
+                         // Gestione opzionale se l'utente ripristina gli acquisti
+                         if info.entitlements.active.isEmpty == false {
+                             viewModel.showPaywall = false
+                         }
+                    }
             }
-            
+            // --- SHEET ---
+            .sheet(isPresented: $showUnlimitedLearningSheet) {
+                PremiumFeaturesSheet(
+                    iconName: "mortarboard-02",
+                    title: "settings_view_unlimited_learning",
+                    desc1: "settings_view_unlimited_learning_desc",
+                    desc2: "",
+                     isPro: viewModel.isPro,
+                     onUpgradeTap: {
+                         showUnlimitedLearningSheet = false
+                         // Aspetta che si chiuda prima di aprire il paywall
+                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                             showPaywall = true
+                         }
+                     })
+            }
+            .sheet(isPresented: $showDailyBoostSheet) {
+                PremiumFeaturesSheet(
+                    iconName: "task-daily-01",
+                    title: "settings_view_daily_boost",
+                    desc1: "settings_view_daily_boost_desc1",
+                    desc2: "settings_view_daily_boost_desc2",
+                    isPro: viewModel.isPro,
+                    onUpgradeTap: {
+                        showDailyBoostSheet = false
+                        // Aspetta che si chiuda prima di aprire il paywall
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            showPaywall = true
+                        }
+                    })
+            }
+            .sheet(isPresented: $showAdvancedStatisticsSheet) {
+                PremiumFeaturesSheet(
+                    iconName: "activity-01",
+                    title: "settings_view_advanced_statistics",
+                    desc1: "settings_view_advanced_statistics_desc",
+                    desc2: "",
+                    isPro: viewModel.isPro,
+                    onUpgradeTap: {
+                        showAdvancedStatisticsSheet = false
+                        // Aspetta che si chiuda prima di aprire il paywall
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            showPaywall = true
+                        }
+                    })
+                   }
+      
         }
     }
     
@@ -525,6 +607,133 @@ struct Line: Shape {
     }
 }
 
+
+
+// ---- ---- ---- ---- ---- ---- ---- ---- ----
+//
+// MARK: Premium Features Sheet
+//
+// ---- ---- ---- ---- ---- ---- ---- ---- ----
+
+struct PremiumFeaturesSheet: View {
+    
+    let iconName: String
+    let title: String
+    let desc1: String
+    let desc2: String
+    
+    let isPro: Bool
+    var onUpgradeTap: () -> Void = {}
+    
+    @Environment(\.dismiss) private var dismiss
+
+    
+    var body: some View {
+        
+        VStack(alignment: .center, spacing: 0) {
+            
+            // ICONA DINAMICA
+            HugeiconsText(
+                iconName,
+                font: HugeiconsStrokeRounded.hugeiconsFont(size: 45),
+                color: Color(.pink)
+            )
+            .padding()
+            .background(Color.pink.opacity(0.1))
+            .clipShape(Circle())
+            .padding(.top, 8)
+            .padding(.bottom, 20)
+            
+            
+            Text(title.localized)
+                .font(.system(.title2, design: .rounded))
+                .fontWeight(.bold)
+                .foregroundStyle(.primary)
+                .lineLimit(3)
+                .multilineTextAlignment(.leading)
+                .padding(.bottom, 16)
+            
+            Text(desc1.localized)
+                .font(.system(.body, design: .rounded))
+                .fontWeight(.regular)
+                .foregroundColor(.primary)
+                .padding(.bottom, 12)
+            
+            if (!desc2.isEmpty){
+                Text(desc2.localized)
+                    .font(.system(.body, design: .rounded))
+                    .fontWeight(.regular)
+                    .foregroundColor(.primary)
+                    .padding(.bottom, 12)
+            }
+                        
+            Spacer()
+            
+            Button() {
+                let impact = UIImpactFeedbackGenerator(style: .light)
+                impact.impactOccurred()
+                if (!isPro){
+                    onUpgradeTap()
+                } else {
+                    dismiss()
+                }
+               
+            } label: {
+  
+                HStack(spacing: 0) {
+                    
+                    if (!isPro){
+                        
+                        HugeiconsText(
+                            "circle-arrow-up-02",
+                            font:  HugeiconsSolidRounded.hugeiconsFont(size:23),
+                            color: .white
+                        )
+                        .padding(.trailing, 4)
+
+                        Text("Premium")
+                            .font(.system(.title3, design: .rounded))
+                            .fontWeight(.medium)
+                            .foregroundColor(.white)
+                    }
+                    
+                    else {
+                        
+                        Text(LocalizedStringKey("actions_close".localized))
+                            .font(.system(.body, design: .default))
+                            .fontWeight(.medium)
+                            .foregroundColor(.primary)
+                    }
+                    
+                    
+                    
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 22)
+                .background(
+                    RoundedRectangle(cornerRadius: 300, style: .continuous)
+                        .fill( !isPro ? Color(.pink) : Color(.secondarySystemGroupedBackground))
+                )
+            }
+            .buttonStyle(SquishyButtonEffect())
+            
+        }
+        .padding()
+        //
+        .presentationDetents([.fraction(0.50)]) // Mezzo schermo
+        .presentationDragIndicator(.visible)
+    }
+}
+
+private struct SquishyButtonEffect: ButtonStyle {
+
+    func makeBody(configuration: ButtonStyle.Configuration) -> some View {
+        configuration.label
+        .scaleEffect(configuration.isPressed ? 0.94 : 1.0)
+        .brightness(configuration.isPressed ? -0.0 : 0)
+        .animation(.spring(response: 0.3, dampingFraction: 0.4, blendDuration: 0), value: configuration.isPressed)
+    }
+}
 
 // ---- ---- ---- ---- ---- ---- ---- ---- ----
 //
@@ -561,7 +770,7 @@ private struct ListTileTheme: View {
                 .padding(.trailing, 24)
                 
                 // TEXT
-                Text(LocalizedStringKey("settings_view_appearance"))
+                Text("settings_view_appearance".localized)
                     .font(.system(.body, design: .default))
                     .fontWeight(.medium)
                     .foregroundColor(.primary)
@@ -569,7 +778,7 @@ private struct ListTileTheme: View {
                 Spacer()
                 
                 // TESTO STATO DINAMICO
-                Text(!isDarkMode ? LocalizedStringKey("settings_view_light") : isDarkMode ? LocalizedStringKey("settings_view_dark") : LocalizedStringKey("settings_view_system"))
+                Text(!isDarkMode ? ("settings_view_light").localized : isDarkMode ? ("settings_view_dark").localized : ("settings_view_system").localized)
                     .font(.system(.callout, design: .default))
                     .fontWeight(.semibold)
                     .foregroundColor(.primary)
@@ -634,7 +843,7 @@ private struct ListTile: View {
                 .padding(.trailing, 24)
 
                 // TEXT (Tradotto automaticamente)
-                Text(LocalizedStringKey(textKey))
+                Text(textKey.localized)
                     .font(.system(.body, design: .default))
                     .fontWeight(.medium)
                     .foregroundColor(.primary)
@@ -710,7 +919,7 @@ private struct ListTilePro: View {
                 .padding(.trailing, 24)
 
                 // TEXT (Tradotto automaticamente)
-                Text(LocalizedStringKey(textKey))
+                Text(textKey.localized)
                     .font(.system(.body, design: .default))
                     .fontWeight(.medium)
                     .foregroundColor(.primary)
