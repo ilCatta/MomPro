@@ -5889,6 +5889,40 @@
     "La tua costanza" : {
 
     },
+    "languages.english" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inglese"
+          }
+        }
+      }
+    },
+    "languages.italian" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Italian"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Italiano"
+          }
+        }
+      }
+    },
     "learn_budgeting_desc" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -6761,13 +6795,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Daily Boost"
+            "value" : "Daily boost"
           }
         },
         "it" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sprint Quotidiano"
+            "state" : "needs_review",
+            "value" : "Sprint quotidiano"
           }
         }
       }

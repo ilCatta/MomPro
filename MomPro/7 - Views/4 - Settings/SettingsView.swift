@@ -141,16 +141,17 @@ struct SettingsView: View {
         
     // VM
     @State private var viewModel = SettingsViewModel()
+    
+    // Language Service
+    @Environment(LanguageService.self) var languageService
 
     // Sheet
+    @State private var showLanguageSheet = false
     @State private var showDailyBoostSheet = false
     @State private var showUnlimitedLearningSheet = false
     @State private var showAdvancedStatisticsSheet = false
     
     @State private var showPaywall = false
-
-    // Navigation
-    @State private var goToLanguageSubView = false
     
     @Environment(\.openURL) private var openURL
     
@@ -163,7 +164,7 @@ struct SettingsView: View {
     private func _tapLanguage(){
         let impact = UIImpactFeedbackGenerator(style: .light)
         impact.impactOccurred()
-        goToLanguageSubView = true
+        showLanguageSheet = true
     }
     
     private func _tapDailyBoost(){
@@ -511,10 +512,6 @@ struct SettingsView: View {
                     }
                 }
             }
-            // --- NAVIGATION ---
-            .navigationDestination(isPresented: $goToLanguageSubView) {
-                //LanguageSubView()
-            }
             //
             //
             // PAYWALL
@@ -528,6 +525,11 @@ struct SettingsView: View {
                     }
             }
             // --- SHEET ---
+            .sheet(isPresented: $showLanguageSheet) {
+                LanguageSelectionSheet()
+                    .presentationDetents([.fraction(0.99)])
+                    .presentationDragIndicator(.visible)
+            }
             .sheet(isPresented: $showUnlimitedLearningSheet) {
                 PremiumFeaturesSheet(
                     iconName: "mortarboard-02",
@@ -607,7 +609,121 @@ struct Line: Shape {
     }
 }
 
+// ---- ---- ---- ---- ---- ---- ---- ---- ----
+//
+// MARK: Language Selection Sheet
+//
+// ---- ---- ---- ---- ---- ---- ---- ---- ----
 
+struct LanguageSelectionSheet: View {
+    
+    @Environment(LanguageService.self) var languageService
+    @Environment(\.dismiss) private var dismiss
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            
+            // TITOLO E HEADER
+            HStack {
+                Text("settings_view_language".localized) // "Lingua"
+                    .font(.system(.title ,design: .rounded))
+                    .fontWeight(.bold)
+                    .foregroundColor(.primary)
+                    .frame(maxWidth: .infinity, alignment: .center)
+            }
+            .padding(.top, 30)
+            .padding(.horizontal)
+            .padding(.bottom, 40)
+            
+            
+            // LISTA PULSANTI
+            VStack(spacing: 16) {
+                
+                // 1. INGLESE
+                LanguageButton(
+                    title: "languages.english",
+                    isSelected: languageService.currentLanguage == "en",
+                    action: {
+                        changeLanguage(to: "en")
+                    }
+                )
+                
+                // 2. ITALIANO
+                LanguageButton(
+                    title: "languages.italian",
+                    isSelected: languageService.currentLanguage == "it",
+                    action: {
+                        changeLanguage(to: "it")
+                    }
+                )
+                
+            }
+            .padding(.horizontal)
+            
+            Spacer()
+        }
+        .background(Color(uiColor: .systemGroupedBackground))
+        .presentationDetents([.large]) // Alto come tutto lo schermo
+        .presentationDragIndicator(.visible)
+    }
+    
+    // Funzione helper per cambiare lingua
+    private func changeLanguage(to code: String) {
+        let impact = UIImpactFeedbackGenerator(style: .light)
+        impact.impactOccurred()
+        
+        // Imposta la lingua
+        languageService.setLanguage(code)
+        
+        // Chiude lo sheet
+        dismiss()
+    }
+}
+
+// Sottocomponente per il bottone lingua (per evitare codice duplicato)
+private struct LanguageButton: View {
+    
+    let title: String
+    let isSelected: Bool
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            HStack {
+                Text(title.localized)
+                    .font(.system(.body, design: .rounded))
+                    .fontWeight(.medium)
+                    .foregroundColor(isSelected ? .white : .primary)
+                
+                if isSelected {
+                    Spacer()
+                    HugeiconsText(
+                        "checkmark-circle-02",
+                        font: HugeiconsSolidRounded.hugeiconsFont(size: 27),
+                        color: .white
+                    )
+                    .transition(.scale.combined(with: .opacity))
+                } else {
+                    Spacer()
+                    HugeiconsText(
+                        "checkmark-circle-02",
+                        font: HugeiconsSolidRounded.hugeiconsFont(size: 27),
+                        color: Color(uiColor: .tertiarySystemGroupedBackground)
+                    )
+                }
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 26)
+            .padding(.horizontal)
+            .background(
+                RoundedRectangle(cornerRadius: 24, style: .continuous) // 300 o 30 per pillola
+                    .fill(isSelected ? Color.pink : Color(uiColor: .secondarySystemGroupedBackground))
+            )
+           
+        }
+        .buttonStyle(SquishyButtonEffect())
+    }
+}
 
 // ---- ---- ---- ---- ---- ---- ---- ---- ----
 //
@@ -635,7 +751,7 @@ struct PremiumFeaturesSheet: View {
             // ICONA DINAMICA
             HugeiconsText(
                 iconName,
-                font: HugeiconsStrokeRounded.hugeiconsFont(size: 45),
+                font: HugeiconsStrokeRounded.hugeiconsFont(size: 50),
                 color: Color(.pink)
             )
             .padding()
@@ -709,7 +825,7 @@ struct PremiumFeaturesSheet: View {
                     
                 }
                 .frame(maxWidth: .infinity)
-                .padding(.vertical, 22)
+                .padding(.vertical, 20)
                 .background(
                     RoundedRectangle(cornerRadius: 300, style: .continuous)
                         .fill( !isPro ? Color(.pink) : Color(.secondarySystemGroupedBackground))
@@ -720,7 +836,7 @@ struct PremiumFeaturesSheet: View {
         }
         .padding()
         //
-        .presentationDetents([.fraction(0.50)]) // Mezzo schermo
+        .presentationDetents([.fraction(0.50)])
         .presentationDragIndicator(.visible)
     }
 }

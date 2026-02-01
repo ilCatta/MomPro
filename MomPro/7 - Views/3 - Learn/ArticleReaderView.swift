@@ -220,6 +220,8 @@ struct ArticleReaderView: View {
 
             
             Button(action: {
+                let impact = UIImpactFeedbackGenerator(style: .light)
+                impact.impactOccurred()
                 showPaywall = true
             }) {
                 Text("learn_view_unlock_button".localized)
@@ -232,12 +234,22 @@ struct ArticleReaderView: View {
                     .background(Color.pink)
                     .cornerRadius(16)
             }
-            .buttonStyle(PremiumGlassPressStyle())
+            .buttonStyle(SquishyButtonEffect())
         }
         .padding(.vertical, 40)
         .padding(.horizontal)
         .background(Color(uiColor: .secondarySystemGroupedBackground))
         .cornerRadius(18)
+    }
+    
+    private struct SquishyButtonEffect: ButtonStyle {
+
+        func makeBody(configuration: ButtonStyle.Configuration) -> some View {
+            configuration.label
+            .scaleEffect(configuration.isPressed ? 0.94 : 1.0)
+            .brightness(configuration.isPressed ? -0.0 : 0)
+            .animation(.spring(response: 0.3, dampingFraction: 0.4, blendDuration: 0), value: configuration.isPressed)
+        }
     }
     
     private struct PremiumGlassPressStyle: ButtonStyle {

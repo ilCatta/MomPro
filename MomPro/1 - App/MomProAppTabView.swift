@@ -8,7 +8,7 @@
 import SwiftUI
 
 // Enum globale
-enum Tab {
+enum Tab: String {
     case home
     case stats
     case learn
@@ -17,7 +17,7 @@ enum Tab {
 
 struct MomProAppTabView: View {
     
-    @State private var selectedTab: Tab = .home
+    @AppStorage("selectedTab") private var selectedTab: Tab = .home
     
     var body: some View {
         
