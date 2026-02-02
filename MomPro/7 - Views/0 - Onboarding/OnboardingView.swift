@@ -23,6 +23,8 @@ struct OnboardingView: View {
         case landing        // Schermata iniziale con icone
         case questionIntro  // Domanda al centro
         case questionInput  // Domanda in alto e opzioni
+        case statProblem      // Mascotte alla lavagna (Il problema)
+        case statSolution     // Testo che cambia (La soluzione)
     }
     
     @State private var phase: OnboardingPhase = .landing
@@ -46,6 +48,7 @@ struct OnboardingView: View {
                         onStart: startTransition,
                         namespace: namespace
                     )
+                    // Esce verso SINISTRA (spinta via dalla prossima)
                     .transition(.move(edge: .leading))
                 }
                 
@@ -54,12 +57,43 @@ struct OnboardingView: View {
                     QuestionScreen(
                         phase: $phase,
                         selectedOption: $selectedOption,
-                        onContinue: completeOnboarding,
+                        onContinue: goToStats,
                         namespace: namespace
                     )
-                    .transition(.move(edge: .trailing))
+                    // Entra da DESTRA, Esce verso SINISTRA (Effetto scorrimento continuo)
+                    .transition(
+                        .asymmetric(
+                            insertion: .move(edge: .trailing),
+                            removal: .move(edge: .leading)
+                        )
+                    )
+                }
+                
+                // 3. STAT PROBLEM SCREEN (Mascotte Lavagna)
+                else if phase == .statProblem {
+                    StatProblemView(
+                        onTapAnywhere: goToSolution // Tap per proseguire
+                    )
+                    // Insertion: .move(edge: .trailing) -> Entra da destra (come la schermata precedente)
+                    // Removal: .move(edge: .top) -> Esce verso l'alto (come da video originale per la fase successiva)
+                    .transition(.asymmetric(
+                        insertion: .move(edge: .trailing),
+                        removal: .move(edge: .top)
+                    ))
+                    .zIndex(2) // Assicura che stia sopra durante l'uscita
+                }
+                
+                // 4. STAT SOLUTION SCREEN (Testo che cambia)
+                else if phase == .statSolution {
+                    StatSolutionView(
+                        onFinish: completeOnboarding
+                    )
+                    // Entra dal basso
+                    .transition(.move(edge: .bottom).animation(.spring(response: 0.7, dampingFraction: 0.8)))
+                    .zIndex(3)
                 }
             }
+       
         }
         // Forza la dark mode per l'effetto premium del video,
         // rimuovi se vuoi che si adatti al sistema
@@ -68,23 +102,6 @@ struct OnboardingView: View {
     }
     
     // MARK: - LOGICA TRANSIZIONI
-    /*
-    func startTransition() {
-        let impact = UIImpactFeedbackGenerator(style: .medium)
-        impact.impactOccurred()
-        
-        withAnimation(.smooth(duration: 0.6)) {
-            phase = .questionIntro
-        }
-        
-        // Dopo 1.2 secondi, sposta la domanda in alto
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-            withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
-                phase = .questionInput
-            }
-        }
-    }*/
-    
     func startTransition() {
             let impact = UIImpactFeedbackGenerator(style: .medium)
             impact.impactOccurred()
@@ -103,6 +120,28 @@ struct OnboardingView: View {
                 }
             }
         }
+    
+    // Dalla Domanda alla prima Statistica (Problema)
+    func goToStats() {
+        guard selectedOption != nil else { return }
+        let impact = UIImpactFeedbackGenerator(style: .light)
+        impact.impactOccurred()
+        
+        // Animazione fluida per lo scorrimento laterale
+        withAnimation(.smooth(duration: 0.6)) {
+            phase = .statProblem
+        }
+    }
+    
+    // Dalla Statistica Problema alla Soluzione (Tap anywhere)
+    func goToSolution() {
+        let impact = UIImpactFeedbackGenerator(style: .light)
+        impact.impactOccurred()
+        
+        withAnimation(.smooth(duration: 0.8)) {
+            phase = .statSolution
+        }
+    }
     
     func completeOnboarding() {
         let impact = UIImpactFeedbackGenerator(style: .heavy)
@@ -412,7 +451,7 @@ struct QuestionScreen: View {
                 .fontWeight(.semibold)
                 .foregroundStyle(.white)
                 .multilineTextAlignment(.center)
-                .matchedGeometryEffect(id: "QuestionTitle", in: namespace)
+                //.matchedGeometryEffect(id: "QuestionTitle", in: namespace)
                 .padding(.horizontal)
             
             if phase == .questionIntro {
@@ -455,6 +494,7 @@ struct QuestionScreen: View {
                     }
                     .padding(.horizontal)
                 }
+                // Animazione di entrata delle opzioni (dal basso)
                 .transition(
                     .asymmetric(
                         insertion: .opacity
@@ -526,6 +566,202 @@ struct OptionButton: View {
 }
 
 
+// -------------------------------------------------
+//
+// MARK: - 3) STAT PROBLEM (Mascotte Lavagna)
+//
+// -------------------------------------------------
+
+struct StatProblemView: View {
+    var onTapAnywhere: () -> Void
+    
+    // Stati interni per l'animazione sequenziale
+    @State private var textIsGrainyAndSmall = true
+    @State private var showMascot = false
+    @State private var showTapToContinue = false
+    
+    // Testi localizzabili
+    let statText = "In media, una mamma gestisce 35 'task invisibili' ogni giorno tra casa e finanze."
+    // EN: "On average, a mom manages 35 'invisible tasks' daily between home and finances."
+    
+    var body: some View {
+        ZStack {
+            Color.black.ignoresSafeArea()
+            
+            VStack(spacing: 20) {
+                Spacer()
+                
+                // TESTO STATISTICA (Effetto sgranato che si ingrandisce)
+                Text(statText)
+                    .font(.system(.title, design: .rounded))
+                    .fontWeight(.bold)
+                    .foregroundStyle(.white)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 30)
+                    // Effetto "Grainy/Piccolo" iniziale
+                    .blur(radius: textIsGrainyAndSmall ? 3 : 0)
+                    .scaleEffect(textIsGrainyAndSmall ? 0.7 : 1.0)
+                    .opacity(textIsGrainyAndSmall ? 0.6 : 1.0)
+                    // Quando appare la mascotte, il testo sale
+                    .offset(y: showMascot ? -100 : 0)
+                
+                // IMMAGINE MASCOTTE LAVAGNA (Appare dopo)
+                if showMascot {
+                    Image("mascotte_logo") // Assicurati che il nome sia esatto
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 280)
+                        .transition(.opacity.combined(with: .scale(scale: 0.9)))
+                }
+                
+                Spacer()
+                
+                // Spacer extra se serve bilanciare in basso
+                if !showMascot { Spacer() }
+            }
+            
+            // TAP TO CONTINUE (In basso)
+            VStack {
+                Spacer()
+                if showTapToContinue {
+                    Text("Tocca ovunque per continuare")
+                        .font(.footnote)
+                        .foregroundStyle(.gray)
+                        .padding(.bottom, 40)
+                        .transition(.opacity)
+                }
+            }
+        }
+        // Rende l'intera view tappabile
+        .contentShape(Rectangle())
+        .onTapGesture {
+            if showTapToContinue {
+                onTapAnywhere()
+            }
+        }
+        .onAppear {
+            animateSequence()
+        }
+    }
+    
+    func animateSequence() {
+        // 1. Il testo appare sgranato e piccolo (stato iniziale)
+        
+        // 2. Il testo diventa nitido e grande
+        withAnimation(.smooth(duration: 1.2).delay(0.3)) {
+            textIsGrainyAndSmall = false
+        }
+        
+        // 3. Il testo sale e appare la mascotte
+        withAnimation(.spring(response: 0.6, dampingFraction: 0.8).delay(2.0)) {
+            showMascot = true
+        }
+        
+        // 4. Appare "Tap to continue"
+        withAnimation(.smooth.delay(3.5)) {
+            showTapToContinue = true
+        }
+    }
+}
+
+// -------------------------------------------------
+//
+// MARK: - 4) STAT SOLUTION (Testo che cambia)
+//
+// -------------------------------------------------
+
+// MARK: - 4. NEW VIEW: STAT SOLUTION (Testo che cambia)
+struct StatSolutionView: View {
+    var onFinish: () -> Void
+    
+    // Stati per l'animazione del testo
+    @State private var showInitialText = true
+    @State private var showFinalResult = false
+    
+    // Testi localizzabili
+    let prefixText = "MomPro ti restituisce..." // EN: "MomPro gives you back..."
+    let initialValue = "...il controllo sul caos." // EN: "...control over the chaos."
+    let finalValue = "1 ORA DI TEMPO PER TE\nA SETTIMANA.*" // EN: "1 HOUR OF 'ME TIME'\nPER WEEK.*"
+    let footnote = "*Stima basata sull'ottimizzazione media del budget e dei processi domestici. MomPro Data, 2024."
+    
+    var body: some View {
+        ZStack {
+            Color.black.ignoresSafeArea()
+            
+            VStack(spacing: 20) {
+                Spacer()
+                
+                // Testo prefisso fisso
+                Text(prefixText)
+                    .font(.title2)
+                    .fontWeight(.medium)
+                    .foregroundStyle(.gray)
+                
+                ZStack {
+                    // Testo Iniziale (Caos)
+                    if showInitialText {
+                        Text(initialValue)
+                            .font(.system(.title, design: .rounded))
+                            .fontWeight(.bold)
+                            .foregroundStyle(.white)
+                            .transition(.blurReplace.animation(.smooth(duration: 0.8)))
+                    }
+                    
+                    // Testo Finale (Risultato)
+                    if showFinalResult {
+                        Text(finalValue)
+                            .font(.system(.largeTitle, design: .rounded))
+                            .fontWeight(.heavy)
+                            .foregroundStyle(.pink) // Colore brand per il risultato
+                            .multilineTextAlignment(.center)
+                            .transition(.push(from: .bottom).combined(with: .opacity).animation(.spring))
+                    }
+                }
+                .frame(height: 120) // Altezza fissa per evitare salti
+                
+                Spacer()
+                                
+                // FOOTNOTE
+                Text(footnote)
+                    .font(.caption2)
+                    .foregroundStyle(.gray.opacity(0.6))
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 40)
+                    .padding(.bottom, 20)
+                
+                // Bottone Finale (opzionale, il video non ce l'ha ma è utile)
+                Button(action: onFinish) {
+                    Text("Scopri il tuo piano")
+                        .font(.headline)
+                        .foregroundStyle(.black)
+                        .padding(.vertical, 16)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.white)
+                        .clipShape(Capsule())
+                }
+                .padding(.horizontal, 30)
+                .padding(.bottom, 40)
+                .opacity(showFinalResult ? 1 : 0) // Appare solo alla fine
+                .animation(.smooth.delay(0.5), value: showFinalResult)
+            }
+        }
+        .onAppear {
+            animateTextChange()
+        }
+    }
+    
+    func animateTextChange() {
+        // Dopo un paio di secondi, cambia il testo da "Caos" a "Risultato"
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            withAnimation(.smooth(duration: 0.5)) {
+                showInitialText = false
+            }
+            withAnimation(.spring(response: 0.6, dampingFraction: 0.7).delay(0.1)) {
+                showFinalResult = true
+            }
+        }
+    }
+}
 
 /*
 // Preview
