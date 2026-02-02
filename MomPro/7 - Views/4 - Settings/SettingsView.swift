@@ -175,7 +175,7 @@ struct SettingsView: View {
                     VStack(spacing: 0) {
                         
                         // --- PRO HEADER CARD ---
-                        if viewModel.isPro {
+                        if !viewModel.isPro {
                             PurchaseComponent(showPaywall: $showPaywall)
                                 .padding(.horizontal)
                                 .padding(.top, 14)
@@ -993,11 +993,21 @@ struct SubscribeActive: View {
                         .frame(width: 70, height: 70)
                         .shadow(color: Color.pink.opacity(0.4), radius: 20, x: 0, y: 0)
                     
+                    
+                    HugeiconsText(
+                        "rhombus-01",
+                        font:  HugeiconsSolidRounded.hugeiconsFont(size: 33),
+                        color: Color(.white.opacity(0.9))
+                    )
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 35, height: 35)
+                    .foregroundColor(.white.opacity(0.9))
+                    /*
                     Image(systemName: "sparkle")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 35, height: 35)
-                        .foregroundColor(.white.opacity(0.9))
+                        .foregroundColor(.white.opacity(0.9))*/
                 }
                 .padding(.bottom, 20)
                 
@@ -1121,128 +1131,6 @@ private struct MagicParticlePro {
     let duration: Double
 }
 
-/*
-struct SubscribeActive: View {
-    
-    @State private var particles: [MagicParticle] = []
-    @Environment(\.colorScheme) var colorScheme
-    
-    var body: some View {
-        Button(action: {
-            //
-            }) {
-            TimelineView(.animation) { timeline in
-                Canvas { context, size in
-                    updateParticles(context: context, size: size, date: timeline.date)
-                }
-            }
-            .frame(minHeight: 110)
-            .background(
-                RoundedRectangle(cornerRadius: (24+2), style: .continuous)
-                    .fill(
-                        LinearGradient(
-                            colors: [Color.clear, Color.clear],
-                            startPoint: .top,
-                            endPoint: .bottom
-                        )
-                    )
-            )
-            .overlay(cardContent)
-        }
-    .buttonStyle(SquishyButtonEffect())
-    }
-    
-    private var cardContent: some View {
-        
-        VStack( spacing: 8) {
-            
-                Text("settings_view_purchase_you_are_a_legend".localized)
-                    .font(.system(.headline, design: .rounded))
-                    .fontWeight(.bold)
-                    .foregroundColor(.primary)
-                    .lineLimit(2)
-                    .multilineTextAlignment(.leading)
-                    .fixedSize(horizontal: false, vertical: true)
-                
-                Text("Il tuo abbonamento è attivo. Goditi i 2 task extra giornalieri, statistiche avanzate, accesso illimitato a tutte le guide per la tua crescita, e altro ancora.".localized)
-                    .font(.system(.subheadline, design: .default))
-                    .fontWeight(.medium)
-                    .foregroundColor(.secondary)
-                    .lineLimit(8)
-                    .multilineTextAlignment(.leading)
-                    .fixedSize(horizontal: false, vertical: true)
-           
-        }
-        .frame(maxWidth: .infinity, alignment: .center)
-        //.padding(.horizontal, 14)
-        .padding(.vertical, 26)
-
-
-    }
-    
-   
-
-    private func updateParticles(context: GraphicsContext, size: CGSize, date: Date) {
-        // 1. GENERAZIONE
-        if particles.count < 55 {
-            let p = MagicParticle(
-                x: Double.random(in: (size.width * 0.04)...(size.width * 0.96)),
-                y: Double.random(in: (size.height * 0.10)...(size.height * 0.90)),
-                opacity: 1.0,
-                size: Double.random(in: 0.3...1.9), // ANCORA PIÙ PICCOLE (default in: 0.3...1.9))
-                speed: Double.random(in: 0.3...0.7), // Velocità molto contenuta
-                drift: Double.random(in: -0.3...0.3),
-                creationDate: date
-            )
-            
-            DispatchQueue.main.async {
-                particles.append(p)
-            }
-        }
-        
-        // 2. DISEGNO CON EFFETTO CRESCITA/DECRESCITA
-        for particle in particles {
-            let elapsed = date.timeIntervalSince(particle.creationDate)
-            let duration: Double = 1.0 // Durata totale della vita
-            
-            // Calcolo del progresso (da 0.0 a 1.0)
-            let progress = elapsed / duration
-            
-            if progress < 1.0 {
-                // Calcolo scala: sale da 0 a 1 e torna a 0 usando una funzione seno
-                // Double.pi * progress crea una curva che a metà (0.5) è al valore massimo (1.0)
-                let scale = sin(Double.pi * progress)
-                
-                // Applichiamo la scala alla dimensione e all'opacità
-                let currentSize = particle.size * scale
-                let currentOpacity = scale // Svanisce anche l'opacità insieme alla dimensione
-                
-                // Movimento lento verso l'alto
-                let currentY = particle.y - (particle.speed * elapsed * 10)
-                let currentX = particle.x + (particle.drift * elapsed * 10)
-                
-                var innerContext = context
-                innerContext.opacity = currentOpacity
-                
-                // Centriamo il rettangolo per evitare che la particella "salti" mentre cresce
-                let rect = CGRect(
-                    x: currentX - (currentSize / 2),
-                    y: currentY - (currentSize / 2),
-                    width: currentSize,
-                    height: currentSize
-                )
-                
-                innerContext.fill(Circle().path(in: rect), with: .color(.pink))
-            }
-        }
-        
-        // 3. PULIZIA
-        DispatchQueue.main.async {
-            particles.removeAll { date.timeIntervalSince($0.creationDate) > 1.0 }
-        }
-    }
-}
- */
 
 
 
