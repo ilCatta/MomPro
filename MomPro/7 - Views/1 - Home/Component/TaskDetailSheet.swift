@@ -172,7 +172,7 @@ struct TaskDetailSheet: View {
             viewModel.incrementTaskProgress(taskId: taskStatus.id)
             // Chiude lo sheet automaticamente solo se abbiamo FINITO il conteggio
             if liveTaskStatus.currentProgress >= taskStatus.task.targetCount {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     dismiss()
                 }
             }
@@ -191,12 +191,4 @@ struct TaskDetailSheet: View {
 }
 
 
-private struct SquishyButtonEffect: ButtonStyle {
 
-    func makeBody(configuration: ButtonStyle.Configuration) -> some View {
-        configuration.label
-        .scaleEffect(configuration.isPressed ? 0.94 : 1.0)
-        .brightness(configuration.isPressed ? -0.0 : 0)
-        .animation(.spring(response: 0.3, dampingFraction: 0.4, blendDuration: 0), value: configuration.isPressed)
-    }
-}

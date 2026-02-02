@@ -41,9 +41,6 @@
         }
       }
     },
-    "10 minuti al giorno per la tua\nindipendenza finanziaria." : {
-
-    },
     "actions_close" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -57,6 +54,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chiudi"
+          }
+        }
+      }
+    },
+    "actions_continue" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continua"
           }
         }
       }
@@ -145,9 +159,6 @@
           }
         }
       }
-    },
-    "Benvenuta in MumPro" : {
-
     },
     "bud_001_title" : {
       "extractionState" : "manual",
@@ -5877,9 +5888,6 @@
     "Il tuo Livello" : {
 
     },
-    "Inizia il viaggio" : {
-
-    },
     "inv_001_title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5964,6 +5972,9 @@
           }
         }
       }
+    },
+    "Key" : {
+      "extractionState" : "manual"
     },
     "La tua costanza" : {
 
@@ -6285,6 +6296,261 @@
     },
     "Offerta valida una sola volta!" : {
 
+    },
+    "onboarding_view_control" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Control"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controllo"
+          }
+        }
+      }
+    },
+    "onboarding_view_independence" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Independence"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indipendenza"
+          }
+        }
+      }
+    },
+    "onboarding_view_option_groceries" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "💸 Save on groceries"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "💸 Risparmiare sulla spesa"
+          }
+        }
+      }
+    },
+    "onboarding_view_option_home" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🏡 Manage home better"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "🏡 Gestire meglio la casa"
+          }
+        }
+      }
+    },
+    "onboarding_view_option_investing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "📈 Learn to invest"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "📈 Imparare a investire"
+          }
+        }
+      }
+    },
+    "onboarding_view_option_meals" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🥘 Cook better in less time"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "🥘 Cucinare meglio in meno tempo"
+          }
+        }
+      }
+    },
+    "onboarding_view_option_renovation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🔨 Renovate on a budget"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "🔨 Ristrutturare risparmiando"
+          }
+        }
+      }
+    },
+    "onboarding_view_option_stress" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🧘 Eliminate money anxiety"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "🧘 Eliminare l'ansia del denaro"
+          }
+        }
+      }
+    },
+    "onboarding_view_plan_save_and_invest_10_minutes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plan, save, and invest in your future,\n10 minutes at a time."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Pianifica, risparmia e investi nel tuo futuro,\n10 minuti alla volta."
+          }
+        }
+      }
+    },
+    "onboarding_view_question_subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Let's create your custom path.\nWhat goal do you want to reach?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Creiamo il tuo percorso personalizzato.\nQual è il traguardo che vuoi raggiungere?"
+          }
+        }
+      }
+    },
+    "onboarding_view_serenity" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serenity"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serenità"
+          }
+        }
+      }
+    },
+    "onboarding_view_set_yourself_up_for" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set yourself up for"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prepara te stessa al"
+          }
+        }
+      }
+    },
+    "onboarding_view_start_now" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start now"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inizia ora"
+          }
+        }
+      }
+    },
+    "onboarding_view_success" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Success"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Successo"
+          }
+        }
+      }
+    },
+    "onboarding_view_what_s_your_goal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What's your goal?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qual è il tuo obiettivo?"
+          }
+        }
+      }
     },
     "Ottimo lavoro! Hai investito del tempo prezioso per la tua crescita personale." : {
 
