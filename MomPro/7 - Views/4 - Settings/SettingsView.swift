@@ -1,131 +1,3 @@
-
-/*
-OLD CODE
- FUNZIONANTE MA CON UI UX VECCHIA
- 
-struct SettingsView: View {
-    @State private var viewModel = SettingsViewModel()
-    
-    // Recuperiamo il LanguageService passato dall'ambiente in MomProApp
-    @Environment(LanguageService.self) var languageService
-    
-    var body: some View {
-        NavigationStack {
-            List {
-                
-                
-                // MARK: - SEZIONE ABBONAMENTO
-                Section {
-                    if viewModel.isPro {
-                        // UTENTE PRO
-                        HStack {
-                            Image(systemName: "crown.fill")
-                                .foregroundStyle(.yellow)
-                                .font(.title2)
-                            VStack(alignment: .leading) {
-                                Text("Sei un membro MumPro".localized)
-                                    .font(.headline)
-                                Text("Grazie per il tuo supporto!".localized)
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                            }
-                        }
-                        .padding(.vertical, 4)
-                    } else {
-                        // UTENTE FREE
-                        Button(action: {
-                            viewModel.openPaywall()
-                        }) {
-                            HStack {
-                                ZStack {
-                                    Circle()
-                                        .fill(Color.pink)
-                                        .frame(width: 34, height: 34)
-                                    Image(systemName: "star.fill")
-                                        .foregroundStyle(.white)
-                                }
-                                
-                                VStack(alignment: .leading) {
-                                    Text("Diventa MumPro".localized)
-                                        .font(.headline)
-                                        .foregroundStyle(.primary)
-                                    Text("Sblocca tutto e rimuovi i limiti".localized)
-                                        .font(.caption)
-                                        .foregroundStyle(.secondary)
-                                }
-                                Spacer()
-                                Image(systemName: "chevron.right")
-                                    .foregroundStyle(.secondary)
-                                    .font(.caption)
-                            }
-                        }
-                    }
-                } header: {
-                    Text("Il tuo piano".localized)
-                }
-                
-                // MARK: - SEZIONE ASPETTO
-                Section("Aspetto".localized) {
-                    
-                    // TOGGLE DARK MODE
-                    Toggle(isOn: $viewModel.isDarkMode) {
-                        Label("Modalità Scura".localized, systemImage: "moon.fill")
-                    }
-                    
-                    // PICKER CAMBIO LINGUA
-                    Picker(selection: Binding(
-                        get: { languageService.currentLanguage },
-                        set: { languageService.setLanguage($0) }
-                    )) {
-                        Text("English").tag("en")
-                        Text("Italiano").tag("it")
-                    } label: {
-                        Label("Lingua / Language".localized, systemImage: "globe")
-                    }
-                }
-                
-          
-                
-                // MARK: - INFO VERSION
-                Section {
-                    HStack {
-                        Text("Versione".localized)
-                        Spacer()
-                        Text(viewModel.appVersion)
-                            .foregroundStyle(.secondary)
-                    }
-                } footer: {
-                    Text("Fatto con ❤️ per le mamme.".localized)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .padding(.top)
-                }
-            }
-            .navigationTitle("Opzioni".localized)
-            
-            // --- MODALI ---
-            
-            // 1. Paywall Sheet
-            .sheet(isPresented: $viewModel.showPaywall) {
-                PaywallView(displayCloseButton: true)
-            }
-            
-            // 2. Alert Risultato Ripristino
-            .alert("Ripristino".localized, isPresented: $viewModel.showRestoreAlert) {
-                Button("OK", role: .cancel) { }
-            } message: {
-                Text(viewModel.restoreMessage)
-            }
-        }
-    }
-}
-
-#Preview {
-    // Per la preview dobbiamo iniettare il LanguageService mockato o reale
-    SettingsView()
-        .environment(LanguageService.shared)
-}
-*/
-
 import SwiftUI
 import StoreKit
 import RevenueCat
@@ -303,13 +175,15 @@ struct SettingsView: View {
                     VStack(spacing: 0) {
                         
                         // --- PRO HEADER CARD ---
-                        if !viewModel.isPro {
-                            PurchaseComponent()
+                        if viewModel.isPro {
+                            PurchaseComponent(showPaywall: $showPaywall)
+                                .padding(.horizontal)
                                 .padding(.top, 14)
                                 .padding(.bottom, 46)
                         } else {
-                            // Opzionale: Spazio vuoto o messaggio "Sei un utente Pro!"
-                            Color.red.frame(height: 20)
+                            SubscribeActive()
+                                //.padding(.top, 14)
+                                .padding(.bottom, (46-32)) // 32 è lo spazio extra messo nel componente SubscribeActive
                         }
                         
                         // --- LISTA  ---
@@ -490,8 +364,9 @@ struct SettingsView: View {
                             .padding(.bottom, 40)
                             
                         }
+                        .padding(.horizontal)
                     }
-                    .padding(.horizontal)
+                
                 }
                 
                 
@@ -527,7 +402,7 @@ struct SettingsView: View {
             // --- SHEET ---
             .sheet(isPresented: $showLanguageSheet) {
                 LanguageSelectionSheet()
-                    .presentationDetents([.fraction(0.99)])
+                    .presentationDetents([.large])
                     .presentationDragIndicator(.visible)
             }
             .sheet(isPresented: $showUnlimitedLearningSheet) {
@@ -544,6 +419,8 @@ struct SettingsView: View {
                              showPaywall = true
                          }
                      })
+                    .presentationDetents([.fraction(0.50)])
+                    .presentationDragIndicator(.visible)
             }
             .sheet(isPresented: $showDailyBoostSheet) {
                 PremiumFeaturesSheet(
@@ -559,6 +436,8 @@ struct SettingsView: View {
                             showPaywall = true
                         }
                     })
+                    .presentationDetents([.fraction(0.50)])
+                    .presentationDragIndicator(.visible)
             }
             .sheet(isPresented: $showAdvancedStatisticsSheet) {
                 PremiumFeaturesSheet(
@@ -574,6 +453,8 @@ struct SettingsView: View {
                             showPaywall = true
                         }
                     })
+                    .presentationDetents([.fraction(0.50)])
+                    .presentationDragIndicator(.visible)
                    }
       
         }
@@ -625,7 +506,7 @@ struct LanguageSelectionSheet: View {
             
             // TITOLO E HEADER
             HStack {
-                Text("settings_view_language".localized) // "Lingua"
+                Text("settings_view_language".localized) // "Language"
                     .font(.system(.title ,design: .rounded))
                     .fontWeight(.bold)
                     .foregroundColor(.primary)
@@ -663,18 +544,15 @@ struct LanguageSelectionSheet: View {
             Spacer()
         }
         .background(Color(uiColor: .systemGroupedBackground))
-        .presentationDetents([.large]) // Alto come tutto lo schermo
-        .presentationDragIndicator(.visible)
+        
     }
     
     // Funzione helper per cambiare lingua
     private func changeLanguage(to code: String) {
         let impact = UIImpactFeedbackGenerator(style: .light)
         impact.impactOccurred()
-        
         // Imposta la lingua
         languageService.setLanguage(code)
-        
         // Chiude lo sheet
         dismiss()
     }
@@ -807,7 +685,7 @@ struct PremiumFeaturesSheet: View {
                         )
                         .padding(.trailing, 4)
 
-                        Text("Premium")
+                        Text("settings_view_purchase_premium".localized)
                             .font(.system(.title3, design: .rounded))
                             .fontWeight(.medium)
                             .foregroundColor(.white)
@@ -835,9 +713,6 @@ struct PremiumFeaturesSheet: View {
             
         }
         .padding()
-        //
-        .presentationDetents([.fraction(0.50)])
-        .presentationDragIndicator(.visible)
     }
 }
 
@@ -1070,24 +945,310 @@ private struct ListTilePro: View {
 
 
 
+// ---- ---- ---- ---- ---- ---- ---- ---- ----
+//
+// MARK: Subscribe Active
+//
+// ---- ---- ---- ---- ---- ---- ---- ---- ----
 
 
+struct SubscribeActive: View {
+    
+    @State private var particles: [MagicParticlePro] = []
+    @Environment(\.colorScheme) var colorScheme
+    
+    var body: some View {
+        ZStack {
+            // SFONDO
+            //Color(UIColor.systemBackground).ignoresSafeArea()
+            
+            // PARTICELLE (Sullo sfondo)
+            TimelineView(.animation) { timeline in
+                Canvas { context, size in
+                    updateParticles(context: context, size: size, date: timeline.date)
+                }
+            }
+            .ignoresSafeArea()
+            
+            // CONTENUTO CENTRALE
+            VStack(spacing: 0) {
+                
+                // SPAZIO SOPRA (Per far vedere le particelle sopra l'icona)
+                Color.clear.frame(height: 24)
+                
+                // --- ICONA ---
+                ZStack {
+                    RoundedRectangle(cornerRadius: 26, style: .continuous)
+                        .fill(
+                            LinearGradient(
+                                colors: [
+                                    Color(.pink),
+                                    Color(red: 0.85, green: 0.0, blue: 0.45), // Magenta scuro
+                                    //Color(red: 1.0, green: 0.4, blue: 0.7)    // Rosa acceso
+                                ],
+                                startPoint: .topTrailing,
+                                endPoint: .bottomLeading
+                            )
+                        )
+                        .frame(width: 70, height: 70)
+                        .shadow(color: Color.pink.opacity(0.4), radius: 20, x: 0, y: 0)
+                    
+                    Image(systemName: "sparkle")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 35, height: 35)
+                        .foregroundColor(.white.opacity(0.9))
+                }
+                .padding(.bottom, 20)
+                
+                // --- TITOLO ---
+                Text("settings_view_purchase_you_are_a_legend".localized)
+                    .font(.system(.title2, design: .rounded))
+                    .fontWeight(.bold)
+                    .foregroundColor(.primary)
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, 8)
+                
+                // --- DESCRIZIONE ---
+                Text("settings_view_purchase_you_are_a_legend_desc".localized)
+                    .font(.system(.subheadline, design: .default))
+                    .fontWeight(.medium)
+                    .foregroundColor(.secondary)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(8)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.horizontal, 24)
+                
+                // SPAZIO SOTTO (Per far vedere le particelle sotto il testo)
+                Color.clear.frame(height: 32)
+            }
+        }
+    }
+    
+    // LOGICA PARTICELLE
+    private func updateParticles(context: GraphicsContext, size: CGSize, date: Date) {
+        // GENERAZIONE (BATCH)
+        // Se siamo sotto il limite, ne aggiungiamo TANTE per frame, non una sola.
+        if particles.count < 330 {
+            
+            var newParticles: [MagicParticlePro] = []
+            
+            // MODIFICA QUI: Aggiungiamo 15 particelle PER FRAME invece di 1
+            // Questo riempirà lo schermo molto velocemente
+            for _ in 0..<3 {
+                
+                let colors: [Color] = [
+                    .pink,
+                    .pink.opacity(0.8),
+                    Color(red: 1, green: 0.4, blue: 0.7),
+                    Color(red: 0.8, green: 0.2, blue: 0.5)
+                ]
+                let particleColor = colors.randomElement() ?? .pink
+                
+                let randomDuration = Double.random(in: 0.8...1.2)
+                
+                let p = MagicParticlePro(
+                    x: Double.random(in: (size.width * 0.01)...(size.width * 0.99)), // Tutta la larghezza
+                    y: Double.random(in: (0.04)...(size.height * 0.96)), // Dall'alto assoluto fino a sotto il testo
+                    opacity: 1.0,
+                    size: Double.random(in: 0.2...1.8), // Piccole
+                    speed: Double.random(in: 0.1...0.5), // Lente
+                    drift: Double.random(in: -0.2...0.2),
+                    creationDate: date,
+                    color: particleColor,
+                    duration: randomDuration
+                )
+                newParticles.append(p)
+            }
+            
+            DispatchQueue.main.async {
+                particles.append(contentsOf: newParticles)
+            }
+        }
+        
+        // 2. DISEGNO
+        for particle in particles {
+            let elapsed = date.timeIntervalSince(particle.creationDate)
+            //  Durata ridotta (Svaniscono prima, tra 0.8 e 1.2)
+            let duration = particle.duration
+            
+            let progress = elapsed / duration
+            
+            if progress < 1.0 {
+                let scale = sin(Double.pi * progress)
+                let currentSize = particle.size * scale
+                
+                // Opacità alta per visibilità, ma svanisce con la scala
+                let visibilityFactor = 0.9
+                let currentOpacity = scale * visibilityFactor
+                
+                // UPDATE: Moltiplicatore ridotto a 15 (prima era 50).
+                // Si spostano pochissimo verso l'alto.
+                let currentY = particle.y - (particle.speed * elapsed * 15)
+                let currentX = particle.x + (particle.drift * elapsed * 10)
+                
+                var innerContext = context
+                innerContext.opacity = currentOpacity
+                
+                let rect = CGRect(
+                    x: currentX - (currentSize / 2),
+                    y: currentY - (currentSize / 2),
+                    width: currentSize,
+                    height: currentSize
+                )
+                
+                innerContext.fill(Circle().path(in: rect), with: .color(particle.color))
+            }
+        }
+        
+        // 3. PULIZIA
+        DispatchQueue.main.async {
+            // Rimuoviamo più velocemente
+            particles.removeAll { date.timeIntervalSince($0.creationDate) > 1.2 }
+        }
+    }
+}
+
+private struct MagicParticlePro {
+    var x: Double
+    var y: Double
+    var opacity: Double
+    let size: Double
+    let speed: Double
+    let drift: Double
+    let creationDate: Date
+    let color: Color
+    let duration: Double
+}
+
+/*
+struct SubscribeActive: View {
+    
+    @State private var particles: [MagicParticle] = []
+    @Environment(\.colorScheme) var colorScheme
+    
+    var body: some View {
+        Button(action: {
+            //
+            }) {
+            TimelineView(.animation) { timeline in
+                Canvas { context, size in
+                    updateParticles(context: context, size: size, date: timeline.date)
+                }
+            }
+            .frame(minHeight: 110)
+            .background(
+                RoundedRectangle(cornerRadius: (24+2), style: .continuous)
+                    .fill(
+                        LinearGradient(
+                            colors: [Color.clear, Color.clear],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+            )
+            .overlay(cardContent)
+        }
+    .buttonStyle(SquishyButtonEffect())
+    }
+    
+    private var cardContent: some View {
+        
+        VStack( spacing: 8) {
+            
+                Text("settings_view_purchase_you_are_a_legend".localized)
+                    .font(.system(.headline, design: .rounded))
+                    .fontWeight(.bold)
+                    .foregroundColor(.primary)
+                    .lineLimit(2)
+                    .multilineTextAlignment(.leading)
+                    .fixedSize(horizontal: false, vertical: true)
+                
+                Text("Il tuo abbonamento è attivo. Goditi i 2 task extra giornalieri, statistiche avanzate, accesso illimitato a tutte le guide per la tua crescita, e altro ancora.".localized)
+                    .font(.system(.subheadline, design: .default))
+                    .fontWeight(.medium)
+                    .foregroundColor(.secondary)
+                    .lineLimit(8)
+                    .multilineTextAlignment(.leading)
+                    .fixedSize(horizontal: false, vertical: true)
+           
+        }
+        .frame(maxWidth: .infinity, alignment: .center)
+        //.padding(.horizontal, 14)
+        .padding(.vertical, 26)
 
 
- 
+    }
+    
+   
+
+    private func updateParticles(context: GraphicsContext, size: CGSize, date: Date) {
+        // 1. GENERAZIONE
+        if particles.count < 55 {
+            let p = MagicParticle(
+                x: Double.random(in: (size.width * 0.04)...(size.width * 0.96)),
+                y: Double.random(in: (size.height * 0.10)...(size.height * 0.90)),
+                opacity: 1.0,
+                size: Double.random(in: 0.3...1.9), // ANCORA PIÙ PICCOLE (default in: 0.3...1.9))
+                speed: Double.random(in: 0.3...0.7), // Velocità molto contenuta
+                drift: Double.random(in: -0.3...0.3),
+                creationDate: date
+            )
+            
+            DispatchQueue.main.async {
+                particles.append(p)
+            }
+        }
+        
+        // 2. DISEGNO CON EFFETTO CRESCITA/DECRESCITA
+        for particle in particles {
+            let elapsed = date.timeIntervalSince(particle.creationDate)
+            let duration: Double = 1.0 // Durata totale della vita
+            
+            // Calcolo del progresso (da 0.0 a 1.0)
+            let progress = elapsed / duration
+            
+            if progress < 1.0 {
+                // Calcolo scala: sale da 0 a 1 e torna a 0 usando una funzione seno
+                // Double.pi * progress crea una curva che a metà (0.5) è al valore massimo (1.0)
+                let scale = sin(Double.pi * progress)
+                
+                // Applichiamo la scala alla dimensione e all'opacità
+                let currentSize = particle.size * scale
+                let currentOpacity = scale // Svanisce anche l'opacità insieme alla dimensione
+                
+                // Movimento lento verso l'alto
+                let currentY = particle.y - (particle.speed * elapsed * 10)
+                let currentX = particle.x + (particle.drift * elapsed * 10)
+                
+                var innerContext = context
+                innerContext.opacity = currentOpacity
+                
+                // Centriamo il rettangolo per evitare che la particella "salti" mentre cresce
+                let rect = CGRect(
+                    x: currentX - (currentSize / 2),
+                    y: currentY - (currentSize / 2),
+                    width: currentSize,
+                    height: currentSize
+                )
+                
+                innerContext.fill(Circle().path(in: rect), with: .color(.pink))
+            }
+        }
+        
+        // 3. PULIZIA
+        DispatchQueue.main.async {
+            particles.removeAll { date.timeIntervalSince($0.creationDate) > 1.0 }
+        }
+    }
+}
+ */
 
 
 
 // ---- ---- ---- ---- ---- ---- ---- ---- ----
 //
 // MARK: Purcahse Component
-//
-// ---- ---- ---- ---- ---- ---- ---- ---- ----
-
-// ---- ---- ---- ---- ---- ---- ---- ---- ----
-//
-// MARK: Da rivedere in tutte le size e come è responsive in tutit i dispositivi e mancano le traduzioni
-// e metti gli effetti sui bottoni che diventano un pò più piccoli e vibrazione
 //
 // ---- ---- ---- ---- ---- ---- ---- ---- ----
 
@@ -1103,55 +1264,38 @@ private struct MagicParticle {
 
 struct PurchaseComponent: View {
         
+    @Binding var showPaywall: Bool
+    
     @State private var particles: [MagicParticle] = []
     
     @Environment(\.colorScheme) var colorScheme
     
-    private var _cornerRadius: CGFloat {
-        return (24+2)
-    }
-    
-    private var _minHeight: CGFloat {
-        return 110
-    }
-    
-    private var _iconSizeLeft: CGFloat {
-        return 27
-    }
-    
-    private var _iconUpgradeButtonSize: CGFloat {
-        return 20
-    }
-
-    
     var body: some View {
         Button(action: {
-        let generator = UIImpactFeedbackGenerator(style: .light)
-        generator.impactOccurred()
+            let impact = UIImpactFeedbackGenerator(style: .light)
+                impact.impactOccurred()
+                showPaywall = true
+                
             }) {
-        TimelineView(.animation) { timeline in
-            Canvas { context, size in
-                updateParticles(context: context, size: size, date: timeline.date)
+            TimelineView(.animation) { timeline in
+                Canvas { context, size in
+                    updateParticles(context: context, size: size, date: timeline.date)
+                }
             }
-        }
-        .frame(minHeight: _minHeight)
-        .background(
-            RoundedRectangle(cornerRadius: _cornerRadius, style: .continuous)
-                .fill(
-                    LinearGradient(
-                        colors: [Color.pink, Color.pink.opacity(0.5)],
-                        startPoint: .top,
-                        endPoint: .bottom
+            .frame(minHeight: 110)
+            .background(
+                RoundedRectangle(cornerRadius: (24+2), style: .continuous)
+                    .fill(
+                        LinearGradient(
+                            colors: [Color.pink, Color.pink.opacity(0.5)],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
                     )
-                )
-        )
-        .overlay(cardContent)
-        .overlay(
-            RoundedRectangle(cornerRadius: _cornerRadius, style: .continuous)
-                .stroke( Color("Border"),lineWidth:  1,)
-        )
-    }
-       
+            )
+            .overlay(cardContent)
+        }
+    .buttonStyle(SquishyButtonEffect())
     }
     
     private var cardContent: some View {
@@ -1159,22 +1303,22 @@ struct PurchaseComponent: View {
         HStack {
             
             HugeiconsText(
-                "crown",
-                font:  HugeiconsSolidRounded.hugeiconsFont(size: _iconSizeLeft),
+                "rhombus-01",
+                font:  HugeiconsSolidRounded.hugeiconsFont(size: 27),
                 color: Color(.white.opacity(0.8))
             )
             .padding(.trailing, 6)
             
             VStack(alignment: .leading, spacing: 2.5) {
-                Text("Prendi il controllo del tuo tempo.")
-                    .font(.system(.caption, design: .default))
-                    .fontWeight(.semibold)
+                Text("settings_view_purchase_title".localized)
+                    .font(.system(.headline, design: .rounded))
+                    .fontWeight(.bold)
                     .foregroundColor(.white)
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)
                     .fixedSize(horizontal: false, vertical: true)
                 
-                Text("Abbonati e comincia ora.")
+                Text("settings_view_purchase_subtitle".localized)
                     .font(.system(.subheadline, design: .default))
                     .fontWeight(.medium)
                     .foregroundColor(.white.opacity(0.8))
@@ -1182,8 +1326,8 @@ struct PurchaseComponent: View {
                     .multilineTextAlignment(.leading)
                     .fixedSize(horizontal: false, vertical: true)
                 
-                Text("Sblocca la tua produttività.")
-                    .font(.system(.caption, design: .default))
+                Text("settings_view_purchase_cta".localized)
+                    .font(.system(.subheadline, design: .default))
                     .fontWeight(.medium)
                     .foregroundColor(.white.opacity(0.8))
                     .lineLimit(2)
@@ -1202,16 +1346,20 @@ struct PurchaseComponent: View {
     }
     
     private var upgradeButton: some View {
-        Button(action: {}) {
+        Button(action: {
+            let impact = UIImpactFeedbackGenerator(style: .light)
+            impact.impactOccurred()
+            showPaywall = true
+        }) {
             HStack(spacing: 0) {
                 HugeiconsText(
                     "circle-arrow-up-02",
-                    font:  HugeiconsSolidRounded.hugeiconsFont(size:_iconUpgradeButtonSize),
+                    font:  HugeiconsSolidRounded.hugeiconsFont(size:20),
                     color: .white
                 )
                 .padding(.trailing, 4)
 
-                Text("Premium")
+                Text("settings_view_purchase_premium".localized)
             }
             .font(.system(.subheadline, design: .default))
             .fontWeight(.semibold)
@@ -1231,6 +1379,7 @@ struct PurchaseComponent: View {
             //)
             
         }
+        .buttonStyle(SquishyButtonEffect())
     }
 
     private func updateParticles(context: GraphicsContext, size: CGSize, date: Date) {
