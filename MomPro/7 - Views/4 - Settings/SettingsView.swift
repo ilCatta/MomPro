@@ -1175,7 +1175,7 @@ struct PurchaseComponent: View {
                 RoundedRectangle(cornerRadius: (24+2), style: .continuous)
                     .fill(
                         LinearGradient(
-                            colors: [Color.pink, Color.pink.opacity(0.5)],
+                            colors: [Color.pink, Color.pink.opacity(0.6)],
                             startPoint: .top,
                             endPoint: .bottom
                         )

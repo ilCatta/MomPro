@@ -179,6 +179,8 @@ struct HomeView: View {
                                     onTap: { selectedTask = taskStatus },
                                     onRefresh: {
                                         if viewModel.canRefresh {
+                                            let impact = UIImpactFeedbackGenerator(style: .light)
+                                            impact.impactOccurred()
                                             viewModel.requestRefresh(for: taskStatus)
                                         }
                                     },
@@ -227,15 +229,30 @@ struct HomeView: View {
                         VStack(alignment: .leading, spacing: 16) {
                             
                             ForEach(viewModel.vipTasks) { taskStatus in
-                                // USIAMO LA NUOVA CARD
-                                VipTaskCard(taskStatus: taskStatus) {
-                                    // Se è bloccato apre paywall, altrimenti apre dettaglio
-                                    if !StoreService.shared.isPro {
+                                
+                                if StoreService.shared.isPro {
+                                    
+                                    // CASO 1: UTENTE PRO -> Grafica Classica
+                                    ClassicTask(
+                                        taskStatus: taskStatus,
+                                        color: viewModel.colorForTaskStatus(taskStatus),
+                                        onTap: {
+                                            selectedTask = taskStatus
+                                        },
+                                        onRefresh: {},
+                                        canRefresh: false
+                                    )
+                                    
+                                } else {
+                                    
+                                    // CASO 2: UTENTE FREE -> Grafica "Misteriosa" con Lucchetto
+                                    VipTaskCard(taskStatus: taskStatus) {
+                                        let impact = UIImpactFeedbackGenerator(style: .light)
+                                        impact.impactOccurred()
                                         showPaywall = true
-                                    } else {
-                                        selectedTask = taskStatus
                                     }
                                 }
+                                
                             }
                         }
                         .padding(.horizontal)
@@ -304,21 +321,24 @@ struct HomeView: View {
                 .sheet(isPresented: $showEducationSheet) {
                     if let task = viewModel.educationTaskStatus, task.isCompleted {
                         // CASO 1: Successo
-                        EducationSuccessSheet()
-                            .presentationDetents([.fraction(0.50)])
+                        EducationInstructionSheet(
+                            isCompleted: true,
+                            onGoToLearn: {},
+                        )
+                            //.presentationDetents([.fraction(0.45)])
                     } else {
                         // CASO 2: Istruzioni -> VAI A LEARN
-                        EducationInstructionSheet(onGoToLearn: {
+                        EducationInstructionSheet(
+                            isCompleted: false,
+                            onGoToLearn: {
                             showEducationSheet = false
-                            
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
                                 withAnimation {
-                                    // MODIFICA QUI: Usa l'enum .learn
                                     currentTab = .learn
                                 }
                             }
                         })
-                        .presentationDetents([.fraction(0.45)])
+                        //.presentationDetents([.fraction(0.45)])
                     }
                 }
                  
@@ -326,7 +346,7 @@ struct HomeView: View {
                 //
                 // PAYWALL
                 .sheet(isPresented: $showPaywall) {
-                    PaywallView(displayCloseButton: true) // Questa è la vista nativa di RevenueCat
+                    PaywallView(displayCloseButton: true)
                         .onRestoreCompleted { info in
                              // Gestione opzionale se l'utente ripristina gli acquisti
                              if info.entitlements.active.isEmpty == false {
@@ -665,59 +685,90 @@ struct HomeView: View {
 
 
 
-
-
-
+// -------------------------------------------------
+//
+// MARK: - Education Sheet
+//
+// -------------------------------------------------
 
 
 // MARK: - SHEET 1: Istruzioni (Prima di completare)
 struct EducationInstructionSheet: View {
     @Environment(\.dismiss) private var dismiss
     // Questa closure serve per dire alla Home: "Spostati sul tab Learn"
+    let isCompleted: Bool
     var onGoToLearn: () -> Void
     
     var body: some View {
-        VStack(spacing: 24) {
+        VStack(spacing: 0) {
             
             // Icona Grande
-            Image(systemName: "signpost.right.and.left.fill")
-                .font(.system(size: 60))
-                .foregroundStyle(.purple)
-                .padding()
-                .background(Color.purple.opacity(0.1))
+            Image(systemName: iconName(for: TaskCategory.education))
+                .font(.system(size: 30))
+                .foregroundStyle(.pink)
+                .frame(width: 73, height: 73)
+                .background(Color.pink.opacity(0.1))
                 .clipShape(Circle())
+                .padding(.vertical, 24)
             
-            VStack(spacing: 12) {
-                Text("Tempo di imparare!")
-                    .font(.title2)
-                    .fontWeight(.bold)
-            
-                Text("Per completare questo obiettivo, vai nella sezione **Guide**, scegli un articolo che ti ispira e leggilo fino in fondo.")
-                    .font(.body)
-                    .multilineTextAlignment(.center)
-                    .foregroundStyle(.secondary)
-                    .padding(.horizontal)
-            }
-            
+       
+            Text("education_01_title".localized)
+                .font(.system(.title2, design: .rounded))
+                .fontWeight(.semibold)
+                .foregroundColor(.primary)
+                .padding(.bottom, 24)
+        
+            Text("education_01_desc".localized)
+                .font(.system(.body, design: .default))
+                .fontWeight(.regular)
+                .foregroundStyle(.primary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
+                                
             Spacer()
             
-            Button(action: {
-                dismiss()
-                // Ritardiamo leggermente la navigazione per far chiudere il foglio in modo fluido
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                    onGoToLearn()
+            // --- SEZIONE AZIONI ---
+            
+            // CASO 1: Già completato
+            if isCompleted {
+                VStack (spacing: 0){
+                    
+                    Image(systemName: "checkmark.seal.fill")
+                        .font(.system(size: 50))
+                        .foregroundStyle(.green)
+                        .padding(.bottom, 8)
+                    
+                    Text("home_view_goal_completed".localized)
+                        .font(.headline)
+                        .foregroundStyle(.green)
                 }
-            }) {
-                Text("Ho capito, vado a leggere")
-                    .font(.headline)
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.purple)
-                    .cornerRadius(14)
+                
             }
+            // CASO 2: Task Normale (Da completare)
+            else {
+                Button(action: {
+                    dismiss()
+                    // Ritardiamo leggermente la navigazione per far chiudere il foglio in modo fluido
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        onGoToLearn()
+                    }
+                }) {
+                    Text("education_01_cta".localized)
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 20)
+                        .padding(.horizontal)
+                        .background(
+                            RoundedRectangle(cornerRadius: 24, style: .continuous) // 300 o 30 per pillola
+                                .fill( Color.pink)
+                        )
+                }
+                .buttonStyle(SquishyButtonEffect())
+            }
+           
         }
-        .padding(24)
+        .padding()
         .presentationDetents([.fraction(0.45)])
         .presentationDragIndicator(.visible)
     }
@@ -751,35 +802,7 @@ struct EducationSuccessSheet: View {
                     .foregroundStyle(.secondary)
                     .padding(.horizontal)
             }
-            
-            // Box Riepilogo (Simile a ClassicTask ma statico)
-            HStack {
-                Image(systemName: "book.fill")
-                    .foregroundStyle(.purple)
-                    .padding(10)
-                    .background(Color.purple.opacity(0.1))
-                    .clipShape(Circle())
-                
-                VStack(alignment: .leading) {
-                    Text("Lettura Giornaliera")
-                        .font(.caption)
-                        .fontWeight(.bold)
-                        .foregroundStyle(.secondary)
-                    Text("Completata")
-                        .font(.headline)
-                        .fontWeight(.bold)
-                        .foregroundStyle(.primary)
-                }
-                Spacer()
-                Image(systemName: "checkmark.circle.fill")
-                    .font(.title2)
-                    .foregroundStyle(.green)
-            }
-            .padding()
-            .background(Color(uiColor: .secondarySystemGroupedBackground))
-            .cornerRadius(16)
-            .padding(.horizontal)
-            
+                        
             Spacer()
             
             Button(action: { dismiss() }) {
@@ -803,11 +826,11 @@ struct EducationSuccessSheet: View {
 
 
 
-
-
-
-
-
+// -------------------------------------------------
+//
+// MARK: - VIP TASK CARD
+//
+// -------------------------------------------------
 
 
 struct VipTaskCard: View {
@@ -943,3 +966,4 @@ private struct SquishyButtonEffect: ButtonStyle {
         .animation(.spring(response: 0.3, dampingFraction: 0.4, blendDuration: 0), value: configuration.isPressed)
     }
 }
+

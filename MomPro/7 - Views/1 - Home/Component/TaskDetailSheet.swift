@@ -4,12 +4,7 @@
 //
 //  Created by Andrea Cataldo on 18/01/26.
 //
-//
-//  TaskDetailSheet.swift
-//  MomPro
-//
-//  Created by Andrea Cataldo on 18/01/26.
-//
+
 
 import SwiftUI
 
@@ -17,124 +12,149 @@ struct TaskDetailSheet: View {
     let taskStatus: DailyPlanService.DailyTaskStatus
     var viewModel: HomeViewModel
     
+    var liveTaskStatus: DailyPlanService.DailyTaskStatus {
+        // 1. Cerca nei task gratuiti
+        if let found = viewModel.freeTasks.first(where: { $0.id == taskStatus.id }) {
+            return found
+        }
+        // 2. Cerca nei task VIP
+        if let found = viewModel.vipTasks.first(where: { $0.id == taskStatus.id }) {
+            return found
+        }
+        // 3. Cerca nel task education
+        if let edu = viewModel.educationTaskStatus, edu.id == taskStatus.id {
+            return edu
+        }
+        // Fallback (ritorna la copia vecchia se non trova nulla, ma non dovrebbe succedere)
+        return taskStatus
+    }
+    
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        VStack(spacing: 24) {
-            // Maniglia
-            Capsule()
-                .fill(Color.secondary.opacity(0.3))
-                .frame(width: 40, height: 5)
-                .padding(.top, 10)
-            
+        
+        VStack(spacing: 0) {
+                        
             // Icona Grande
             Image(systemName: iconForCategory(taskStatus.task.category))
-                .font(.system(size: 60))
+                .font(.system(size: 30))
                 .foregroundStyle(.pink)
-                .padding()
+                .frame(width: 73, height: 73)
                 .background(Color.pink.opacity(0.1))
                 .clipShape(Circle())
+                .padding(.vertical, 24)
             
-            // Info Testuali
-            VStack(spacing: 8) {
-                Text(taskStatus.task.title.localized)
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .multilineTextAlignment(.center)
-                
-                Text(taskStatus.task.description.localized)
-                    .font(.body)
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal)
-            }
             
-            Divider()
+            Text(taskStatus.task.title.localized)
+                .font(.system(.title2, design: .rounded))
+                .fontWeight(.semibold)
+                .foregroundColor(.primary)
+                .padding(.bottom, 24)
+        
+            Text(taskStatus.task.description.localized)
+                .font(.system(.body, design: .default))
+                .fontWeight(.regular)
+                .foregroundStyle(.primary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
+                .padding(.bottom, 24)
+            
+            /*
+            Rectangle()
+                .fill(Color(uiColor: .separator))
+                .frame(height: 1)
+                .padding(.horizontal)
+                .padding(.bottom, 24)
+             */
+            
+           
             
             // --- SEZIONE AZIONI ---
             
             // CASO 1: Già completato
-            if taskStatus.isCompleted {
-                VStack {
+            if liveTaskStatus.isCompleted {
+                VStack (spacing: 0){
+                    Spacer()
+                    
                     Image(systemName: "checkmark.seal.fill")
                         .font(.system(size: 50))
                         .foregroundStyle(.green)
-                    Text("Obiettivo Completato!")
+                        .padding(.bottom, 8)
+                    
+                    Text("home_view_goal_completed".localized)
                         .font(.headline)
                         .foregroundStyle(.green)
                 }
-                .padding()
+                
             }
-            // CASO 2: È l'Articolo del giorno (Education)
-            // NON mostriamo bottoni, ma solo un avviso.
-            else if taskStatus.task.category == .education {
-                VStack(spacing: 15) {
-                    Image(systemName: "book.closed.fill")
-                        .font(.largeTitle)
-                        .foregroundStyle(.orange)
-                    
-                    Text("Questo obiettivo si completa leggendo l'articolo nella sezione Guide.")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal)
-                    
-                    Button("Chiudi") {
-                        dismiss()
-                    }
-                    .font(.headline)
-                    .foregroundStyle(.pink)
-                }
-                .padding()
-            }
-            // CASO 3: Task Normale (Da completare)
+            // CASO 2: Task Normale (Da completare)
             else {
                 if taskStatus.task.type == .counter {
                     // UI Contatore (es. 1/3)
                     counterControlView
                 } else {
-                    // UI Check Semplice
-                    Button(action: {
-                        completeSimple()
-                    }) {
-                        Text("Segna come Fatto")
-                            .font(.headline)
-                            .foregroundStyle(.white)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.pink)
-                            .cornerRadius(14)
+                    
+                    VStack(spacing: 0) {
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            let impact = UIImpactFeedbackGenerator(style: .light)
+                            impact.impactOccurred()
+                            completeSimple()
+                        }) {
+                            Text("home_view_mark_as_done".localized)
+                                .font(.headline)
+                                .foregroundStyle(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 20)
+                                .padding(.horizontal)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 24, style: .continuous) // 300 o 30 per pillola
+                                        .fill( Color.pink)
+                                )
+                        }.buttonStyle(SquishyButtonEffect())
                     }
                 }
             }
             
-            Spacer()
         }
         .padding()
-        .presentationDetents([.medium, .fraction(0.7)])
+        .presentationDetents([.fraction(0.45)])
+        .presentationDragIndicator(.visible)
     }
     
     // Componente Contatore
     var counterControlView: some View {
-        VStack(spacing: 20) {
-            Text("\(taskStatus.currentProgress) / \(taskStatus.task.targetCount)")
+        VStack(spacing: 0) {
+        
+            Text("\(liveTaskStatus.currentProgress) / \(taskStatus.task.targetCount)")
                 .font(.headline)
                 .foregroundStyle(.secondary)
+                .padding(.bottom, 24)
+            
+            Spacer()
             
             Button(action: {
+                let impact = UIImpactFeedbackGenerator(style: .light)
+                impact.impactOccurred()
                 increment()
             }) {
+                
                 HStack {
                     Image(systemName: "plus")
-                    Text("Aggiungi 1")
+                    Text("home_view_add_1".localized)
                 }
-                .font(.headline)
-                .foregroundStyle(.white)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.pink)
-                .cornerRadius(14)
-            }
+                    .font(.headline)
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 20)
+                    .padding(.horizontal)
+                    .background(
+                        RoundedRectangle(cornerRadius: 24, style: .continuous) // 300 o 30 per pillola
+                            .fill( Color.pink)
+                    )
+            }.buttonStyle(SquishyButtonEffect())
         }
     }
     
@@ -151,8 +171,8 @@ struct TaskDetailSheet: View {
         withAnimation {
             viewModel.incrementTaskProgress(taskId: taskStatus.id)
             // Chiude lo sheet automaticamente solo se abbiamo FINITO il conteggio
-            if taskStatus.currentProgress + 1 >= taskStatus.task.targetCount {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            if liveTaskStatus.currentProgress >= taskStatus.task.targetCount {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     dismiss()
                 }
             }
@@ -171,3 +191,12 @@ struct TaskDetailSheet: View {
 }
 
 
+private struct SquishyButtonEffect: ButtonStyle {
+
+    func makeBody(configuration: ButtonStyle.Configuration) -> some View {
+        configuration.label
+        .scaleEffect(configuration.isPressed ? 0.94 : 1.0)
+        .brightness(configuration.isPressed ? -0.0 : 0)
+        .animation(.spring(response: 0.3, dampingFraction: 0.4, blendDuration: 0), value: configuration.isPressed)
+    }
+}

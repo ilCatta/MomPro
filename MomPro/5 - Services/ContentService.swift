@@ -19,8 +19,8 @@ class ContentService {
     // Usiamo un UUID fisso per poterlo salvare e ricaricare senza perderlo
     let educationTask = TaskItem(
         id: UUID(uuidString: "00000000-0000-0000-0000-000000000001")!,
-        title: "Leggi un articolo",
-        description: "Dedica 5 minuti alla tua educazione finanziaria.",
+        title: "education_01_title",
+        description: "education_01_desc",
         category: .education,
         isPro: false
     )
