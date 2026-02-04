@@ -25,6 +25,8 @@ struct OnboardingView: View {
         case questionInput  // Domanda in alto e opzioni
         case statProblem      // Mascotte alla lavagna (Il problema)
         case statSolution     // Testo che cambia (La soluzione)
+        case wasteAnalysis   // Schermata "Yet without realizing"
+        case powerToChange   // Schermata finale
     }
     
     @State private var phase: OnboardingPhase = .landing
@@ -33,6 +35,8 @@ struct OnboardingView: View {
     
     // Namespace per animazioni coordinate (Hero Animations)
     @Namespace private var namespace
+    
+    @State private var showingPaywall = false
     
     var body: some View {
         ZStack {
@@ -74,10 +78,10 @@ struct OnboardingView: View {
                     StatProblemView(
                         onTapAnywhere: goToSolution // Tap per proseguire
                     )
-                    // Insertion: .move(edge: .trailing) -> Entra da destra (come la schermata precedente)
-                    // Removal: .move(edge: .top) -> Esce verso l'alto (come da video originale per la fase successiva)
+                    // Insertion: .opacity -> Il testo nasce al centro
+                    // Removal: .move(edge: .top) -> Esce verso l'alto
                     .transition(.asymmetric(
-                        insertion: .move(edge: .trailing),
+                        insertion: .opacity.animation(.smooth(duration: 0.6)),
                         removal: .move(edge: .top)
                     ))
                     .zIndex(2) // Assicura che stia sopra durante l'uscita
@@ -86,12 +90,41 @@ struct OnboardingView: View {
                 // 4. STAT SOLUTION SCREEN (Testo che cambia)
                 else if phase == .statSolution {
                     StatSolutionView(
-                        onFinish: completeOnboarding
+                        onFinish: goToWasteAnalysis
                     )
                     // Entra dal basso
-                    .transition(.move(edge: .bottom).animation(.spring(response: 0.7, dampingFraction: 0.8)))
+                    //.transition(.move(edge: .bottom).animation(.spring(response: 0.7, dampingFraction: 0.8)))
+                    .transition(.asymmetric(
+                        insertion: .move(edge: .bottom).animation(.spring(response: 0.7, dampingFraction: 0.8)),
+                        // removal: .scale(0.1) rimpicciolisce il testo verso il centro
+                        removal: .scale(scale: 0.1).combined(with: .opacity).animation(.smooth(duration: 0.6))
+                    ))
                     .zIndex(3)
                 }
+                
+                // 5. WASTE ANALYSIS SCREEN
+                else if phase == .wasteAnalysis {
+                    WasteAnalysisView(
+                        onNext: goToPowerToChange
+                    )
+                    // Transizione: se ne va a SINISTRA per far posto alla finale
+                    .transition(.asymmetric(
+                        insertion: .opacity,
+                        removal: .move(edge: .leading)
+                    ))
+                    .zIndex(4)
+                }
+                
+                // 6. POWER TO CHANGE SCREEN
+                else if phase == .powerToChange {
+                    PowerToChangeView(
+                        onFinish: openPaywall
+                    )
+                    // Appare da DESTRA mentre la precedente va a sinistra
+                    .transition(.move(edge: .trailing))
+                    .zIndex(5)
+                }
+                
             }
        
         }
@@ -99,6 +132,14 @@ struct OnboardingView: View {
         // rimuovi se vuoi che si adatti al sistema
         .preferredColorScheme(.dark)
         .toolbarColorScheme(.dark, for: .navigationBar)
+        //
+        .sheet(isPresented: $showingPaywall, onDismiss: {
+            // Quando il paywall viene chiuso, l'onboarding è completato
+            completeOnboarding()
+        }) {
+            // View di RevenueCatUI
+            PaywallView(displayCloseButton: true)
+        }
     }
     
     // MARK: - LOGICA TRANSIZIONI
@@ -143,13 +184,41 @@ struct OnboardingView: View {
         }
     }
     
+    func goToWasteAnalysis() {
+        let impact = UIImpactFeedbackGenerator(style: .medium)
+        impact.impactOccurred()
+        withAnimation(.smooth(duration: 0.8)) {
+            phase = .wasteAnalysis
+        }
+    }
+
+    func goToPowerToChange() {
+        let impact = UIImpactFeedbackGenerator(style: .medium)
+        impact.impactOccurred()
+        // Transizione laterale: questa va a sinistra, la nuova entra da destra
+        //withAnimation(.spring(response: 0.8, dampingFraction: 1.0)) {
+        //    phase = .powerToChange
+        //}
+        withAnimation(.smooth(duration: 0.6)) {
+            phase = .powerToChange
+        }
+    }
+    
+    func openPaywall(){
+        let impact = UIImpactFeedbackGenerator(style: .light)
+        impact.impactOccurred()
+        showingPaywall = true
+    }
+
     func completeOnboarding() {
         let impact = UIImpactFeedbackGenerator(style: .heavy)
         impact.impactOccurred()
-        withAnimation {
+        //withAnimation {
             hasCompletedOnboarding = true
-        }
+        //}
     }
+    
+    
 }
 
 
@@ -266,12 +335,12 @@ struct LandingScreen: View {
 struct OrbitingIconsView: View {
     
     let icons = [
-        "cart.fill",
+        "bag.fill",
         "house.fill",
-        "banknote.fill",
+        "building.columns.fill",
         "figure.2.and.child.holdinghands",
         "graduationcap.fill",
-        "chart.line.uptrend.xyaxis"
+        "chart.bar.xaxis.ascending"
     ]
     
     let radius: CGFloat = 130
@@ -315,18 +384,11 @@ struct OrbitingIconsView: View {
                     }
                     
                     // 2. L'ICONA VERA E PROPRIA
-                    Image("mascotte_logo")
+                    Image("logo")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 90, height: 90)
-                        // .continuous è il segreto per la forma "squircle" di Apple
-                        // 18 è circa il 22% di 80, la proporzione standard iOS
-                        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                        // Aggiungiamo un bordo sottilissimo per definirla sul nero
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                .stroke(Color.white.opacity(0.2), lineWidth: 1)
-                        )
+                       
                 }
                 
                 // --- ICONE ORBITANTI ---
@@ -451,7 +513,6 @@ struct QuestionScreen: View {
                 .fontWeight(.semibold)
                 .foregroundStyle(.white)
                 .multilineTextAlignment(.center)
-                //.matchedGeometryEffect(id: "QuestionTitle", in: namespace)
                 .padding(.horizontal)
             
             if phase == .questionIntro {
@@ -459,7 +520,7 @@ struct QuestionScreen: View {
             }
             
             // --- GRIGLIA OPZIONI ---
-            if phase == .questionInput {
+            if phase != .questionIntro {
                 //Spacer(minLength: 20)
                 
                 ScrollView(showsIndicators: false) {
@@ -568,74 +629,140 @@ struct OptionButton: View {
 
 // -------------------------------------------------
 //
-// MARK: - 3) STAT PROBLEM (Mascotte Lavagna)
+// MARK: - 3) STAT PROBLEM
 //
 // -------------------------------------------------
 
 struct StatProblemView: View {
     var onTapAnywhere: () -> Void
     
-    // Stati interni per l'animazione sequenziale
+    // Stati interni
     @State private var textIsGrainyAndSmall = true
-    @State private var showMascot = false
     @State private var showTapToContinue = false
+    @State private var showText = false
+    @State private var moveTextUp = false
+    @State private var showBridgeText = false
     
-    // Testi localizzabili
-    let statText = "In media, una mamma gestisce 35 'task invisibili' ogni giorno tra casa e finanze."
-    // EN: "On average, a mom manages 35 'invisible tasks' daily between home and finances."
+    @State private var showImage1 = false
+    @State private var showImage2 = false
+    @State private var showImage3 = false
+    @State private var showImage4 = false
+    
+    @State private var isAnimationComplete = false
+    
+    private var _sizeImage: CGFloat {
+        switch DeviceType.current {
+        case .small: return 95
+        case .standard: return 105
+        case .large: return 130
+        case .ipadMini: return 140
+        case .ipadStandard: return 150
+        case .ipadHuge: return 150
+        }
+    }
     
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
             
-            VStack(spacing: 20) {
-                Spacer()
+            VStack(spacing: 0) { // Spacing manuale per controllo preciso
                 
-                // TESTO STATISTICA (Effetto sgranato che si ingrandisce)
-                Text(statText)
-                    .font(.system(.title, design: .rounded))
-                    .fontWeight(.bold)
-                    .foregroundStyle(.white)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 30)
-                    // Effetto "Grainy/Piccolo" iniziale
-                    .blur(radius: textIsGrainyAndSmall ? 3 : 0)
-                    .scaleEffect(textIsGrainyAndSmall ? 0.7 : 1.0)
-                    .opacity(textIsGrainyAndSmall ? 0.6 : 1.0)
-                    // Quando appare la mascotte, il testo sale
-                    .offset(y: showMascot ? -100 : 0)
-                
-                // IMMAGINE MASCOTTE LAVAGNA (Appare dopo)
-                if showMascot {
-                    Image("mascotte_logo") // Assicurati che il nome sia esatto
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 280)
-                        .transition(.opacity.combined(with: .scale(scale: 0.9)))
+                // 1. SPACER SUPERIORE
+                // Logica:
+                // - Se la mascotte NON c'è: Spacer() spinge il testo al centro verticale.
+                // - Se la mascotte C'È: Spacer().frame(height: 80) blocca il testo in alto.
+                if !moveTextUp {
+                    Spacer()
+                } else {
+                    // Questo spazio fisso determina quanto in alto va il testo
+                    Spacer().frame(height: 32)
                 }
                 
-                Spacer()
+                // 2. TESTO STATISTICA (Stili originali mantenuti)
+                Text("onboarding_view_on_average_mom_manages".localized)
+                    .font(.system(.title, design: .default))
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.gray)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+                    .blur(radius: textIsGrainyAndSmall ? 3 : 0)
+                    .scaleEffect(textIsGrainyAndSmall ? 0.7 : 1.0)
+                    .opacity(showText ? (textIsGrainyAndSmall ? 0.6 : 1.0) : 0)
                 
-                // Spacer extra se serve bilanciare in basso
-                if !showMascot { Spacer() }
+                Text("onboarding_view_85_family_expenses".localized)
+                    .font(.system(.title, design: .default))
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.white)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+                    .blur(radius: textIsGrainyAndSmall ? 3 : 0)
+                    .scaleEffect(textIsGrainyAndSmall ? 0.7 : 1.0)
+                    .opacity(showText ? (textIsGrainyAndSmall ? 0.6 : 1.0) : 0)
+                
+                // 3. AREA CONTENUTO DINAMICO (Le 3 Immagini)
+                if moveTextUp {
+                    
+                    Spacer()
+                    
+                    VStack(spacing: 16) {
+                        if showImage1 {
+                            statImageCard(imageName: "mascotte_onboarding_1", size: _sizeImage)
+                                .transition(.move(edge: .trailing).combined(with: .opacity))
+                        }
+                        
+                        if showImage2 {
+                            statImageCard(imageName: "mascotte_onboarding_2",size: _sizeImage)
+                                .transition(.move(edge: .leading).combined(with: .opacity))
+                        }
+                        
+                        if showImage3 {
+                            statImageCard(imageName: "mascotte_onboarding_3",size: _sizeImage)
+                                .transition(.move(edge: .trailing).combined(with: .opacity))
+                        }
+                        
+                        if showImage4 {
+                            statImageCard(imageName: "mascotte_onboarding_4",size: _sizeImage)
+                                .transition(.move(edge: .leading).combined(with: .opacity))
+                        }
+                    }
+                    .padding(.horizontal)
+                    
+                    
+                    // TESTO PONTE
+                    if showBridgeText {
+                        Text("onboarding_view_but_managing_doesn".localized)
+                            .font(.system(.title2, design: .default))
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.white)
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
+                            .padding(.top, 20)
+                            .transition(.move(edge: .bottom).combined(with: .opacity))
+                    }
+                    
+                    Spacer()
+                    Spacer()
+                    
+                    } else {
+                        Spacer()
+                    }
             }
             
             // TAP TO CONTINUE (In basso)
             VStack {
                 Spacer()
                 if showTapToContinue {
-                    Text("Tocca ovunque per continuare")
-                        .font(.footnote)
-                        .foregroundStyle(.gray)
-                        .padding(.bottom, 40)
+                    ShimmerText(text: "onboarding_view_tap_anywhere_to_continue".localized)
+                        .font(.system(.title3, design: .default))
+                        .fontWeight(.medium)
+                        .padding(.bottom, 20)
                         .transition(.opacity)
                 }
             }
         }
-        // Rende l'intera view tappabile
         .contentShape(Rectangle())
         .onTapGesture {
-            if showTapToContinue {
+            if isAnimationComplete {
                 onTapAnywhere()
             }
         }
@@ -644,124 +771,423 @@ struct StatProblemView: View {
         }
     }
     
+    // Helper per creare le card immagini tutte uguali
+    @ViewBuilder
+    func statImageCard(imageName: String, size: CGFloat) -> some View {
+            Image(imageName)
+                .resizable()
+                .scaledToFill()
+                .frame(height: size) // Altezza rettangolare fissa
+                .frame(maxWidth: .infinity)
+                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        .stroke(Color.white.opacity(0.1), lineWidth: 1)
+                )
+                .shadow(color: .black.opacity(0.3), radius: 10, x: 0, y: 5)
+                .padding(.horizontal, 20)
+        }
+    
     func animateSequence() {
-        // 1. Il testo appare sgranato e piccolo (stato iniziale)
+            // 1. Appare il testo
+            withAnimation(.easeIn(duration: 0.8).delay(0.2)) {
+                showText = true
+            }
+            
+            // 2. Nitidezza
+            withAnimation(.smooth(duration: 1.4).delay(0.6)) {
+                textIsGrainyAndSmall = false
+            }
+            
+            // 3. Salita testo
+            withAnimation(.smooth(duration: 1.0).delay(2.4)) {
+                moveTextUp = true
+            }
+            
+            // 4. Ingresso ritmato immagini (Cascata)
+            let baseDelay = 2.6
+            
+            withAnimation(.spring(response: 0.6, dampingFraction: 0.8).delay(baseDelay)) {
+                showImage1 = true
+            }
+            
+            withAnimation(.spring(response: 0.6, dampingFraction: 0.8).delay(baseDelay + 0.3)) {
+                showImage2 = true
+            }
+            
+            withAnimation(.spring(response: 0.6, dampingFraction: 0.8).delay(baseDelay + 0.6)) {
+                showImage3 = true
+            }
         
-        // 2. Il testo diventa nitido e grande
-        withAnimation(.smooth(duration: 1.2).delay(0.3)) {
-            textIsGrainyAndSmall = false
+            withAnimation(.spring(response: 0.6, dampingFraction: 0.8).delay(baseDelay + 0.9)) {
+                showImage4 = true
+            }
+            
+            // 5. Appare il testo ponte
+            withAnimation(.easeOut(duration: 0.8).delay(baseDelay + 1.5)) {
+                showBridgeText = true
+            }
+            
+            // 6. Tap to continue
+            withAnimation(.easeOut(duration: 0.8).delay(baseDelay + 2.3)) {
+                showTapToContinue = true
+            } completion: {
+                // Questo viene eseguito SOLO quando l'animazione sopra è finita
+                isAnimationComplete = true
+            }
         }
-        
-        // 3. Il testo sale e appare la mascotte
-        withAnimation(.spring(response: 0.6, dampingFraction: 0.8).delay(2.0)) {
-            showMascot = true
-        }
-        
-        // 4. Appare "Tap to continue"
-        withAnimation(.smooth.delay(3.5)) {
-            showTapToContinue = true
-        }
-    }
 }
-
 // -------------------------------------------------
 //
-// MARK: - 4) STAT SOLUTION (Testo che cambia)
+// MARK: - 4) STAT SOLUTION
 //
 // -------------------------------------------------
 
-// MARK: - 4. NEW VIEW: STAT SOLUTION (Testo che cambia)
+
 struct StatSolutionView: View {
     var onFinish: () -> Void
     
-    // Stati per l'animazione del testo
-    @State private var showInitialText = true
-    @State private var showFinalResult = false
-    
-    // Testi localizzabili
-    let prefixText = "MomPro ti restituisce..." // EN: "MomPro gives you back..."
-    let initialValue = "...il controllo sul caos." // EN: "...control over the chaos."
-    let finalValue = "1 ORA DI TEMPO PER TE\nA SETTIMANA.*" // EN: "1 HOUR OF 'ME TIME'\nPER WEEK.*"
-    let footnote = "*Stima basata sull'ottimizzazione media del budget e dei processi domestici. MomPro Data, 2024."
+    // STATI PER IL CONTROLLO FINE DELLE ANIMAZIONI
+    @State private var percentage: Int = 70         // Parte da 70
+    @State private var showAsterisk = false         // Appare solo alla fine
+    @State private var showFinalLabel = false       // Appare con l'alzarsi del testo
+    @State private var showDisclaimer = false       // Slide da destra
+    @State private var finalScale: CGFloat = 1.0    // Pulse finale
+    @State private var isAnimationComplete = false
     
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
             
-            VStack(spacing: 20) {
+            // --- GRUPPO CENTRALE (Unico blocco di testo iOS 26 Style) ---
+            VStack(spacing: 0) {
+                
+                // 1. "Punta a un"
+                Text("onboarding_view_stat_aim_for".localized)
+                    .font(.system(.largeTitle, design: .rounded))
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.gray.opacity(0.9))
+                    .multilineTextAlignment(.center)
+                    .padding(.bottom, 0)
+                
+                // 2. IL NUMERO E IL SIMBOLO (Concatenati in un unico Text)
+                // Usiamo l'interpolazione nidificata come richiesto da iOS 26
+                
+                Text("\(Text(String(percentage)).font(.system(.largeTitle, design: .rounded)).monospacedDigit())\(Text("\("onboarding_view_stat_yield".localized)\(showAsterisk ? "*" : "")").font(.system(.largeTitle, design: .rounded)))")
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.white)
+                    // Effetto rullo numerico che si attiva ad ogni cambio di 'percentage'
+                    .contentTransition(.numericText(value: Double(percentage)))
+                
+                    Text(showFinalLabel ? "onboarding_view_average_per_year".localized : "")
+                        .font(.system(.largeTitle, design: .rounded))
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.gray.opacity(0.9))
+                        .multilineTextAlignment(.center)
+                        .padding(.bottom, 0)
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+          
+            }
+            .offset(y: -20)
+            .scaleEffect(finalScale)
+            
+            // --- FOOTER SECTION ---
+            VStack {
                 Spacer()
                 
-                // Testo prefisso fisso
-                Text(prefixText)
-                    .font(.title2)
-                    .fontWeight(.medium)
-                    .foregroundStyle(.gray)
-                
-                ZStack {
-                    // Testo Iniziale (Caos)
-                    if showInitialText {
-                        Text(initialValue)
-                            .font(.system(.title, design: .rounded))
-                            .fontWeight(.bold)
-                            .foregroundStyle(.white)
-                            .transition(.blurReplace.animation(.smooth(duration: 0.8)))
+                VStack(alignment: .center, spacing: 6) {
+                    if showDisclaimer {
+                        Text("onboarding_view_stat_disclaimer".localized)
+                            .font(.system(.footnote, design: .default))
+                            .fontWeight(.medium)
+                            .foregroundStyle(.gray)
+                            .transition(.move(edge: .top).combined(with: .opacity))
                     }
                     
-                    // Testo Finale (Risultato)
-                    if showFinalResult {
-                        Text(finalValue)
-                            .font(.system(.largeTitle, design: .rounded))
-                            .fontWeight(.heavy)
-                            .foregroundStyle(.pink) // Colore brand per il risultato
-                            .multilineTextAlignment(.center)
-                            .transition(.push(from: .bottom).combined(with: .opacity).animation(.spring))
-                    }
+                    Text("onboarding_view_stat_source".localized)
+                        .font(.system(.caption2, design: .default))
+                        .fontWeight(.medium)
+                        .foregroundStyle(.gray.opacity(0.4))
                 }
-                .frame(height: 120) // Altezza fissa per evitare salti
-                
-                Spacer()
-                                
-                // FOOTNOTE
-                Text(footnote)
-                    .font(.caption2)
-                    .foregroundStyle(.gray.opacity(0.6))
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 40)
-                    .padding(.bottom, 20)
-                
-                // Bottone Finale (opzionale, il video non ce l'ha ma è utile)
-                Button(action: onFinish) {
-                    Text("Scopri il tuo piano")
-                        .font(.headline)
-                        .foregroundStyle(.black)
-                        .padding(.vertical, 16)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.white)
-                        .clipShape(Capsule())
-                }
-                .padding(.horizontal, 30)
-                .padding(.bottom, 40)
-                .opacity(showFinalResult ? 1 : 0) // Appare solo alla fine
-                .animation(.smooth.delay(0.5), value: showFinalResult)
+                .padding(.bottom, 20)
+                .padding(.horizontal, 20)
+            }
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            if isAnimationComplete {
+                onFinish()
             }
         }
         .onAppear {
-            animateTextChange()
+            startCountingSequence()
         }
     }
     
-    func animateTextChange() {
-        // Dopo un paio di secondi, cambia il testo da "Caos" a "Risultato"
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            withAnimation(.smooth(duration: 0.5)) {
-                showInitialText = false
+    // MARK: - COREOGRAFIA ANIMAZIONI
+    private func startCountingSequence() {
+        let startValue = 70
+        let endValue = 8
+        let totalSteps = startValue - endValue // 62 passi
+        let totalTime: Double = 2.5            // Durata richiesta
+        let interval = totalTime / Double(totalSteps) // Tempo tra un numero e l'altro (~0.04s)
+        
+        for i in 0...totalSteps {
+            let currentDelay = Double(i) * interval
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + currentDelay) {
+                // Ogni decremento attiva l'effetto .numericText()
+                withAnimation(.snappy(duration: interval)) {
+                    self.percentage = startValue - i
+                    
+                    // TRIGGER: Esattamente a quota x, alziamo il testo (come nel video)
+                    if self.percentage == 17 {
+                        withAnimation(.spring(response: 0.8, dampingFraction: 0.7)) {
+                            self.showFinalLabel = true
+                        }
+                    }
+                    
+                    // FINE: Quando arriviamo a 8, aggiungiamo l'asterisco e mostriamo il disclaimer
+                    if self.percentage == 8 {
+                        withAnimation(.spring()) {
+                            self.showAsterisk = true
+                            self.showDisclaimer = true
+                        }
+                        triggerFinalPulse()
+                    }
+                }
             }
-            withAnimation(.spring(response: 0.6, dampingFraction: 0.7).delay(0.1)) {
-                showFinalResult = true
+        }
+    }
+    
+    private func triggerFinalPulse() {
+        // Effetto ingrandimento di enfasi finale
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            withAnimation(.spring(response: 0.4, dampingFraction: 0.6)) {
+                finalScale = 1.25
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                withAnimation(.easeOut(duration: 0.3)) {
+                    finalScale = 1.2
+                } completion: {
+                isAnimationComplete = true
+            }
             }
         }
     }
 }
+
+
+// -------------------------------------------------
+//
+// MARK: - 5) Waste Analysis (Corretta)
+//
+// -------------------------------------------------
+
+struct WasteAnalysisView: View {
+    var onNext: () -> Void
+    
+    @State private var revealHeight: CGFloat = 0 // Altezza del pannello bianco
+    @State private var showIcons = false
+    @State private var secondPhase = false // Inversione colori per la fase 2
+    @State private var isAnimationComplete = false
+    
+    let wasteEmojis = ["💸", "📉", "🛒", "🛍️", "☕","🧾","⛓️"]
+    let wasteRadii: [CGFloat] = [175, 180, 170, 165, 165, 150, 180]
+    let valueEmojis = ["🏠", "🎓", "🌴", "🎨", "🧘‍♀️", "📈","💎","🍱", "💰", "🧸","🍳"]
+    
+    var body: some View {
+        GeometryReader { geo in
+            // Calcoliamo la metà esatta per le proporzioni 50/50
+            let halfHeight = geo.size.height / 2
+            
+            ZStack {
+                Color.black.ignoresSafeArea()
+                
+                VStack(spacing: 0) {
+                    
+                    // --- PARTE SUPERIORE (50%) ---
+                    ZStack {
+                        // 1. Pannello che scende (Rivelatore)
+                        Rectangle()
+                            .fill(secondPhase ? Color.black : Color.white)
+                            .ignoresSafeArea(edges: .top)
+                            .frame(height: revealHeight)
+                            .frame(maxHeight: .infinity, alignment: .top) // Ancorato in alto
+                            .opacity(revealHeight > 0 ? 1 : 0) // Nasconde il bianco nella Safe Area finché revealHeight è 0
+                            .overlay {
+                                if secondPhase {
+                                    Color.black.opacity(0.6).blur(radius: 20)
+                                }
+                            }
+                        
+                        // 2. Testi Neri - FISSI (Si vedono solo quando il bianco ci passa sotto)
+                        VStack(spacing: 8) {
+                            Text("onboarding_view_yet_unrealizing".localized)
+                            Text("onboarding_view_waste_potential".localized)
+                            Text("onboarding_view_daily_costs".localized)
+                        }
+                        .font(.system(.title3, design: .default))
+                        .fontWeight(.semibold)
+                        // Cambia in bianco solo nella seconda fase quando lo sfondo diventa nero
+                        .foregroundStyle(secondPhase ? .white : .black)
+                        .multilineTextAlignment(.center)
+                        
+                        // Emoji Orbitanti (Sprechi)
+                        if showIcons {
+                            EmojiOrbitView(emojis: wasteEmojis, radius: 170, radii: wasteRadii, isBlurred: secondPhase)
+                                .transition(.opacity)
+                            
+                        }
+                    }
+                    .frame(height: halfHeight)
+                        
+                        // --- PARTE INFERIORE (50%) ---
+                        ZStack {
+                            Rectangle()
+                                .fill(secondPhase ? Color.white : Color.black)
+                                .ignoresSafeArea(edges: .bottom)
+                            
+                            if secondPhase {
+                                VStack(spacing: 8) {
+                                    Text("onboarding_view_instead_building".localized)
+                                    Text("onboarding_view_your_future".localized)
+                                }
+                                .font(.system(.title2, design: .default))
+                                .fontWeight(.semibold)
+                                .foregroundStyle(.black)
+                                .multilineTextAlignment(.center)
+                                
+                                // Emoji Orbitanti (Valore/Futuro)
+                                EmojiOrbitView(emojis: valueEmojis, radius: 155, isRotating: true)
+                            }
+                        }
+                        .frame(height: halfHeight)
+                    }
+                }
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    if isAnimationComplete { onNext() }
+                }
+                .onAppear {
+                    runSequence(targetHeight: halfHeight)
+                }
+            }
+            .ignoresSafeArea()
+        }
+        
+        func runSequence(targetHeight: CGFloat) {
+            // 1. Il pannello bianco scende per rivelare i testi "nascosti"
+            withAnimation(.smooth(duration: 1.5).delay(0.5)) {
+                revealHeight = targetHeight
+            }
+            
+            // Apparizione icone dopo che il reveal è a buon punto
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+                withAnimation(.easeIn(duration: 0.6)) {
+                    showIcons = true
+                }
+            }
+            
+            // 2. Transizione alla seconda fase (Inversione colori e reveal sotto)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
+                withAnimation(.spring(response: 1.0, dampingFraction: 0.8)) {
+                    secondPhase = true
+                }
+            }
+            
+            // 3. Sblocco del tocco finale
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4.5) {
+                isAnimationComplete = true
+            }
+        }
+    }
+    
+    
+    struct EmojiOrbitView: View {
+        let emojis: [String]
+        let radius: CGFloat
+        var radii: [CGFloat]? = nil // Per gestire distanze diverse
+        var isRotating: Bool = false
+        var isBlurred: Bool = false
+        
+        var body: some View {
+            KeyframeAnimator(initialValue: 0.0, repeating: true) { angle in
+                ZStack {
+                    ForEach(0..<emojis.count, id: \.self) { i in
+                        let baseAngle = (Double(i) / Double(emojis.count)) * 360.0
+                        let radians = (baseAngle + (isRotating ? angle : 0)) * .pi / 180.0
+                        
+                        // Se abbiamo radii specifici, usiamo quelli, altrimenti il radius standard
+                        let currentRadius = (radii != nil && i < radii!.count) ? radii![i] : radius
+                        
+                        Text(emojis[i])
+                            .font(.system(size: 30))
+                            .offset(x: currentRadius * cos(radians), y: currentRadius * sin(radians))
+                            .blur(radius: isBlurred ? 4 : 0)
+                            .opacity(isBlurred ? 0.5 : 1)
+                    }
+                }
+            } keyframes: { _ in
+                LinearKeyframe(360.0, duration: 25.0)
+            }
+        }
+    }
+    
+    
+    // -------------------------------------------------
+    //
+    // MARK: - 6) Power to change
+    //
+    // -------------------------------------------------
+    
+    struct PowerToChangeView: View {
+        var onFinish: () -> Void
+        @State private var showText = false
+            @State private var showTapToContinue = false
+        
+        var body: some View {
+            ZStack {
+                Color.black.ignoresSafeArea()
+                
+                Text("onboarding_view_power_to_change".localized)
+                    .font(.system(.largeTitle, design: .rounded))
+                    .fontWeight(.bold)
+                    .foregroundStyle(.white)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                    .opacity(showText ? 1 : 0)
+                    .scaleEffect(showText ? 1 : 0.9)
+                
+                    VStack {
+                        Spacer()
+                        if showTapToContinue {
+                            ShimmerText(text: "onboarding_view_tap_cta_final".localized)
+                                .font(.system(.title3, design: .default))
+                                .fontWeight(.medium)
+                                .padding(.bottom, 20)
+                                .transition(.opacity)
+                        }
+                    }
+            }
+            .contentShape(Rectangle())
+            .onTapGesture {
+                if showTapToContinue {
+                    onFinish()
+                }
+            }
+            .onAppear {
+                withAnimation(.smooth(duration: 1.5).delay(0.5)) {
+                    showText = true
+                }
+                // Apparizione Shimmer dopo un breve delay
+                withAnimation(.easeOut(duration: 0.8).delay(1.8)) {
+                    showTapToContinue = true
+                }
+            }
+        }
+    }
+
 
 /*
 // Preview

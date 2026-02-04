@@ -949,9 +949,9 @@ struct VipTaskCard: View {
 
 private func iconName(for cat: TaskCategory) -> String {
     switch cat {
-    case .shopping: return "cart.fill"
+    case .shopping: return "bag.fill"
     case .home: return "house.fill"
-    case .finance: return "banknote.fill"
+    case .finance: return "building.columns.fill"
     case .family: return "figure.2.and.child.holdinghands"
     case .education: return "graduationcap.fill"
     }

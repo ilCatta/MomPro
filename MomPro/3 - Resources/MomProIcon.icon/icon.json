@@ -24,6 +24,14 @@
           }
         },
         {
+          "fill-specializations" : [
+            {
+              "appearance" : "dark",
+              "value" : {
+                "solid" : "srgb:1.00000,0.21569,0.37255,1.00000"
+              }
+            }
+          ],
           "glass" : false,
           "image-name" : "Mom.svg",
           "name" : "Mom",

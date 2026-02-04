@@ -181,9 +181,9 @@ struct TaskDetailSheet: View {
     
     func iconForCategory(_ category: TaskCategory) -> String {
         switch category {
-        case .shopping: return "cart.fill"
+        case .shopping: return "bag.fill"
         case .home: return "house.fill"
-        case .finance: return "banknote.fill"
+        case .finance: return "building.columns.fill"
         case .family: return "figure.2.and.child.holdinghands"
         case .education: return "graduationcap.fill"
         }
