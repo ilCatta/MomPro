@@ -64,4 +64,6 @@ class SettingsViewModel {
     func toggleTheme() {
         isDarkMode.toggle()
     }
+    
+    
 }
