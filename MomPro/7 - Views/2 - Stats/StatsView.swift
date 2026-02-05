@@ -8,18 +8,11 @@
 import SwiftUI
 import Charts
 
-
-
-
+// ---- ---- ---- ---- ---- ---- ---- ---- ----
 //
-//  StatsView.swift
-//  MomPro
+// MARK: Stats
 //
-//  Created by Andrea Cataldo on 18/01/26.
-//
-
-import SwiftUI
-import Charts
+// ---- ---- ---- ---- ---- ---- ---- ---- ----
 
 struct StatsView: View {
     @State private var viewModel = StatsViewModel()
@@ -27,31 +20,45 @@ struct StatsView: View {
     var body: some View {
         GeometryReader { geo in
             ScrollView(showsIndicators: false) {
-                VStack(spacing: 24) {
+                VStack(spacing: 0) {
                     
-                    // 1. HEADER (Estratto)
+                    // 1. HEADER
                     headerSection(geo: geo)
-                    
-                    // 2. LIVELLO (Estratto)
+                        .padding(.bottom, 24)
+                                        
+                    // 2. LIVELLO
                     levelSection
+                        .padding(.bottom, 20)
                     
-                    // 3. GRIGLIA DATI (Estratto)
+                    // 3. CONDIVISIONE
+                    if !viewModel.hasUsedBoost {
+                        InviteFriendCard(viewModel: viewModel)
+                            .padding(.bottom, 20)
+                    }
+                    
+                    Rectangle()
+                        .fill(Color(uiColor: .separator))
+                        .frame(height: 1)
+                        .padding(.horizontal)
+                        .padding(.bottom, 20)
+                  
+                    
+                    // 4. GRAFICI
+                    graphsSection
+                        .padding(.bottom, 20)
+                    
+                    Rectangle()
+                        .fill(Color(uiColor: .separator))
+                        .frame(height: 1)
+                        .padding(.horizontal)
+                        .padding(.bottom, 20)
+                                        
+                    // 5. GRIGLIA CARD (Timeframe, Costanza, Trend - Estratti insieme)
                     bentoGridSection
                     
-                    // --- NUOVO: RIASSUNTO NARRATIVO ---
-                    SummaryInsightCard(data: viewModel.currentSummary)
-                        .padding(.horizontal)
-                        .padding(.top, 10)
-                    
-                    // 4. GRAFICI (Timeframe, Costanza, Trend - Estratti insieme)
-                    graphsSection
-                    
-                    // 5. INVITA AMICO (Estratto)
-                    if !viewModel.hasUsedBoost {
-                        inviteFriendSection
-                    } else {
-                        Spacer(minLength: 40)
-                    }
+                    // 6. EXTRA SPACE
+                    Spacer(minLength: 30)
+                   
                 }
             }
             .ignoresSafeArea(edges: .top)
@@ -60,10 +67,18 @@ struct StatsView: View {
     }
 }
 
-// MARK: - SOTTO-VISTE (Per risolvere l'errore del compilatore)
+
+
+
 extension StatsView {
     
-    // 1. HEADER ELASTICO
+    
+    // ---- ---- ---- ---- ---- ---- ---- ---- ----
+    //
+    // MARK: Header Image
+    //
+    // ---- ---- ---- ---- ---- ---- ---- ---- ----
+    
     private func headerSection(geo: GeometryProxy) -> some View {
         let headerHeight = geo.size.height * 0.38
         return GeometryReader { scrollGeo in
@@ -82,47 +97,113 @@ extension StatsView {
         .frame(height: headerHeight)
     }
     
-    // 2. SEZIONE LIVELLO
+    // ---- ---- ---- ---- ---- ---- ---- ---- ----
+    //
+    // MARK: Level
+    //
+    // ---- ---- ---- ---- ---- ---- ---- ---- ----
+    
     private var levelSection: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("Livello \(viewModel.currentLevel)")
-                        .font(.system(size: 14, weight: .bold, design: .rounded))
-                        .foregroundStyle(.pink)
-                        .textCase(.uppercase)
-                    
-                    Text(viewModel.levelTitle)
-                        .font(.system(size: 28, weight: .black, design: .rounded))
-                        .foregroundStyle(.primary)
-                }
-                Spacer()
-                Image(systemName: "trophy.fill")
-                    .font(.system(size: 30))
-                    .foregroundStyle(.yellow)
-                    .shadow(color: .orange.opacity(0.5), radius: 5)
-            }
+        
+        VStack(alignment: .leading, spacing: 0) {
             
+            Text("Livello \(viewModel.currentLevel)")
+                .font(.system(.footnote, design: .rounded))
+                .fontWeight(.bold)
+                .foregroundColor(.pink)
+                .textCase(.uppercase)
+                .padding(.bottom, 2)
+            
+            Text(viewModel.levelTitle)
+                .font(.system(.title, design: .default))
+                .fontWeight(.semibold)
+                .foregroundColor(.primary)
+                .padding(.bottom, 12)
+              
             GeometryReader { barGeo in
                 ZStack(alignment: .leading) {
                     Capsule()
                         .fill(Color.gray.opacity(0.2))
                         .frame(height: 12)
-                    
                     Capsule()
-                        .fill(LinearGradient(colors: [.pink, .purple], startPoint: .leading, endPoint: .trailing))
+                        .fill(LinearGradient(colors: [.pink.opacity(0.7), .pink.opacity(0.9)], startPoint: .leading, endPoint: .trailing))
                         .frame(width: barGeo.size.width * viewModel.levelProgress, height: 12)
                 }
             }
             .frame(height: 12)
+            .padding(.bottom, 12)
             
             Text("Ancora \(viewModel.tasksToNextLevel) task al prossimo livello!")
-                .font(.caption)
+                .font(.system(.caption, design: .default))
                 .fontWeight(.medium)
                 .foregroundStyle(.secondary)
         }
         .padding(.horizontal)
     }
+    
+    // ---- ---- ---- ---- ---- ---- ---- ---- ----
+    //
+    // MARK: Share with friend
+    //
+    // ---- ---- ---- ---- ---- ---- ---- ---- ----
+    
+    struct InviteFriendCard: View {
+        var viewModel: StatsViewModel
+        
+        var body: some View {
+            VStack(spacing: 16) {
+                HStack {
+                    Image(systemName: "bolt.fill")
+                        .foregroundStyle(.yellow)
+                        .font(.largeTitle)
+                        .padding(10)
+                        .background(Color.white.opacity(0.2))
+                        .clipShape(Circle())
+                    
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Boost Amica")
+                            .font(.headline)
+                            .foregroundStyle(.white)
+                        Text("Ottieni +5 Task completati subito!")
+                            .font(.caption)
+                            .foregroundStyle(.white.opacity(0.9))
+                    }
+                    Spacer()
+                }
+                
+                Button(action: {
+                    withAnimation {
+                        viewModel.applyBoost()
+                    }
+                }) {
+                    HStack {
+                        Text("Invita e Sali di Livello")
+                        Image(systemName: "arrow.up.forward.circle.fill")
+                    }
+                    .fontWeight(.bold)
+                    .foregroundStyle(.indigo)
+                    .padding(.vertical, 12)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.white)
+                    .cornerRadius(12)
+                }
+            }
+            .padding()
+            .background(
+                LinearGradient(colors: [.indigo, .purple], startPoint: .topLeading, endPoint: .bottomTrailing)
+            )
+            .cornerRadius(20)
+            .padding(.horizontal)
+        }
+        
+    }
+    
+    // ---- ---- ---- ---- ---- ---- ---- ---- ----
+    //
+    // MARK: Card Grid Section
+    //
+    // ---- ---- ---- ---- ---- ---- ---- ---- ----
+    
     
     // 3. SEZIONE BENTO GRID
     private var bentoGridSection: some View {
@@ -135,12 +216,21 @@ extension StatsView {
         .padding(.horizontal)
     }
     
+    
+    
+    
+    
     // 4. SEZIONE GRAFICI (Qui c'era l'errore di complessità)
     private var graphsSection: some View {
         VStack(spacing: 24) {
             // SELETTORE
             TimeFrameSelector(selected: $viewModel.selectedTimeFrame)
                 .padding(.top, 10)
+            
+            // --- POSIZIONE NUOVA: RIASSUNTO NARRATIVO ---
+            // Ora sta subito sotto il selettore, coerente con il periodo scelto
+            SummaryInsightCard(data: viewModel.currentSummary)
+                .padding(.horizontal)
             
             // COSTANZA
             ConsistencyBarView(
@@ -178,12 +268,7 @@ extension StatsView {
         }
     }
     
-    // 5. SEZIONE INVITA AMICO
-    private var inviteFriendSection: some View {
-        InviteFriendCard(viewModel: viewModel)
-            .padding(.horizontal)
-            .padding(.bottom, 40)
-    }
+  
 }
 
 // MARK: - COMPONENTI UI (Bento, Selector, Invite...)
@@ -392,54 +477,6 @@ struct TimeFrameSelector: View {
     }
 }
 
-struct InviteFriendCard: View {
-    var viewModel: StatsViewModel
-    
-    var body: some View {
-        VStack(spacing: 16) {
-            HStack {
-                Image(systemName: "bolt.fill")
-                    .foregroundStyle(.yellow)
-                    .font(.largeTitle)
-                    .padding(10)
-                    .background(Color.white.opacity(0.2))
-                    .clipShape(Circle())
-                
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("Boost Amica")
-                        .font(.headline)
-                        .foregroundStyle(.white)
-                    Text("Ottieni +5 Task completati subito!")
-                        .font(.caption)
-                        .foregroundStyle(.white.opacity(0.9))
-                }
-                Spacer()
-            }
-            
-            Button(action: {
-                withAnimation {
-                    viewModel.applyBoost()
-                }
-            }) {
-                HStack {
-                    Text("Invita e Sali di Livello")
-                    Image(systemName: "arrow.up.forward.circle.fill")
-                }
-                .fontWeight(.bold)
-                .foregroundStyle(.indigo)
-                .padding(.vertical, 12)
-                .frame(maxWidth: .infinity)
-                .background(Color.white)
-                .cornerRadius(12)
-            }
-        }
-        .padding()
-        .background(
-            LinearGradient(colors: [.indigo, .purple], startPoint: .topLeading, endPoint: .bottomTrailing)
-        )
-        .cornerRadius(20)
-    }
-}
 
 // MARK: - GRAFICI (ConsistencyBarView e ChartRedBlueView)
 // Incolla qui sotto i componenti grafici (ConsistencyBarView e ChartRedBlueView)

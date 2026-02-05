@@ -28,7 +28,7 @@ class StatsViewModel {
     var bestStreak: Int = 12
     var hasUsedBoost: Bool = false
     
-    var dailyMascotImageName: String = "mascotte_level_2"
+    var dailyMascotImageName: String = "mascotte_onboarding_1"
     
     // MARK: - Gestione TimeFrame
     var selectedTimeFrame: TimeFrame = .day {
