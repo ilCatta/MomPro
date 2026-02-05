@@ -1,97 +1,90 @@
 import Foundation
 import SwiftUI
+import Observation
 
 @Observable
 class StatsViewModel {
-    private var progressService = ProgressService.shared
     
-    // MARK: - Output
+    // MARK: - Dati Utente
+    var totalTasksCompleted: Int = 42
+    var articlesRead: Int = 7
+    var currentStreak: Int = 5
+    var bestStreak: Int = 12
+    var hasUsedBoost: Bool = false
     
+    var dailyMascotImageName: String = "mascotte_level_2"
+    
+    // MARK: - Logica Livello
     var currentLevel: Int {
-        progressService.currentLevel
+        return (totalTasksCompleted / 15) + 1
     }
     
-    // Qui usiamo la logica del LIVELLO (Pigiama -> SuperMamma)
-    // Assicurati di avere le immagini in Assets: mascotte_lvl1, mascotte_lvl2, etc.
-    var levelMascotImageName: String {
-        progressService.currentMascotImageName
+    var tasksInCurrentLevel: Int {
+        return totalTasksCompleted % 15
     }
     
-    // Dati per il grafico
-    var historyData: [DailyHistoryItem] = []
-    
-    // Stato per il bottone Boost (lo nascondiamo se già usato)
-    var hasUsedBoost: Bool {
-        get { UserDefaults.standard.bool(forKey: "hasUsedBoost") }
-        set { UserDefaults.standard.set(newValue, forKey: "hasUsedBoost") }
+    var tasksToNextLevel: Int {
+        return 15 - tasksInCurrentLevel
     }
     
-    // MARK: - Init
+    var levelProgress: Double {
+        return Double(tasksInCurrentLevel) / 15.0
+    }
+    
+    var levelTitle: String {
+        switch currentLevel {
+        case 1...3: return "Mamma in Pigiama"
+        case 4...8: return "Mamma Organizzata"
+        case 9...15: return "Mamma Boss"
+        default: return "Regina delle Finanze"
+        }
+    }
+    
+    var timeInvestedString: String {
+        let minutes = totalTasksCompleted * 10
+        if minutes < 60 {
+            return "\(minutes) min"
+        } else {
+            let hours = minutes / 60
+            let mins = minutes % 60
+            return String(format: "%dh %02dm", hours, mins)
+        }
+    }
+    
+    // MARK: - Dati Grafico (Ultimi 7 giorni)
+    struct DailyStat: Identifiable {
+        let id = UUID()
+        let date: Date
+        let completed: Int
+        let goal: Int // Obiettivo giornaliero (es. 5 task)
+    }
+    
+    var chartData: [DailyStat] = []
     
     init() {
-        generateMockHistory()
+        generateChartData()
     }
     
-    // MARK: - Logic
-    
-    // Genera dati finti per visualizzare il grafico
-    private func generateMockHistory() {
-        var mockItems: [DailyHistoryItem] = []
+    func generateChartData() {
+        var data: [DailyStat] = []
         let calendar = Calendar.current
         
-        // Generiamo gli ultimi 30 giorni
-        for i in 0..<30 {
-            // Data a ritroso (oggi, ieri, l'altro ieri...)
-            if let date = calendar.date(byAdding: .day, value: -((29 - i)), to: Date()) {
-                
-                // Randomizziamo i task completati (0 a 5)
-                // Trucco: Facciamo pesare di più i valori alti per far sembrare l'utente bravo
-                let randomCount = [0, 1, 2, 3, 3, 4, 4, 5, 5, 5].randomElement() ?? 0
-                
-                mockItems.append(DailyHistoryItem(date: date, tasksCompleted: randomCount))
+        // MODIFICA: Solo 7 giorni (0...6) invece di 11
+        for i in (0..<7).reversed() {
+            if let date = calendar.date(byAdding: .day, value: -i, to: Date()) {
+                let goal = 5
+                // Dati casuali per demo
+                let completed = Int.random(in: 1...6)
+                data.append(DailyStat(date: date, completed: completed, goal: goal))
             }
         }
-        self.historyData = mockItems
+        self.chartData = data
     }
-    
-    // Logica Colori Brief:
-    // Verde (5), Rosa (3-4), Giallo (1-2), Grigio (0)
-    func colorForCount(_ count: Int) -> Color {
-        switch count {
-        case 5: return .green      // Eccellente
-        case 3...4: return .pink   // Buono
-        case 1...2: return .yellow // Ok
-        default: return .gray.opacity(0.3) // Insufficiente
-        }
-    }
-    
-    func heightRatioForCount(_ count: Int) -> CGFloat {
-        // Altezza barra in base al numero (0.1 minimo per vederla)
-        let maxTasks = 5.0
-        let val = Double(count)
-        return max(0.1, val / maxTasks)
-    }
-    
-    // MARK: - Actions
     
     func applyBoost() {
-            // Controllo di sicurezza: se l'ha già usato, esce subito
-            guard !hasUsedBoost else { return }
-            
-            // 1. Deleghiamo al service la logica di business
-            progressService.boostLevel()
-            
-            // 2. Aggiorniamo lo stato locale per nascondere il bottone per sempre
+        if !hasUsedBoost {
+            totalTasksCompleted += 5
             hasUsedBoost = true
-            
-            // Nota: Poiché ProgressService è @Observable, la UI si aggiornerà
-            // automaticamente mostrando il nuovo livello e la nuova mascotte.
         }
-}
-
-// Struttura dati semplice per il grafico
-struct DailyHistoryItem: Identifiable {
-    let id = UUID()
-    let date: Date
-    let tasksCompleted: Int
+    }
 }
