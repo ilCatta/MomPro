@@ -84,11 +84,15 @@ struct StatsView: View {
                     }
                     .padding(.horizontal)
                     
+                    // GRAFICO COSTANZA
+                    ConsistencyBarView(data: viewModel.chartData)
+                        .padding(.horizontal)
                     
-                    // 4. GRAFICO COSTANZA (Nuova Grafica 7 Giorni)
+                    
+                    // 4. GRAFICO TREND (Nuova Grafica 7 Giorni)
                     VStack(alignment: .leading, spacing: 20) {
                         HStack {
-                            Text("La tua Costanza")
+                            Text("Trend")
                                 .font(.headline)
                             Spacer()
                             HStack(spacing: 12) {
@@ -287,6 +291,109 @@ struct ChartRedBlueView: View {
         return min(maxHeight * ratio, maxHeight)
     }
 }
+
+
+// MARK: - GRAFICO COSTANZA (Nuovo Stile Interattivo)
+// MARK: - GRAFICO COSTANZA (Nuovo Stile Pulito & Localizzato)
+// MARK: - GRAFICO COSTANZA (Nuovo Stile Pulito & Localizzato)
+struct ConsistencyBarView: View {
+    let data: [StatsViewModel.DailyStat]
+    
+    // Stato per la selezione: parte con l'ultimo elemento (Oggi)
+    @State private var selectedID: UUID?
+    
+    // Configurazione
+    let maxTasks: Int = 7 // Il massimo giornaliero
+    let barHeight: CGFloat = 100 // Altezza massima solo delle barre
+    
+    // Helper per ottenere la locale corretta dall'app
+    var appLocale: Locale {
+        return Locale(identifier: LanguageService.shared.currentLanguage)
+    }
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            
+            // Titolo Card
+            Text("Costanza".localized)
+                .font(.headline)
+                .padding(.horizontal, 20)
+            
+            // Area Grafico
+            HStack(alignment: .bottom, spacing: 8) {
+                ForEach(data) { day in
+                    
+                    let isSelected = (selectedID == day.id)
+                    
+                    VStack(spacing: 12) { // Spazio tra (Barra+Testo) e Data
+                        
+                        // 1. GRUPPO BARRA + TESTO (Allineato in basso)
+                        VStack(spacing: 6) {
+                            
+                            // VALORE (Galleggia sopra la barra)
+                            Text("\(day.completed)")
+                                .font(.system(size: 14, weight: .bold, design: .rounded))
+                                .foregroundStyle(isSelected ? .primary : .secondary)
+                                .scaleEffect(isSelected ? 1.1 : 1.0)
+                                .animation(.spring(), value: isSelected)
+                            
+                            // LA BARRA
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(isSelected ? Color.pink : Color.gray.opacity(0.15))
+                                .frame(height: heightFor(value: day.completed))
+                        }
+                        // Questo frame contiene Barra(100) + Testo(~20) + Spazio.
+                        // alignment: .bottom assicura che il testo scenda quando la barra è corta.
+                        .frame(height: barHeight + 30, alignment: .bottom)
+                        
+                        // 2. DATA COMPLETA (Fissa in basso)
+                        VStack(spacing: 2) {
+                            // Giorno Settimana (es. "Lun")
+                            Text(day.date.formatted(.dateTime.weekday(.abbreviated).locale(appLocale)).capitalized)
+                                .font(.system(size: 12, weight: isSelected ? .bold : .medium))
+                                .foregroundStyle(isSelected ? .primary : .secondary)
+                            
+                            // Giorno e Mese (es. "12 Gen")
+                            Text(day.date.formatted(.dateTime.day().month(.abbreviated).locale(appLocale)))
+                                .font(.system(size: 10, weight: .regular))
+                                .foregroundStyle(isSelected ? .primary : .secondary)
+                                .lineLimit(1)
+                                .fixedSize()
+                        }
+                    }
+                    .contentShape(Rectangle()) // Rende cliccabile l'intera colonna
+                    .onTapGesture {
+                        withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) {
+                            selectedID = day.id
+                        }
+                        let impact = UIImpactFeedbackGenerator(style: .light)
+                        impact.impactOccurred()
+                    }
+                }
+            }
+            .padding(.horizontal, 20)
+            .onAppear {
+                if selectedID == nil {
+                    selectedID = data.last?.id
+                }
+            }
+        }
+        .padding(.vertical, 24)
+        .background(Color(uiColor: .secondarySystemGroupedBackground))
+        .cornerRadius(24)
+    }
+    
+    // Calcolo altezza dinamica
+    func heightFor(value: Int) -> CGFloat {
+        // Altezza minima 4pt per non farla sparire se 0
+        let effectiveValue = max(CGFloat(value), 0.3)
+        let ratio = effectiveValue / CGFloat(maxTasks)
+        return barHeight * ratio
+    }
+}
+
+
+
 
 struct InviteFriendCard: View {
     var viewModel: StatsViewModel
