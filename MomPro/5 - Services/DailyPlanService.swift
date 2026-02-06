@@ -67,10 +67,18 @@ class DailyPlanService {
         }
     
     func completeTask(taskId: UUID) {
-        var completed = getCompletedIDs()
-        completed.insert(taskId.uuidString)
-        saveCompletedIDs(completed)
-    }
+            var completed = getCompletedIDs()
+            // Se il task non era già stato completato oggi...
+            if !completed.contains(taskId.uuidString) {
+                // 1. Salva lo stato locale (Spunta verde nella Home)
+                completed.insert(taskId.uuidString)
+                saveCompletedIDs(completed)
+                // 2. Avvisa il ProgressService globale (Incrementa Livello)
+                ProgressService.shared.completeTask()
+                // Debug Log
+                //print("Task Completato! Totale aggiornato: \(ProgressService.shared.totalTasksCompleted)")
+            }
+        }
     
     // MARK: - Helper Education
     func completeEducationTask() {

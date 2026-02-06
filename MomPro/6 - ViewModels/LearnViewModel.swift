@@ -73,7 +73,8 @@ class LearnViewModel {
     // MARK: - Actions
     
     func markAsRead(_ article: Article) {
-        progressService.markArticleAsRead(articleId: article.id)
+        // Passiamo anche il tempo di lettura dell'articolo
+        progressService.markArticleAsRead(articleId: article.id, readTime: article.readTimeMinutes)
         // Fondamentale: completa il task nella Home!
         dailyPlanService.completeEducationTask()
     }

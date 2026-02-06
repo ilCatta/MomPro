@@ -1,14 +1,21 @@
+//
+//  StatsViewModel.swift
+//  MomPro
+//
+//  Created by Andrea Cataldo on 18/01/26.
+//
+
 import SwiftUI
 import Observation
 import Foundation
 
-// Enum per il selettore
+// MARK: - ENUM TIMEFRAME
+// Definito fuori dalla classe per essere visibile ovunque
 enum TimeFrame: String, CaseIterable {
     case day = "Giorno"
     case month = "Mese"
     case year = "Anno"
     
-    // Chiavi di localizzazione (opzionale)
     var localizedKey: String {
         switch self {
         case .day: return "stats_view_day"
@@ -21,223 +28,263 @@ enum TimeFrame: String, CaseIterable {
 @Observable
 class StatsViewModel {
     
-    // MARK: - Dati Utente
-    var totalTasksCompleted: Int = 142
-    var articlesRead: Int = 15
-    var currentStreak: Int = 5
-    var bestStreak: Int = 12
-    var hasUsedBoost: Bool = false
-    
-    var dailyMascotImageName: String = "mascotte_onboarding_1"
-    
-    // MARK: - Gestione TimeFrame
-    var selectedTimeFrame: TimeFrame = .day {
-        didSet {
-            // Quando cambia il filtro, rigeneriamo i dati
-            generateChartData()
-        }
+    // MARK: - STRUCT DATI RIASSUNTO (Era mancante)
+    struct SummaryData {
+        let contextName: String    // Es. "Oggi", "Gennaio", "Il 2026"
+        let score: Int             // 0-100
+        let tasksCount: Int
+        let readsCount: Int
+        let totalCompleted: Int
+        let timeFormatted: String  // Es. "45 min" o "12 ore"
+        let conclusion: String
     }
     
-    // Il "Goal" massimo cambia in base al periodo
-    // Giorno: 7 task
-    // Mese: ~210 task (7 * 30)
-    // Anno: ~2500 task
+    // MARK: - Dipendenze
+    private var progressService = ProgressService.shared
+    private var storeService = StoreService.shared
+    
+    // Modalità Demo: Se true, mostra i grafici (con dati finti) anche se Free
+    var isDemoMode: Bool = true
+    
+    // MARK: - Dati Base
+    var totalTasksCompleted: Int { progressService.totalTasksCompleted }
+    var articlesRead: Int { progressService.readArticleIDs.count }
+    var currentLevel: Int { progressService.currentLevel }
+    var tasksToNextLevel: Int { progressService.tasksToNextLevel }
+    var levelProgress: Double { progressService.levelProgress }
+    var milestoneImage: String { progressService.currentMilestoneImage }
+    var milestoneTitle: String { progressService.currentMilestoneTitle }
+    var currentStreak: Int { progressService.currentStreak }
+    var bestStreak: Int { progressService.bestStreak }
+    
+    // Ora controlla direttamente il dato salvato nel Service.
+    // Se bonusLevels > 0 significa che l'abbiamo già usato.
+    var hasUsedBoost: Bool {
+        return progressService.bonusLevels > 0
+    }
+    
+    // MARK: - TimeFrame & Charts
+    var selectedTimeFrame: TimeFrame = .day {
+        didSet { generateChartData() }
+    }
+    
+    // Goal Grafico (per la scala Y)
     var currentMaxGoal: Double {
         switch selectedTimeFrame {
         case .day: return 7.0
-        case .month: return 210.0 // Target mensile ideale
-        case .year: return 2500.0 // Target annuale ideale
+        case .month: return 210.0 // ~30 * 7
+        case .year: return 2500.0 // ~365 * 7
         }
     }
     
-    // MARK: - Logica Livello
-    var currentLevel: Int { (totalTasksCompleted / 15) + 1 }
-    var tasksInCurrentLevel: Int { totalTasksCompleted % 15 }
-    var tasksToNextLevel: Int { 15 - tasksInCurrentLevel }
-    var levelProgress: Double { Double(tasksInCurrentLevel) / 15.0 }
-    
-    var levelTitle: String {
-        switch currentLevel {
-        case 1...3: return "Mamma in Pigiama"
-        case 4...8: return "Mamma Organizzata"
-        case 9...15: return "Mamma Boss"
-        default: return "Regina delle Finanze"
-        }
-    }
-    
-    var timeInvestedString: String {
-        let minutes = totalTasksCompleted * 10
-        if minutes < 60 { return "\(minutes) min" }
-        else {
-            let hours = minutes / 60
-            let mins = minutes % 60
-            return String(format: "%dh %02dm", hours, mins)
-        }
-    }
-    
-    // MARK: - Dati Grafico
-    // Usiamo una struct generica che va bene per Giorno, Mese o Anno
     struct ChartDataPoint: Identifiable, Equatable {
         let id = UUID()
-        let date: Date     // Rappresenta il giorno specifico, o il 1° del mese, o il 1° dell'anno
-        let completed: Int
+        let date: Date
+        let completed: Int // Task
         let goal: Int
     }
     
     var chartData: [ChartDataPoint] = []
     
+    // Dati per la Card Riassunto
+    var currentSummary: SummaryData = SummaryData(
+        contextName: "", score: 0, tasksCount: 0, readsCount: 0,
+        totalCompleted: 0, timeFormatted: "", conclusion: ""
+    )
+    
+    // MARK: - Init
     init() {
         generateChartData()
     }
     
+    // MARK: - Generazione Dati
     func generateChartData() {
+        // Logica: Mostra dati reali se PRO.
+        // Se FREE, mostra dati finti (che poi la View sfocherà se non siamo in Demo Mode)
+        let showRealData = storeService.isPro
+        
+        if showRealData {
+            fetchRealHistoryData()
+        } else {
+            generateMockData()
+        }
+        
+        generateSummary(isReal: showRealData)
+    }
+    
+    // MARK: - 1. Dati Finti (Mock)
+    private func generateMockData() {
         var data: [ChartDataPoint] = []
         let calendar = Calendar.current
+        let today = Date()
         
         switch selectedTimeFrame {
         case .day:
-            // ULTIMI 30 GIORNI
             for i in (0..<30).reversed() {
-                if let date = calendar.date(byAdding: .day, value: -i, to: Date()) {
-                    let goal = 7
-                    let completed = Int.random(in: 0...7)
-                    data.append(ChartDataPoint(date: date, completed: completed, goal: goal))
+                if let date = calendar.date(byAdding: .day, value: -i, to: today) {
+                    data.append(ChartDataPoint(date: date, completed: Int.random(in: 2...7), goal: 7))
+                }
+            }
+        case .month:
+            for i in (0..<12).reversed() {
+                if let date = calendar.date(byAdding: .month, value: -i, to: today) {
+                    data.append(ChartDataPoint(date: date, completed: Int.random(in: 120...200), goal: 210))
+                }
+            }
+        case .year:
+            for i in (0..<5).reversed() {
+                if let date = calendar.date(byAdding: .year, value: -i, to: today) {
+                    data.append(ChartDataPoint(date: date, completed: Int.random(in: 1500...2400), goal: 2500))
+                }
+            }
+        }
+        self.chartData = data
+    }
+    
+    // MARK: - 2. Dati Reali (Real History)
+    private func fetchRealHistoryData() {
+        var data: [ChartDataPoint] = []
+        let calendar = Calendar.current
+        let today = Date()
+        
+        switch selectedTimeFrame {
+        case .day:
+            for i in (0..<30).reversed() {
+                if let date = calendar.date(byAdding: .day, value: -i, to: today) {
+                    let log = progressService.getHistory(for: date)
+                    let val = log?.tasksCompleted ?? 0
+                    data.append(ChartDataPoint(date: date, completed: val, goal: 7))
                 }
             }
             
         case .month:
-            // ULTIMI 12 MESI
+            let allHistory = progressService.getAllHistory()
             for i in (0..<12).reversed() {
-                if let date = calendar.date(byAdding: .month, value: -i, to: Date()) {
-                    let goal = 210 // 30 * 7
-                    // Generiamo un numero realistico (es. tra 100 e 200)
-                    let completed = Int.random(in: 100...210)
-                    data.append(ChartDataPoint(date: date, completed: completed, goal: goal))
+                if let monthDate = calendar.date(byAdding: .month, value: -i, to: today) {
+                    let monthLogs = allHistory.filter { calendar.isDate($0.date, equalTo: monthDate, toGranularity: .month) }
+                    let totalMonth = monthLogs.reduce(0) { $0 + $1.tasksCompleted }
+                    data.append(ChartDataPoint(date: monthDate, completed: totalMonth, goal: 210))
                 }
             }
             
         case .year:
-            // ULTIMI 5 ANNI
+            let allHistory = progressService.getAllHistory()
             for i in (0..<5).reversed() {
-                if let date = calendar.date(byAdding: .year, value: -i, to: Date()) {
-                    let goal = 2500
-                    let completed = Int.random(in: 1500...2500)
-                    data.append(ChartDataPoint(date: date, completed: completed, goal: goal))
+                if let yearDate = calendar.date(byAdding: .year, value: -i, to: today) {
+                    let yearLogs = allHistory.filter { calendar.isDate($0.date, equalTo: yearDate, toGranularity: .year) }
+                    let totalYear = yearLogs.reduce(0) { $0 + $1.tasksCompleted }
+                    data.append(ChartDataPoint(date: yearDate, completed: totalYear, goal: 2500))
                 }
             }
         }
-        
         self.chartData = data
+    }
+    
+    // MARK: - 3. Logica Sommario
+    private func generateSummary(isReal: Bool) {
+        let appLocale = Locale(identifier: LanguageService.shared.currentLanguage)
+        let calendar = Calendar.current
+        let now = Date()
+        
+        var contextName = ""
+        var actualTasks = 0
+        var actualReads = 0
+        var actualMinutes = 0
+        var targetTasks = 0
+        
+        if isReal {
+            let allHistory = progressService.getAllHistory()
+            
+            switch selectedTimeFrame {
+            case .day:
+                contextName = "Oggi"
+                targetTasks = 7
+                if let log = progressService.getHistory(for: now) {
+                    actualTasks = log.tasksCompleted
+                    actualReads = log.articlesRead
+                    actualMinutes = log.minutesInvested
+                }
+                
+            case .month:
+                contextName = now.formatted(.dateTime.month(.wide).locale(appLocale)).capitalized
+                let range = calendar.range(of: .day, in: .month, for: now)!
+                targetTasks = range.count * 7
+                
+                let monthLogs = allHistory.filter { calendar.isDate($0.date, equalTo: now, toGranularity: .month) }
+                actualTasks = monthLogs.reduce(0) { $0 + $1.tasksCompleted }
+                actualReads = monthLogs.reduce(0) { $0 + $1.articlesRead }
+                actualMinutes = monthLogs.reduce(0) { $0 + $1.minutesInvested }
+                
+            case .year:
+                let yearStr = now.formatted(.dateTime.year().locale(appLocale))
+                contextName = "Il \(yearStr)"
+                let range = calendar.range(of: .day, in: .year, for: now)!
+                targetTasks = range.count * 7
+                
+                let yearLogs = allHistory.filter { calendar.isDate($0.date, equalTo: now, toGranularity: .year) }
+                actualTasks = yearLogs.reduce(0) { $0 + $1.tasksCompleted }
+                actualReads = yearLogs.reduce(0) { $0 + $1.articlesRead }
+                actualMinutes = yearLogs.reduce(0) { $0 + $1.minutesInvested }
+            }
+            
+        } else {
+            // DATI MOCK (Verosimili per Demo)
+            switch selectedTimeFrame {
+            case .day:
+                contextName = "Oggi"
+                targetTasks = 7
+                actualTasks = Int.random(in: 3...7)
+                actualReads = Int.random(in: 0...2)
+                actualMinutes = (actualTasks * 2) + (actualReads * 5)
+            case .month:
+                contextName = "Febbraio"
+                targetTasks = 196
+                actualTasks = Int.random(in: 100...150)
+                actualReads = Int.random(in: 15...25)
+                actualMinutes = (actualTasks * 2) + (actualReads * 5)
+            case .year:
+                contextName = "Il 2026"
+                targetTasks = 2555
+                actualTasks = Int.random(in: 1500...2000)
+                actualReads = Int.random(in: 100...200)
+                actualMinutes = (actualTasks * 2) + (actualReads * 5)
+            }
+        }
+        
+        let safeTarget = max(Double(targetTasks), 1.0)
+        let score = min(Int((Double(actualTasks) / safeTarget) * 100), 100)
+        let totalActivity = actualTasks + actualReads
+        
+        self.currentSummary = SummaryData(
+            contextName: contextName,
+            score: score,
+            tasksCount: actualTasks,
+            readsCount: actualReads,
+            totalCompleted: totalActivity,
+            timeFormatted: formatTime(actualMinutes),
+            conclusion: getConclusion(for: score)
+        )
+    }
+    
+    // Helpers
+    private func formatTime(_ minutes: Int) -> String {
+        if minutes < 60 { return "\(minutes) minuti" }
+        else { return "\(minutes / 60) ore" }
+    }
+    
+    private func getConclusion(for score: Int) -> String {
+        switch score {
+        case 90...100: return "Prestazione leggendaria!"
+        case 75..<90:  return "Stai andando alla grande!"
+        case 50..<75:  return "Buon ritmo, continua così."
+        case 25..<50:  return "Puoi fare di più, forza!"
+        default:       return "Ogni inizio è difficile, non mollare."
+        }
     }
     
     func applyBoost() {
         if !hasUsedBoost {
-            totalTasksCompleted += 5
-            hasUsedBoost = true
-        }
-    }
-    
-    
-    // MARK: - Frase del giorno coi dati
-    // Usiamo una struct generica che va bene per Giorno, Mese o Anno
-
-    struct SummaryData {
-        let contextName: String    // Es. "Oggi", "Gennaio", "Il 2026"
-        let score: Int
-        let tasksCount: Int
-        let readsCount: Int
-        let totalCompleted: Int
-        let timeFormatted: String  // NUOVO: Es. "45 min" o "12 ore"
-        let conclusion: String
-    }
-
-    var currentSummary: SummaryData {
-        let appLocale = Locale(identifier: LanguageService.shared.currentLanguage)
-        
-        // Helper per formattare il tempo
-        func formatTime(_ minutes: Int) -> String {
-            if minutes < 60 {
-                return "\(minutes) minuti"
-            } else {
-                let hours = minutes / 60
-                // Se vuoi anche i minuti residui: return String(format: "%d h %02d min", hours, minutes % 60)
-                return "\(hours) ore" // Più pulito per i riassunti lunghi
-            }
-        }
-        
-        // Helper per la frase conclusiva
-        func getConclusion(for score: Int) -> String {
-            switch score {
-            case 90...100: return "Prestazione leggendaria!"
-            case 75..<90:  return "Stai andando alla grande!"
-            case 50..<75:  return "Buon ritmo, continua così."
-            case 25..<50:  return "Puoi fare di più, forza!"
-            default:       return "Ogni inizio è difficile, non mollare."
-            }
-        }
-        
-        switch selectedTimeFrame {
-        case .day:
-            let context = "Oggi"
-            let tasks = Int.random(in: 1...5)
-            let reads = Int.random(in: 0...2)
-            let total = tasks + reads
-            
-            // Calcolo Tempo: 10 min per task, 5 min per lettura
-            let minutes = (tasks * 10) + (reads * 5)
-            
-            let score = min(Int((Double(total) / 10.0) * 100), 100)
-            
-            return SummaryData(
-                contextName: context,
-                score: score,
-                tasksCount: tasks,
-                readsCount: reads,
-                totalCompleted: total,
-                timeFormatted: formatTime(minutes),
-                conclusion: getConclusion(for: score)
-            )
-            
-        case .month:
-            let context = Date().formatted(.dateTime.month(.wide).locale(appLocale)).capitalized
-            let tasks = Int.random(in: 40...100)
-            let reads = Int.random(in: 5...20)
-            let total = tasks + reads
-            
-            let minutes = (tasks * 10) + (reads * 5)
-            
-            let score = min(Int((Double(total) / 150.0) * 100), 100)
-            
-            return SummaryData(
-                contextName: context,
-                score: score,
-                tasksCount: tasks,
-                readsCount: reads,
-                totalCompleted: total,
-                timeFormatted: formatTime(minutes),
-                conclusion: getConclusion(for: score)
-            )
-            
-        case .year:
-            let yearNum = Date().formatted(.dateTime.year().locale(appLocale))
-            let context = "Il \(yearNum)"
-            let tasks = Int.random(in: 500...1200)
-            let reads = Int.random(in: 50...150)
-            let total = tasks + reads
-            
-            let minutes = (tasks * 10) + (reads * 5)
-            
-            let score = min(Int((Double(total) / 2000.0) * 100), 100)
-            
-            return SummaryData(
-                contextName: context,
-                score: score,
-                tasksCount: tasks,
-                readsCount: reads,
-                totalCompleted: total,
-                timeFormatted: formatTime(minutes),
-                conclusion: getConclusion(for: score)
-            )
+            progressService.boostLevel()
         }
     }
 }
