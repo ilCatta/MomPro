@@ -163,21 +163,33 @@ extension StatsView {
                 ZStack {
                     VStack(alignment: .leading, spacing: 0) {
                         
-                        // RIASSUNTO
+                        // PUNTEGGIO
                         SummaryInsightCard(data: viewModel.currentSummary)
                             .padding(.horizontal)
                             .padding(.bottom, 24)
                         
                         //
                         //
-                        // COSTANZA
-                        Text("stats_view_consistency_title".localized)
-                            .font(.system(.headline, design: .rounded))
-                            .fontWeight(.bold)
-                            .foregroundStyle(.primary)
-                            .padding(.horizontal)
-                            .padding(.bottom, 10)
-                        
+                        // COSTANZA TITLE
+                        HStack(spacing: 0) {
+                            Text("stats_view_consistency_title".localized)
+                                .font(.system(.headline, design: .rounded))
+                                .fontWeight(.bold)
+                                .foregroundStyle(.primary)
+                            
+                            Spacer()
+                            
+                            Text("stats_view_consistency_subtitle".localized)
+                                .font(.system(.caption2, design: .rounded))
+                                .fontWeight(.medium)
+                                .foregroundStyle(.secondary)
+                            
+                        }
+                        .padding(.horizontal)
+                        .padding(.bottom, 10)
+                        //
+                        //
+                        // COSTANZA chart
                         ConsistencyBarView(
                             data: viewModel.chartData,
                             timeFrame: viewModel.selectedTimeFrame,
@@ -189,7 +201,7 @@ extension StatsView {
                         //
                         //
                         // TREND TITLE
-                        HStack {
+                        HStack(spacing: 0) {
                             Text("stats_view_trend_title".localized)
                                 .font(.system(.headline, design: .rounded))
                                 .fontWeight(.bold)

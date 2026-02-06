@@ -182,105 +182,112 @@ class StatsViewModel {
     
     // MARK: - 3. Logica Sommario
     private func generateSummary(isReal: Bool) {
-        let appLocale = Locale(identifier: LanguageService.shared.currentLanguage)
-        let calendar = Calendar.current
-        let now = Date()
-        
-        var contextName = ""
-        var actualTasks = 0
-        var actualReads = 0
-        var actualMinutes = 0
-        var targetTasks = 0
-        
-        if isReal {
-            let allHistory = progressService.getAllHistory()
+            let appLocale = Locale(identifier: LanguageService.shared.currentLanguage)
+            let calendar = Calendar.current
+            let now = Date()
             
-            switch selectedTimeFrame {
-            case .day:
-                contextName = "Oggi"
-                targetTasks = 7
-                if let log = progressService.getHistory(for: now) {
-                    actualTasks = log.tasksCompleted
-                    actualReads = log.articlesRead
-                    actualMinutes = log.minutesInvested
+            var contextName = ""
+            var actualTasks = 0
+            var actualReads = 0
+            var actualMinutes = 0
+            var targetTasks = 0
+            
+            if isReal {
+                let allHistory = progressService.getAllHistory()
+                
+                switch selectedTimeFrame {
+                case .day:
+                    // CHIAVE AGGIORNATA
+                    contextName = "stats_view_summary_today".localized
+                    targetTasks = 7
+                    if let log = progressService.getHistory(for: now) {
+                        actualTasks = log.tasksCompleted
+                        actualReads = log.articlesRead
+                        actualMinutes = log.minutesInvested
+                    }
+                    
+                case .month:
+                    contextName = now.formatted(.dateTime.month(.wide).locale(appLocale)).capitalized
+                    let range = calendar.range(of: .day, in: .month, for: now)!
+                    targetTasks = range.count * 7
+                    
+                    let monthLogs = allHistory.filter { calendar.isDate($0.date, equalTo: now, toGranularity: .month) }
+                    actualTasks = monthLogs.reduce(0) { $0 + $1.tasksCompleted }
+                    actualReads = monthLogs.reduce(0) { $0 + $1.articlesRead }
+                    actualMinutes = monthLogs.reduce(0) { $0 + $1.minutesInvested }
+                    
+                case .year:
+                    let yearStr = now.formatted(.dateTime.year().locale(appLocale))
+                    // CHIAVE AGGIORNATA
+                    contextName = String(format: "stats_view_summary_year_format".localized, yearStr)
+                    
+                    let range = calendar.range(of: .day, in: .year, for: now)!
+                    targetTasks = range.count * 7
+                    
+                    let yearLogs = allHistory.filter { calendar.isDate($0.date, equalTo: now, toGranularity: .year) }
+                    actualTasks = yearLogs.reduce(0) { $0 + $1.tasksCompleted }
+                    actualReads = yearLogs.reduce(0) { $0 + $1.articlesRead }
+                    actualMinutes = yearLogs.reduce(0) { $0 + $1.minutesInvested }
                 }
                 
-            case .month:
-                contextName = now.formatted(.dateTime.month(.wide).locale(appLocale)).capitalized
-                let range = calendar.range(of: .day, in: .month, for: now)!
-                targetTasks = range.count * 7
-                
-                let monthLogs = allHistory.filter { calendar.isDate($0.date, equalTo: now, toGranularity: .month) }
-                actualTasks = monthLogs.reduce(0) { $0 + $1.tasksCompleted }
-                actualReads = monthLogs.reduce(0) { $0 + $1.articlesRead }
-                actualMinutes = monthLogs.reduce(0) { $0 + $1.minutesInvested }
-                
-            case .year:
-                let yearStr = now.formatted(.dateTime.year().locale(appLocale))
-                contextName = "Il \(yearStr)"
-                let range = calendar.range(of: .day, in: .year, for: now)!
-                targetTasks = range.count * 7
-                
-                let yearLogs = allHistory.filter { calendar.isDate($0.date, equalTo: now, toGranularity: .year) }
-                actualTasks = yearLogs.reduce(0) { $0 + $1.tasksCompleted }
-                actualReads = yearLogs.reduce(0) { $0 + $1.articlesRead }
-                actualMinutes = yearLogs.reduce(0) { $0 + $1.minutesInvested }
+            } else {
+                // DATI MOCK (Demo)
+                switch selectedTimeFrame {
+                case .day:
+                    contextName = "stats_view_summary_today".localized
+                    targetTasks = 7
+                    actualTasks = Int.random(in: 3...7)
+                    actualReads = Int.random(in: 0...2)
+                    actualMinutes = (actualTasks * 2) + (actualReads * 5)
+                case .month:
+                    contextName = now.formatted(.dateTime.month(.wide).locale(appLocale)).capitalized
+                    targetTasks = 196
+                    actualTasks = Int.random(in: 100...150)
+                    actualReads = Int.random(in: 15...25)
+                    actualMinutes = (actualTasks * 2) + (actualReads * 5)
+                case .year:
+                    let yearStr = now.formatted(.dateTime.year().locale(appLocale))
+                    contextName = String(format: "stats_view_summary_year_format".localized, yearStr)
+                    targetTasks = 2555
+                    actualTasks = Int.random(in: 1500...2000)
+                    actualReads = Int.random(in: 100...200)
+                    actualMinutes = (actualTasks * 2) + (actualReads * 5)
+                }
             }
             
-        } else {
-            // DATI MOCK (Verosimili per Demo)
-            switch selectedTimeFrame {
-            case .day:
-                contextName = "Oggi"
-                targetTasks = 7
-                actualTasks = Int.random(in: 3...7)
-                actualReads = Int.random(in: 0...2)
-                actualMinutes = (actualTasks * 2) + (actualReads * 5)
-            case .month:
-                contextName = "Febbraio"
-                targetTasks = 196
-                actualTasks = Int.random(in: 100...150)
-                actualReads = Int.random(in: 15...25)
-                actualMinutes = (actualTasks * 2) + (actualReads * 5)
-            case .year:
-                contextName = "Il 2026"
-                targetTasks = 2555
-                actualTasks = Int.random(in: 1500...2000)
-                actualReads = Int.random(in: 100...200)
-                actualMinutes = (actualTasks * 2) + (actualReads * 5)
+            let safeTarget = max(Double(targetTasks), 1.0)
+            let score = min(Int((Double(actualTasks) / safeTarget) * 100), 100)
+            let totalActivity = actualTasks + actualReads
+            
+            self.currentSummary = SummaryData(
+                contextName: contextName,
+                score: score,
+                tasksCount: actualTasks,
+                readsCount: actualReads,
+                totalCompleted: totalActivity,
+                timeFormatted: formatTime(actualMinutes),
+                conclusion: getConclusion(for: score) // Restituisce la chiave
+            )
+        }
+        
+        // Helpers Aggiornati con prefisso "stats_view_"
+        private func formatTime(_ minutes: Int) -> String {
+            if minutes < 60 {
+                return "\(minutes) \("stats_view_summary_time_min".localized)"
+            } else {
+                return "\(minutes / 60) \("stats_view_summary_time_hours".localized)"
             }
         }
         
-        let safeTarget = max(Double(targetTasks), 1.0)
-        let score = min(Int((Double(actualTasks) / safeTarget) * 100), 100)
-        let totalActivity = actualTasks + actualReads
-        
-        self.currentSummary = SummaryData(
-            contextName: contextName,
-            score: score,
-            tasksCount: actualTasks,
-            readsCount: actualReads,
-            totalCompleted: totalActivity,
-            timeFormatted: formatTime(actualMinutes),
-            conclusion: getConclusion(for: score)
-        )
-    }
-    
-    // Helpers
-    private func formatTime(_ minutes: Int) -> String {
-        if minutes < 60 { return "\(minutes) minuti" }
-        else { return "\(minutes / 60) ore" }
-    }
-    
-    private func getConclusion(for score: Int) -> String {
-        switch score {
-        case 90...100: return "Prestazione leggendaria!"
-        case 75..<90:  return "Stai andando alla grande!"
-        case 50..<75:  return "Buon ritmo, continua così."
-        case 25..<50:  return "Puoi fare di più, forza!"
-        default:       return "Ogni inizio è difficile, non mollare."
+        private func getConclusion(for score: Int) -> String {
+            switch score {
+            case 90...100: return "stats_view_summary_conclusion_legendary".localized
+            case 75..<90:  return "stats_view_summary_conclusion_great".localized
+            case 50..<75:  return "stats_view_summary_conclusion_good".localized
+            case 25..<50:  return "stats_view_summary_conclusion_push".localized
+            default:       return "stats_view_summary_conclusion_start".localized
+            }
         }
-    }
     
     func applyBoost() {
         if !hasUsedBoost {
