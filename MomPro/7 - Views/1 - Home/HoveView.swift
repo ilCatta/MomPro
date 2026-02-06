@@ -589,7 +589,7 @@ struct HomeView: View {
                         
                         
                         // 2. Titolo del Task
-                        Text(LocalizedStringKey(taskStatus.task.title.localized))
+                        Text(taskStatus.task.title.localized)
                             .font(.system(.title3, design: .rounded))
                             .fontWeight(.semibold)
                             .foregroundStyle(.primary)
