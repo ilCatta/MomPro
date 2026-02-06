@@ -134,7 +134,7 @@ extension StatsView {
             .frame(height: 12)
             .padding(.bottom, 12)
             
-            Text("Ancora \(viewModel.tasksToNextLevel) task al prossimo livello!")
+            Text(String(format: "stats_view_level_remaining".localized, viewModel.tasksToNextLevel))
                 .font(.system(.caption, design: .default))
                 .fontWeight(.medium)
                 .foregroundStyle(.secondary)
@@ -195,6 +195,11 @@ extension StatsView {
                             timeFrame: viewModel.selectedTimeFrame,
                             maxGoal: viewModel.currentMaxGoal
                         )
+                        .background(
+                            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                                .fill(Color(.secondarySystemGroupedBackground))
+                        )
+                        .shadow(color: .black.opacity(0.05), radius: 10, x: 0, y: 5)
                         .padding(.horizontal)
                         .padding(.bottom, 24)
                         
@@ -239,6 +244,7 @@ extension StatsView {
                             RoundedRectangle(cornerRadius: 22, style: .continuous)
                                 .fill(Color(.secondarySystemGroupedBackground))
                         )
+                        .shadow(color: .black.opacity(0.05), radius: 10, x: 0, y: 5)
                         .padding(.horizontal)
                     }
                     .blur(radius: isContentVisible ? 0 : 8) // SFOCATURA

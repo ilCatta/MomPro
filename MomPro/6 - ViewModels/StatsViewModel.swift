@@ -12,9 +12,9 @@ import Foundation
 // MARK: - ENUM TIMEFRAME
 // Definito fuori dalla classe per essere visibile ovunque
 enum TimeFrame: String, CaseIterable {
-    case day = "Giorno"
-    case month = "Mese"
-    case year = "Anno"
+    case day = "Day"
+    case month = "Month"
+    case year = "Year"
     
     var localizedKey: String {
         switch self {

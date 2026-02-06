@@ -115,9 +115,8 @@ struct ConsistencyBarView: View {
                 }
             }
         }
-        .padding(.vertical, 24)
-        .background(Color(uiColor: .secondarySystemGroupedBackground))
-        .cornerRadius(24)
+        .padding(.vertical, 16)
+        
     }
     
     func heightFor(value: Int) -> CGFloat {

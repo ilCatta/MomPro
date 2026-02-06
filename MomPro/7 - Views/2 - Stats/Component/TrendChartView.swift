@@ -42,6 +42,7 @@ struct TrendChartView: View {
                 }
                 .padding(.vertical, 12)
             }
+            .fixedSize(horizontal: false, vertical: true)
             .onAppear {
                 if selectedID == nil { selectedID = fullData.last?.id }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {

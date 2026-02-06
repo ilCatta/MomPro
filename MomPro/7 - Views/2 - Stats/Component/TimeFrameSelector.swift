@@ -29,7 +29,7 @@ struct TimeFrameSelector: View {
                                 .matchedGeometryEffect(id: "TF_Tab", in: animation)
                         }
                         
-                        Text(timeframe.rawValue.localized)
+                        Text(timeframe.localizedKey.localized)
                             .font(.system(size: 13, weight: .semibold, design: .rounded))
                             .foregroundStyle(selected == timeframe ? .black : .gray)
                             .padding(.vertical, 8)

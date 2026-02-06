@@ -44,21 +44,107 @@ struct SummaryInsightCard: View {
             .padding(.top, 24)
             .padding(.bottom, 24)
             
-            Divider().padding(.horizontal, 40).padding(.bottom, 24)
+            Rectangle()
+                .fill(Color(uiColor: .separator))
+                .frame(height: 1)
+                .padding(.horizontal)
+                .padding(.bottom, 20)
             
-            // 2. TESTO NARRATIVO
+            // 2. TESTO NARRATIVO OLD METHOD
             Text(buildAttributedText())
                 .multilineTextAlignment(.center)
                 .lineSpacing(6)
-                .padding(.horizontal, 20)
-                .padding(.bottom, 30)
+                .padding(.horizontal)
+                .padding(.bottom, 24)
                 .contentTransition(.numericText())
                 .animation(.snappy(duration: 0.4), value: data.totalCompleted)
+             
+            
+            // /* NEW POSSIBLE METHOD */
+            /*
+            SummaryNarrativeView(data: data)
+                .padding(.horizontal, 20)
+                .padding(.bottom, 30)
+                // Animazioni
+                .contentTransition(.numericText())
+                .animation(.snappy(duration: 0.4), value: data.totalCompleted)
+             */
         }
-        .background(Color(uiColor: .secondarySystemGroupedBackground))
-        .cornerRadius(24)
+        //.background(Color(uiColor: .secondarySystemGroupedBackground))
+        //.cornerRadius(24)
+        .background(
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                .fill(Color(.secondarySystemGroupedBackground))
+        )
         .shadow(color: .black.opacity(0.05), radius: 10, x: 0, y: 5)
     }
+    
+    
+    /* NEW POSSIBLE METHOD */
+    /*
+    // MARK: - Sotto-componente Narrativo
+        private struct SummaryNarrativeView: View {
+            let data: StatsViewModel.SummaryData
+            
+            var body: some View {
+                VStack(spacing: 6) {
+                    
+                    // RIGA 1
+                    // Usa le chiavi che contengono già i doppi asterischi (es: "**Oggi** include...")
+                    let row1 = String(format: "stats_view_summary_line_1".localized,
+                                      data.contextName,
+                                      data.tasksCount,
+                                      data.readsCount)
+                    
+                    // Applichiamo lo stile "Grigio base + Nero bold"
+                    Text(styledMarkdown(row1))
+                    
+                    // RIGA 2
+                    let row2 = String(format: "stats_view_summary_line_2".localized,
+                                      data.timeFormatted,
+                                      data.totalCompleted)
+                    
+                    Text(styledMarkdown(row2))
+                    
+                    // RIGA 3: Frase Motivazionale (Sempre Rosa)
+                    Text(data.conclusion)
+                        .foregroundStyle(Color.pink)
+                        .font(.system(.title3, design: .rounded))
+                        .fontWeight(.semibold)
+                        .padding(.top, 4)
+                }
+                .multilineTextAlignment(.center)
+            }
+            
+            // IL TRUCCO: Questa funzione analizza il markdown e colora diversamente le parti
+            private func styledMarkdown(_ string: String) -> AttributedString {
+                // 1. Convertiamo la stringa con i ** in AttributedString
+                guard var attributed = try? AttributedString(markdown: string) else {
+                    return AttributedString(string)
+                }
+                
+                // 2. IMPOSTAZIONE BASE: Tutto il testo diventa GRIGIO (.secondary)
+                attributed.foregroundColor = .secondary
+                attributed.font = .system(.title3, design: .rounded)
+                
+                // 3. CERCHIAMO I GRASSETTI: Le parti tra ** ** diventano NERE (.primary)
+                // AttributedString ci permette di iterare sulle "runs" (pezzi di testo con gli stessi attributi)
+                for run in attributed.runs {
+                    if let presentation = run.attributes.inlinePresentationIntent,
+                       presentation.contains(.stronglyEmphasized) { // .stronglyEmphasized significa Bold in Markdown
+                        
+                        // Applichiamo il colore Primario (Nero/Bianco) e il peso Bold solo a questa parte
+                        attributed[run.range].foregroundColor = .primary
+                        attributed[run.range].font = .system(.title3, design: .rounded).weight(.bold)
+                    }
+                }
+                
+                return attributed
+            }
+        }
+     */
+    
+    
     
     // Costruzione della frase DINAMICA
         private func buildAttributedText() -> AttributedString {
@@ -134,4 +220,5 @@ struct SummaryInsightCard: View {
             
             return text
         }
+     
 }

@@ -84,6 +84,7 @@ struct HomeView: View {
                             RoundedRectangle(cornerRadius: 22, style: .continuous)
                                 .fill(Color(.secondarySystemGroupedBackground))
                         )
+                        .shadow(color: .black.opacity(0.05), radius: 10, x: 0, y: 5)
                         .padding(.horizontal)
                         .padding(.vertical)
                         .padding(.bottom, 4)
@@ -671,6 +672,7 @@ struct HomeView: View {
                     RoundedRectangle(cornerRadius: 22, style: .continuous)
                         .fill(Color(.secondarySystemGroupedBackground))
                 )
+                .shadow(color: .black.opacity(0.05), radius: 10, x: 0, y: 5)
             }
             .buttonStyle(SquishyButtonEffect())
         }
@@ -940,6 +942,7 @@ struct VipTaskCard: View {
                 RoundedRectangle(cornerRadius: 22, style: .continuous)
                     .fill(Color(.secondarySystemGroupedBackground))
             )
+            .shadow(color: .black.opacity(0.05), radius: 10, x: 0, y: 5)
         }
         .buttonStyle(SquishyButtonEffect()) // Stesso effetto tocco della ClassicTask
     }

@@ -59,5 +59,7 @@ struct StatsCard: View {
             RoundedRectangle(cornerRadius: 22, style: .continuous)
                 .fill(Color(.secondarySystemGroupedBackground))
         )
+        .shadow(color: .black.opacity(0.05), radius: 10, x: 0, y: 5)
+
     }
 }
